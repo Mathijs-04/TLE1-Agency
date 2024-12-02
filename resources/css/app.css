@@ -1,3 +1,91 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Plaats elementen aan de uiteinden */
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+#nav-OH-logo {
+    height: 50px;
+}
+
+/* Maak een container voor de middelste navigatie-items */
+.nav-center {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-grow: 1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+}
+
+.nav-item {
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-item:hover {
+    color: #aa0160;
+    text-decoration: underline;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+}
+
+/* Dropdown menu (standaard verborgen) */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #aa0160;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: height 0.3s ease, opacity 0.3s ease;
+    min-width: 200px;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 12px 0;
+    transition: color 0.3s;
+}
+
+.dropdown-menu a:hover {
+    color: #faec02; /* Geel bij hover */
+}
+
+/* Toon het menu bij hover */
+.dropdown:hover .dropdown-menu {
+    height: auto;
+    opacity: 1;
+}
+
+/* Login helemaal rechts */
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
