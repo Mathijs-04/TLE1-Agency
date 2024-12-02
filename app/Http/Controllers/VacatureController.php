@@ -13,7 +13,6 @@ class vacatureController extends Controller
     {
         //
 
-        r
     }
 
     /**
