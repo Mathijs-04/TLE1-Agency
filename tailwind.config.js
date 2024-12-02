@@ -12,7 +12,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                violet: {
+                dirk: {
                     500: '#AA0160', // Voeg de kleur toe zoals in je CSS
                     600: '#7c1a51'
                 },

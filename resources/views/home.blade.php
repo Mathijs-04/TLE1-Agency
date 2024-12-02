@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Homepage</title>
     @vite('resources/css/app.css')
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
@@ -24,7 +23,7 @@
             <div class="flex items-center justify-center">
                 <button
                     id="button1"
-                    class="relative w-72 h-14 rounded-full border-b-4 border-[#7c1a51] font-bold text-cream text-base">
+                    class="relative w-72 h-14 rounded-full border-b-4 border-[#7c1a51] bg-dirk-500 font-bold text-cream text-base">
                     Bekijk vacature
                 </button>
             </div>
