@@ -11,6 +11,13 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                violet: {
+                    500: '#AA0160', // Voeg de kleur toe zoals in je CSS
+                    600: '#7c1a51'
+                },
+                cream: '#FBFCF6', // Voeg de kleur toe zoals in je CSS
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
