@@ -8,35 +8,44 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @vite('/resources/css/app.css')
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
 </head>
-    <body>
-{{--        <div class="myvacancy1">--}}
 
-{{--            <img src="{{ Vite::asset('resources/images/DeBeren.jpg') }}" alt="Logo" />--}}
-{{--            <h1>De beren</h1>--}}
-{{--            <h2>Wachtende:2</h2>--}}
-{{--             <button>Uitnodigen</button>--}}
-{{--        </div>--}}
+<body class="bg-gray-100 h-screen flex justify-center items-center flex-col">
+    <div class="vacancy-list w-full max-w-4xl space-y-6 ">
+        @foreach ($vacancies as $vacancy)
+            @php
+                $imagePath = Vite::asset('resources/images/' . $vacancy->name . '.jpg');
+            @endphp
 
-        <div class="myvacancy1">
-            @foreach ($vacancies as $vacancy)
-                    @php
-                        $imagePath = Vite::asset('resources/images/' . $vacancy->name . '.jpg');
-                    @endphp
+            <div class="vacature bg-white p-6 rounded-lg shadow-lg flex items-center justify-between">
+                <!-- Image -->
+                <img src="{{ $imagePath }}" alt="{{ $vacancy->name }} image" class="w-40 h-24 object-cover">
 
-                    <div>
-                        <img src="{{ $imagePath }}" alt="{{ $vacancy->name }} image" class="w-full h-48 object-cover rounded-md mb-4">
+                <!-- Text Section -->
+                <div class="flex-1 ml-6">
+                    <h2 class="text-xl font-bold">{{ $vacancy->name }}</h2>
+                    <p class="text-gray-600">Wachtende: {{ $vacancy->waiting }}</p>
+                </div>
 
-                        <h2>{{ $vacancy->name }}</h2>
-                        <p>Wachtende: {{ $vacancy->waiting }}</p>
-                        <button>Uitnodigen</button>
+                <!-- Button -->
+                <button class="px-6 py-3 bg-violetOH-500 text-white font-medium rounded-lg hover:bg-violetOH-600">
+                    Uitnodigen
+                </button>
+            </div>
+        @endforeach
 
-{{--                        <a href="{{ route('movies.show', $movie) }}" class="text-blue-500 hover:underline mt-4 inline-block">View Details</a>--}}
-                    </div>
-            @endforeach
-        </div>
-    </body>
+    </div>
+
+    <button class="mt-5 font-bold w-12 h-12 bg-violetOH-500 text-white text-4xl rounded-full flex items-center justify-center hover:bg-violetOH-600">
+        +
+    </button>
+</body>
+
+
+
+
 </html>
 
 
