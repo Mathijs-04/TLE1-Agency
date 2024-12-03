@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
-class vacansyController extends Controller
+class VacancyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $vacancies = Vacancy::whereColumn('user_id', 'employer_id')->get();
+        $vacancies = Vacancy::whereColumn(auth()->user()->employer_id, 'employer_id')->get();
 
         return view('my-vacancies', compact('vacancies'));
     }
