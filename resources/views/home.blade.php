@@ -22,7 +22,6 @@
             </p>
             <div class="flex items-center justify-center">
                 <button
-                    id="button1"
                     class="relative bg-violetOH-500 hover:bg-violetOH-600 w-72 h-14 rounded-full border-b-4 border-[#7c1a51] font-bold text-cream text-base">
                     Bekijk vacature
                 </button>
