@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
 class vacansyController extends Controller
@@ -11,7 +12,9 @@ class vacansyController extends Controller
      */
     public function index()
     {
-            return view('my-vacancies');
+        $vacancies = Vacancy::all();
+
+        return view('my-vacancies', compact('vacancies'));
     }
 
     /**
