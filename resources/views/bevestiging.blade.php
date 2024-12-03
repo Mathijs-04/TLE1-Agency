@@ -11,12 +11,11 @@
 <body>
 <div class="flex items-center justify-center h-screen">
     <div class="w-full md:w-full">
-        <p class="text-center text-5xl font-bold text-gray-700 mb-6">Morgen werk voor jou!</p>
+        <p class="text-center text-5xl font-bold text-gray-700 mb-6">Uitnodiging gestuurd!</p>
         <p class="text-center leading-relaxed text-gray-800 mb-6">
-            Met Open Hiring heeft iedereen een eerlijke kans<br/>op een baan. Wie wil én kan werken, kan zó aan de
-            slag.
-            <br/>Zonder sollicitatiegesprek, zonder brief, zonder vragen. <br/>Met één druk op de knop. Open Hiring
-            draait namelijk <br/>niet om diploma’s, maar om mensen. Niet om praatjes, <br/>maar om aanpakken.
+            We hebben automatisch uw geselecteerde aantal werknemers uitgenodigd.<br>
+            Zij ontvangen een email met een uitnodiging.<br>
+            Zodra deze uitnodiging is geaccepteerd of geweigerd, ontvangt u van ons een emailbericht.
         </p>
         <div class="flex items-center justify-center">
             <button
