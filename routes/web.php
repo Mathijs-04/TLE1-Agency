@@ -16,6 +16,14 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/uitnodigen', function () {
+    return view('invite');
+})->name('invite');
+
+Route::get('/bevestiging', function () {
+    return view('bevestiging');
+})->name('bevestiging');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
