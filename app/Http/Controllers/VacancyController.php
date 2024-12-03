@@ -12,7 +12,7 @@ class VacancyController extends Controller
      */
     public function index()
     {
-        $vacancies = Vacancy::whereColumn(auth()->user()->id, 'employer_id')->get();
+        $vacancies = Vacancy::whereColumn(auth()->user()->employer_id, 'employer_id')->get();
 
         return view('my-vacancies', compact('vacancies'));
     }
