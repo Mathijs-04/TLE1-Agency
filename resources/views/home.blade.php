@@ -30,7 +30,8 @@
         </div>
         <!-- Image section -->
         <div class="w-full md:w-2/5 ml-6">
-            <img src="{{ asset('/images/homeimage.png') }}" alt="image" class="w-full h-auto rounded-lg">
+            <img src="{{ asset('/images/homeimage.png') }}" alt="foto van man die werk heeft gevonden via Open Hiring"
+                 class="w-full h-auto rounded-lg">
         </div>
     </div>
 </div>
