@@ -15,7 +15,8 @@
         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Nieuwe vacature aanmaken</h2>
         <p class="font-custom font-normal">Na het invullen van de velden kunt u eerst een preview bekijken voordat u de vacature plaatst.</p>
         <div>
-            <form action="#">
+            <form action="{{ route('my-vacancies.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
 
                     {{-- Naam van de vacature --}}
@@ -45,7 +46,7 @@
                     {{-- Contract type --}}
                     <div>
                         <label for="contract_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contract type</label>
-                        <select id="contract_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <select name="contract_type" id="contract_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Selecteer het type contract</option>
                             <option value="full-time">full-time</option>
                             <option value="part-time">part-time</option>
@@ -55,7 +56,7 @@
                     {{-- Tekstvak voor beschrijving --}}
                     <div class="sm:col-span-2">
                         <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Beschrijving</label>
-                        <textarea id="description" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Voer een beschrijving van de functie in"></textarea>
+                        <textarea name="description" id="description" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Voer een beschrijving van de functie in"></textarea>
                     </div>
 
 {{--                    --}}{{-- Tekstvak voor aanvullende eisen --}}
@@ -66,19 +67,19 @@
 
                     {{-- Aanvullende eisen checkbox --}}
                     <div class="sm:col-span-2 mt-4">
-                        <label for="checkboxContainer" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Voeg een vereiste toe...</label>
+                        <label for="requirement" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Voeg een vereiste toe...</label>
                         <!-- Container voor dynamische checkboxes -->
                         <div id="checkboxContainer" class="space-y-4">
                             <!-- Start met één checkbox -->
                             <div class="flex items-center space-x-3">
                                 <input type="checkbox" class="w-5 h-5 bg-gray-50 border border-gray-300 text-primary-500 rounded focus:ring-primary-500 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-500 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"/>
-                                <input type="text" placeholder="Voeg een optie toe..." class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"/>
+                                <input type="text" placeholder="Bijvoorbeeld: Rijbewijs" class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"/>
                             </div>
                         </div>
 
                         <!-- Knop om nieuwe checkbox toe te voegen -->
                         <button id="addCheckboxBtn" type="button" class="mt-4 w-[150px] bg-primary-500 text-white font-medium text-xs rounded-lg px-2 py-1.5 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                            Voeg een vereiste toe..
+                            Extra veld
                         </button>
                     </div>
 
@@ -136,11 +137,9 @@
 
                     {{--Afbeelding uploaden--}}
                     <div class="sm:col-span-2">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">Afbeelding uploaden</label>
-                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" id="user_avatar" type="file">
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image_url">Afbeelding uploaden</label>
+                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="upload_image" id="image_url" name="image_url" type="file">
                     </div>
-
-
                 </div>
 
 
