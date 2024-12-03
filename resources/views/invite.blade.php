@@ -43,7 +43,11 @@
     </div>
 </div>
 <div class="text-center mt-8">
-    <button class="bg-pink-700 text-white font-bold py-3 px-6 rounded-full text-lg">Versturen</button>
+    <form action="{{ route('bevestiging') }}" method="GET">
+        <button type="submit" class="relative bg-violetOH-500 hover:bg-violetOH-600 w-72 h-14 rounded-full border-b-4 border-[#7c1a51] font-bold text-cream text-base">
+            Versturen
+        </button>
+    </form>
 </div>
 </body>
 </html>
