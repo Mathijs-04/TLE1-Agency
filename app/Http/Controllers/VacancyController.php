@@ -31,6 +31,16 @@ class VacancyController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required|varchar|max:255',
+            'salary' => 'required|varchar|max:255',
+            'location' => 'required|varchar|max:255',
+            'hours' => 'required|numeric|min:0',
+            'contract_type' => 'required|varchar|string',
+            'description' => 'text|image',
+            'requirement' => 'required|date',
+            'visible' => 'nullable|boolean',
+        ]);
     }
 
     /**
