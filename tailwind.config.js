@@ -12,9 +12,11 @@ export default {
     theme: {
         extend: {
             colors: {
-              violetOH: {
-                  500: '#aa0160',
-              }
+                violetOH: {
+                    500: '#AA0160',
+                    600: '#7c1a51'
+                },
+                cream: '#FBFCF6',
             },
             fontFamily: {
                 custom: ['Radikal', 'sans-serif'],
