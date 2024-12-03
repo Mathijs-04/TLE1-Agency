@@ -1,6 +1,6 @@
 <x-layout>
     @section('title', 'Homepagina')
-    <div class="bg-gray-100">
+    <div class="bg-gray-100 h-full">
         <div class="homepage">
             <div class="flex p-6 items-center justify-between">
                 <!-- Text section -->
