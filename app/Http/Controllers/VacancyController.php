@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class vacatureController extends Controller
+class VacancyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class vacatureController extends Controller
     {
         //
 
-        return view('vacancies.create');
+        return view('my-vacancies/create');
     }
 
     /**
