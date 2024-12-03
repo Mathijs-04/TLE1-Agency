@@ -1,4 +1,4 @@
-<footer class="bg-greenOH-500 text-white py-6">
+<footer class="bg-greenOH-500 text-white py-6 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-5 gap-6 justify-items-center">
             <!-- Werkzoekend -->
@@ -38,6 +38,9 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Logo -->
+        <img src="{{ Vite::asset('resources/images/Logo.png') }}" class="h-14 absolute top-4 right-4" alt="Logo">
 
         <!-- Copyright en Footer Styling -->
         <div class="mt-6 border-t border-gray-700 pt-4 text-center text-base">
