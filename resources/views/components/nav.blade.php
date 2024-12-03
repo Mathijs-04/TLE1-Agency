@@ -39,6 +39,14 @@
                 @if(Request::is('profile')) text-yellow-400 font-custom font-bold @endif ">Mijn Profiel</a>
                 <a href="/vacatures" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
                 @if(Request::is('vacatures')) text-yellow-400 font-custom font-bold @endif ">Mijn Vacatures</a>
+
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                   class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400 font-custom font-bold">
+                    Uitloggen
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                    @csrf
+                </form>
             </div>
         </div>
     @else
