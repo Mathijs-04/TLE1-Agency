@@ -11,6 +11,11 @@ export default {
     ],
     theme: {
         extend: {
+            colors: {
+              violetOH: {
+                  500: '#aa0160',
+              }
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
