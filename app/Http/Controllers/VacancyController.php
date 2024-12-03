@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
 class VacancyController extends Controller
@@ -31,16 +32,46 @@ class VacancyController extends Controller
     public function store(Request $request)
     {
         //
+
         $request->validate([
-            'name' => 'required|varchar|max:255',
-            'salary' => 'required|varchar|max:255',
-            'location' => 'required|varchar|max:255',
+            'name' => 'required|string|max:255',
+            'salary' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
             'hours' => 'required|numeric|min:0',
-            'contract_type' => 'required|varchar|string',
-            'description' => 'text|image',
-            'requirement' => 'required|date',
-            'visible' => 'nullable|boolean',
+            'contract_type' => 'required|string',
+            'description' => 'nullable|string',
+            'requirement' => 'nullable|string',
+            'image_url' => 'nullable|image|max:2048',
+            'waiting' => 'nullable|integer|min:0', // Optioneel veld
+            'available_positions' => 'nullable|integer|min:0', // Optioneel veld
+            'employer_id' => 'nullable|integer|min:0', // Laat employer_id optioneel
         ]);
+
+        $vacancy = new Vacancy();
+
+        // Afbeelding uploaden
+        if ($request->hasFile('image_url')) {
+            $nameOfFile = $request->file('image_url')->store('images', 'public');
+            $vacancy->image_url = $nameOfFile;
+        }
+
+        $vacancy->name = $request->input('name');
+        $vacancy->salary = $request->input('salary');
+        $vacancy->location = $request->input('location');
+        $vacancy->hours = $request->input('hours');
+        $vacancy->contract_type = $request->input('contract_type');
+        $vacancy->description = $request->input('description');
+        $vacancy->requirement = $request->input('requirement');
+
+// Check of de velden zijn ingevuld of stel een standaardwaarde in
+        $vacancy->waiting = $request->input('waiting', 5); // Standaardwaarde null
+        $vacancy->available_positions = $request->input('available_positions', 2); // Standaardwaarde null
+        $vacancy->employer_id = $request->input('employer_id', 1); // Zorg ervoor dat ID 1 bestaat in de employers-tabel
+
+        $vacancy->save();
+
+//        return redirect()->route('my-vacancies.index');
+
     }
 
     /**
