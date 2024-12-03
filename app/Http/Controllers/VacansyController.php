@@ -12,7 +12,7 @@ class vacansyController extends Controller
      */
     public function index()
     {
-        $vacancies = Vacancy::all();
+        $vacancies = Vacancy::whereColumn('user_id', 'employer_id')->get();
 
         return view('my-vacancies', compact('vacancies'));
     }

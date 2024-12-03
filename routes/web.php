@@ -28,4 +28,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::resource('my-vacancies', VacansyController::class);
+Route::resource('mijn-vacatures', VacansyController::class);
