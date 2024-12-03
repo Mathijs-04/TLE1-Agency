@@ -11,8 +11,17 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                violetOH: { 500: '#aa0160' },
+                greenOH: { 500: '#92AA83' },
+            },
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                custom: ['Radikal', 'sans-serif'],
+            },
+            fontWeight: {
+                thin: 100,
+                normal: 400,
+                bold: 700,
             },
         },
     },
