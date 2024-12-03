@@ -1,4 +1,4 @@
-<x-Layout>
+<x-layout>
     @section('title', 'vacature')
     vaceture
-</x-Layout>
+</x-layout>

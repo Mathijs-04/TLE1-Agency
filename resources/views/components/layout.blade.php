@@ -8,10 +8,7 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-
-<x-nav> </x-nav>
-
-{{$slot}}
-
+    <x-nav> </x-nav>
+    {{$slot}}
 </body>
 </html>

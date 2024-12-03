@@ -1,6 +1,4 @@
-<x-Layout>
-
+<x-layout>
     @section('title', 'Test')
-
     test
-</x-Layout>
+</x-layout>
