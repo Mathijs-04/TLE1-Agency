@@ -12,11 +12,11 @@ export default {
     theme: {
         extend: {
             colors: {
-                dirk: {
-                    500: '#AA0160', // Voeg de kleur toe zoals in je CSS
+                violetOH: {
+                    500: '#AA0160',
                     600: '#7c1a51'
                 },
-                cream: '#FBFCF6', // Voeg de kleur toe zoals in je CSS
+                cream: '#FBFCF6',
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
