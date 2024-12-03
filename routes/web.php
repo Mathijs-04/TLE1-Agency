@@ -7,6 +7,10 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::get('/vacatures', function () {
+    return view('vacatures');
+});
+
 Route::get('/', function () {
     return view('home');
 });
