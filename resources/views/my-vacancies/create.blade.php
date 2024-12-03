@@ -16,22 +16,32 @@
         <div>
             <form action="#">
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+
+                    {{-- Titel --}}
                     <div class="sm:col-span-2">
                         <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titel</label>
                         <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Voer de titel van de vacature in" required="">
                     </div>
+
+                    {{-- Salaris indicatie --}}
                     <div class="w-full">
                         <label for="salary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Salaris indicatie</label>
                         <input type="text" name="salary" id="salary" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Bijvoorbeeld: €2.500 - €3.000 bruto per maand" required="">
                     </div>
+
+                    {{-- Bedrijfsadres --}}
                     <div class="w-full">
                         <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bedrijfsadres</label>
                         <input type="text" name="location" id="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Bijvoorbeeld: Stationsstraat 12, 1012 AB Amsterdam" required="">
                     </div>
+
+                    {{-- Uren per week --}}
                     <div>
                         <label for="hours" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Uren per week</label>
                         <input type="number" name="hours" id="hours" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Voer het aantal uren per week in" required="">
                     </div>
+
+                    {{-- Contract type --}}
                     <div>
                         <label for="contract_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contract type</label>
                         <select id="contract_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -58,8 +68,8 @@
                         <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" id="user_avatar" type="file">
                     </div>
                 </div>
-
-                <div class="sm:col-span-2">
+                {{-- Checkbox --}}
+                <div class="sm:col-span-2 mt-4">
                     <label for="checkboxContainer" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Voeg uw eigen opties toe</label>
                     <!-- Container voor dynamische checkboxes -->
                     <div id="checkboxContainer" class="space-y-4">
@@ -71,7 +81,7 @@
                     </div>
 
                     <!-- Knop om nieuwe checkbox toe te voegen -->
-                    <button id="addCheckboxBtn" type="button" class="mt-4 w-full bg-primary-500 text-white font-medium text-sm rounded-lg px-5 py-2.5 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                    <button id="addCheckboxBtn" type="button" class="mt-4 w-[150px] bg-primary-500 text-white font-medium text-xs rounded-lg px-2 py-1.5 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                         Voeg een checkbox toe
                     </button>
                 </div>
@@ -128,9 +138,9 @@
                     });
                 </script>
 
-
+                {{-- Submit button --}}
                 <button type="submit" id="preview-button" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-pink-50 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                    Add product
+                    Preview
                 </button>
             </form>
         </div>
