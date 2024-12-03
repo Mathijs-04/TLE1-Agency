@@ -12,6 +12,7 @@ class VacancyController extends Controller
      */
     public function index()
     {
+        //ophalen van mijn vacatures met een check voor ingelogde user
         $vacancies = Vacancy::whereColumn(auth()->user()->employer_id, 'employer_id')->get();
 
         return view('my-vacancies', compact('vacancies'));

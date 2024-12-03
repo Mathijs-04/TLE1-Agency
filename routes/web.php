@@ -28,4 +28,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
+//route naar vacature controller
 Route::resource('mijn-vacatures', VacancyController::class);
