@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateButtonState() {
         if (validateForms()) {
             submitButton.disabled = false;
-            submitButton.style.backgroundColor = '#7c1a51';
+            submitButton.style.backgroundColor = '#AA0160';
             submitButton.style.borderColor = '#7c1a51';
             submitButton.classList.remove('cursor-not-allowed');
         } else {

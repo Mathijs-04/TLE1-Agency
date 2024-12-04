@@ -1,14 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
-    <title>Bevestiging</title>
-</head>
-<body>
+<x-layout>
 <div class="flex items-center justify-center h-screen">
     <div class="w-full md:w-full">
         <p class="text-center text-5xl font-bold text-gray-700 mb-6">Uitnodigingen verstuurd!</p>
@@ -25,5 +15,4 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+</x-layout>
