@@ -11,7 +11,6 @@
 <body>
 
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
-    <!-- Register Card -->
     <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
         <!-- Logo -->
         <div class="flex justify-center mb-6">
@@ -24,16 +23,11 @@
         <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Maak een account aan!</h2>
         <p class="text-center text-gray-500 mb-8">Vul de gegevens in om verder te gaan</p>
 
-        <!-- Session Status -->
-        <div id="session-status" class="mb-4 text-center text-sm text-green-600">
-            <!-- Voeg hier een statusbericht in als nodig -->
-        </div>
-
-        <!-- Register Form -->
+        <!-- Registreer Form -->
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <!-- Name -->
+            <!-- Naam -->
             <div class="mb-6">
                 <label for="name" class="block text-gray-700 font-medium mb-2">Naam</label>
                 <input id="name" name="name" type="text"
@@ -55,7 +49,7 @@
                 @enderror
             </div>
 
-            <!-- Password -->
+            <!-- Wachtwoord -->
             <div class="mb-6">
                 <label for="password" class="block text-gray-700 font-medium mb-2">Wachtwoord</label>
                 <input id="password" name="password" type="password"
@@ -67,7 +61,7 @@
                 @enderror
             </div>
 
-            <!-- Confirm Password -->
+            <!-- Bevestig wachtwoord -->
             <div class="mb-6">
                 <label for="password_confirmation" class="block text-gray-700 font-medium mb-2">Bevestig Wachtwoord</label>
                 <input id="password_confirmation" name="password_confirmation" type="password"
@@ -78,13 +72,11 @@
                 @enderror
             </div>
 
-
-            <!-- Actions -->
+            <!-- Actie -->
             <div class="flex items-center justify-between mb-6">
                 <a href="{{ route('login') }}" class="text-sm text-violetOH-500 hover:underline font-medium">
                     Al een account? Inloggen
                 </a>
-
                 <button type="submit"
                         class="bg-violetOH-500 hover:bg-violetOH-600 text-white font-bold px-6 py-2 rounded-lg shadow-md focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200">
                     Registreren
