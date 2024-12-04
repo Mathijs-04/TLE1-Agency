@@ -10,7 +10,7 @@ Route::get('/vacatures', function () {
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');  // Definieer de 'home' route
 
 Route::get('/uitnodigen', function () {
     return view('invite');
@@ -29,7 +29,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('my-vacancies', VacancyController::class);
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

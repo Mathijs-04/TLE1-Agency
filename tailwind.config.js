@@ -12,7 +12,8 @@ export default {
     theme: {
         extend: {
             colors: {
-                violetOH: { 500: '#aa0160' },
+                violetOH: { 500: '#aa0160',
+                            600: '#7c1a51'},
                 greenOH: { 500: '#92AA83' },
                 cream: '#FBFCF6',
             },
