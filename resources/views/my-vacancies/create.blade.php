@@ -125,7 +125,7 @@
                         </div>
 
                         <div class="flex justify-center items-center mt-4">
-                            <button id="previewButton" type="button"
+                            <button id="previewButton" type="submit"
                                     class="w-48 bg-[#AA0061] text-white font-medium text-sm rounded-lg px-4 py-2 hover:bg-[#88004E] focus:outline-none focus:ring-2 focus:ring-[#AA0061]">
                                 Preview
                             </button>

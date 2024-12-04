@@ -64,8 +64,8 @@ class VacancyController extends Controller
         $vacancy->requirement = $request->input('requirement');
 
 // Check of de velden zijn ingevuld of stel een standaardwaarde in
-        $vacancy->waiting = $request->input('waiting', 5); // Standaardwaarde null
-        $vacancy->available_positions = $request->input('available_positions', 2); // Standaardwaarde null
+        $vacancy->waiting = $request->input('waiting', 1); // Standaardwaarde null
+        $vacancy->available_positions = $request->input('available_positions', 1); // Standaardwaarde null
         $vacancy->employer_id = $request->input('employer_id', 1); // Zorg ervoor dat ID 1 bestaat in de employers-tabel
 
         $vacancy->save();
