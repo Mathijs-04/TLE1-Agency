@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+
 class ProfileController extends Controller
 {
     /**
@@ -34,27 +35,47 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
+        // Flash succesbericht
+        session()->flash('success', 'Je profiel is succesvol bijgewerkt!');
+
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
+
+    public function updatePassword(Request $request): RedirectResponse
+    {
+        // Valideer het formulier
+        $request->validate([
+            'current_password' => 'required|current_password',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Werk het wachtwoord bij
+        auth()->user()->update([
+            'password' => bcrypt($request->password),
+        ]);
+
+        // Stel succesbericht in
+        session()->flash('success', 'Je wachtwoord is succesvol bijgewerkt!');
+
+        // Redirect naar de profielpagina
+        return redirect()->route('profile.edit');
+    }
+
 
     /**
      * Delete the user's account.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request)
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
+        $user = Auth::user();
 
-        $user = $request->user();
-
-        Auth::logout();
-
+        // Verwijder de gebruiker
         $user->delete();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        // Log de gebruiker uit
+        Auth::logout();
 
-        return Redirect::to('/');
+        // Redirect naar de homepagina
+        return redirect()->route('home')->with('status', 'Je account is succesvol verwijderd.');
     }
 }

@@ -10,7 +10,7 @@ Route::get('/vacatures', function () {
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');  // Definieer de 'home' route
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -18,13 +18,10 @@ Route::get('/dashboard', function () {
 
 Route::resource('my-vacancies', VacancyController::class);
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-
 
 require __DIR__.'/auth.php';
