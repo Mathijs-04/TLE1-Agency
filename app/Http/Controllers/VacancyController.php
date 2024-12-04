@@ -38,7 +38,13 @@ class VacancyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $vacancy = Vacancy::find($id);
+
+        if (!$vacancy) {
+            abort(404, 'Vacature niet gevonden.');
+        }
+        
+        return view('detail-vacancies', compact('vacancy'));
     }
 
     /**
