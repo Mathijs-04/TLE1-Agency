@@ -16,10 +16,12 @@
                         aanpakken.
                     </p>
                     <div class="flex items-center justify-center">
-                        <button
+                        <a href="/404">
+                            <button
                                 class="relative bg-violetOH-500 hover:bg-violetOH-600 w-72 h-14 rounded-lg border-b-4 border-[#7c1a51] font-bold text-cream text-base">
-                            Bekijk vacatures
-                        </button>
+                                Bekijk vacatures
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <!-- Image section -->
