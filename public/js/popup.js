@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const inviteButton = document.getElementById('inviteButton');
+    const inviteButtons = document.querySelectorAll('.inviteButton');
     const popup = document.getElementById('popup');
     const cancelButton = document.getElementById('cancelButton');
     const confirmButton = document.getElementById('confirmButton');
@@ -10,10 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let count = 1;
     let maxUsers = 0;
 
-
-    inviteButton.addEventListener('click', () => {
-        popup.classList.remove('hidden');
-        maxUsers = inviteButton.getAttribute("data-waiting");
+    inviteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            popup.classList.remove('hidden');
+            maxUsers = button.getAttribute("data-waiting");
+        });
     });
 
     cancelButton.addEventListener('click', () => {

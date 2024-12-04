@@ -35,8 +35,7 @@
 
                         <div id="app">
                             <button
-                                id="inviteButton"
-                                class="border-b-4 border-[#7c1a51] px-6 py-3 bg-violetOH-500 text-white font-medium rounded-lg hover:bg-violetOH-600"
+                                class="inviteButton border-b-4 border-[#7c1a51] px-6 py-3 bg-violetOH-500 text-white font-medium rounded-lg hover:bg-violetOH-600"
                                 data-waiting="{{$vacancy->waiting}}"
                             >
                                 Uitnodigen
