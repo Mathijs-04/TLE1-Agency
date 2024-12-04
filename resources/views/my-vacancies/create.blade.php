@@ -5,20 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Create vacancy</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @vite('resources/css/app.css')
 </head>
 <body>
 
 
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
-    <!-- Main Card Wrapper -->
     <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
-
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Nieuwe vacature aanmaken</h2>
             <p class="font-custom font-normal">Na het invullen van de velden kunt u eerst een preview bekijken voordat u de vacature plaatst.</p>
             <div>
+                        {{--                Formulier--}}
                 <form action="{{ route('my-vacancies.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
@@ -77,10 +75,12 @@
                             </div>
 
                             <!-- Knop om nieuwe checkbox toe te voegen -->
-                            <button id="addCheckboxBtn" type="button" class="mt-4 w-[150px] bg-primary-500 text-white font-medium text-xs rounded-lg px-2 py-1.5 hover:bg-primary-600 focus:outline-none focus:ring-[#AA0061] focus:ring-[#AA0061] dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                            <button id="addCheckboxBtn" type="button" class="mt-4 w-[150px] bg-[#AA0061] text-white font-medium text-xs rounded-lg px-2 py-1.5 hover:bg-primary-600 focus:outline-none focus:ring-[#AA0061] focus:ring-[#AA0061] dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                 Extra veld
                             </button>
                         </div>
+
+{{--                         JavaScript voor het toevoegen van een nieuwe checkbox--}}
                         <script>
                             document.addEventListener('DOMContentLoaded', () => {
                                 // Selecteer de container en de knop
@@ -156,7 +156,7 @@
                         {{--                    Afbeelding uploaden--}}
                         <div class="sm:col-span-2">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image_url">Afbeelding uploaden</label>
-                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-[#AA0061] dark:placeholder-gray-400" aria-describedby="upload_image" id="image_url" name="image_url" type="file">
+                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-[#AA0061] dark:placeholder-gray-400" aria-describedby="Foto gaan uploaden" id="image_url" name="image_url" type="file">
                         </div>
                     </div>
 
