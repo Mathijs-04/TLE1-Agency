@@ -1,9 +1,9 @@
 <x-layout>
     <div class="flex justify-center items-center min-h-screen bg-gray-100">
-        <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
-            <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+        <div class="bg-white shadow-lg rounded-xl p-8 m-8 w-full max-w-md">
+            <div class="mx-auto max-w-2xl">
                 <h2 class="mb-4 text-xl font-bold text-gray-900">Nieuwe vacature aanmaken</h2>
-                <p class="font-custom font-normal">Na het invullen van de velden kunt u eerst een preview bekijken
+                <p>Na het invullen van de velden kunt u eerst een preview bekijken
                     voordat u de vacature plaatst.</p>
                 <div>
                     {{-- Formulier --}}
