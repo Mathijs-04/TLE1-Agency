@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const count = parseInt(urlParams.get('count')) || 0;
     const container = document.getElementById('invite-container');
     const submitButton = document.querySelector('button[type="submit"]');
-
+    //Generate a div with predefined styling
     for (let i = 1; i <= count; i++) {
         const div = document.createElement('div');
         div.className = 'mx-auto';
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         div.style.border = '1px solid black';
         div.style.borderRadius = '0.5rem';
         div.innerHTML = `
+<!--            Fill the div with content-->
             <h3 class="font-custom font-bold mb-4">Wachtende ${i}</h3>
             <form>
                 <label for="date${i}" class="block mb-2">Kies een datum:</label>
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
         container.appendChild(div);
     }
-
+    // Validate the form
     function validateForms() {
         const forms = container.querySelectorAll('form');
         for (let form of forms) {
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return true;
     }
-
+    // Update the button
     function updateButtonState() {
         if (validateForms()) {
             submitButton.disabled = false;
