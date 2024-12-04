@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const count = parseInt(urlParams.get('count')) || 0;
     const container = document.getElementById('invite-container');
     const submitButton = document.querySelector('button[type="submit"]');
-    //Generate a div with predefined styling
+    // Generate a div with predefined styling
     for (let i = 1; i <= count; i++) {
         const div = document.createElement('div');
         div.className = 'mx-auto';
