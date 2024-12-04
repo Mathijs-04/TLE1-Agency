@@ -14,6 +14,7 @@ export default {
             colors: {
                 violetOH: { 500: '#aa0160' },
                 greenOH: { 500: '#92AA83' },
+                cream: '#FBFCF6',
             },
             fontFamily: {
                 custom: ['Radikal', 'sans-serif'],
