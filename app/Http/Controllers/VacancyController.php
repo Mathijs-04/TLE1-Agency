@@ -12,8 +12,9 @@ class VacancyController extends Controller
      */
     public function index()
     {
-        //
-
+        //ophalen van mijn vacatures met een check voor ingelogde user
+        $vacancies = Vacancy::whereColumn(auth()->user()->employer_id, 'employer_id')->get();
+        return view('my-vacancies', compact('vacancies'));
     }
 
     /**
@@ -79,7 +80,13 @@ class VacancyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $vacancy = Vacancy::find($id);
+
+        if (!$vacancy) {
+            abort(404, 'Vacature niet gevonden.');
+        }
+        
+        return view('detail-vacancies', compact('vacancy'));
     }
 
     /**
@@ -126,8 +133,11 @@ class VacancyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        //deleten van mijn vacature
+        $vacancy = Vacancy::find($id);
+        $vacancy->delete();
+        return redirect(route('mijn-vacatures.index'));
     }
 }
