@@ -16,14 +16,16 @@
                         aanpakken.
                     </p>
                     <div class="flex items-center justify-center">
-                        <button
+                        <a href="/404">
+                            <button
                                 class="relative bg-violetOH-500 hover:bg-violetOH-600 w-72 h-14 rounded-lg border-b-4 border-[#7c1a51] font-bold text-cream text-base">
-                            Bekijk vacature
-                        </button>
+                                Bekijk vacatures
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <!-- Image section -->
-                <div class="w-full md:w-2/5 ml-6">
+                <div class="w-full md:w-1/3 mr-48">
                     <img src="{{ asset('/images/homeimage.png') }}"
                          alt="foto van man die werk heeft gevonden via Open Hiring"
                          class="w-full h-auto rounded-lg">
