@@ -16,7 +16,7 @@
         <!-- Logo -->
         <div class="flex justify-center mb-6">
             <a href="/" id="login-OH-logo">
-                <img src="{{ Vite::asset('resources/images/Logo.png') }}" alt="Logo" class="h-18">
+                <img src="{{ asset('images/Logo.png') }}" alt="Logo" class="h-18">
             </a>
         </div>
 
