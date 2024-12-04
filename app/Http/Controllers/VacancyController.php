@@ -23,7 +23,6 @@ class VacancyController extends Controller
     public function create()
     {
         //
-
         return view('my-vacancies/create');
     }
 
@@ -71,7 +70,7 @@ class VacancyController extends Controller
 
         $vacancy->save();
 
-//        return redirect()->route('my-vacancies.index');
+        return redirect()->route('mijn-vacatures.index');
 
     }
 
@@ -85,7 +84,7 @@ class VacancyController extends Controller
         if (!$vacancy) {
             abort(404, 'Vacature niet gevonden.');
         }
-        
+
         return view('detail-vacancies', compact('vacancy'));
     }
 
