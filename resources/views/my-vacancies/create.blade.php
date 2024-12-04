@@ -1,142 +1,140 @@
 <x-layout>
+    <div class="flex justify-center items-center min-h-screen bg-gray-100">
+        <div class="bg-white shadow-lg rounded-xl p-8 m-8 w-full max-w-md">
+            <div class="mx-auto max-w-2xl">
+                <h2 class="mb-4 text-xl font-bold text-gray-900">Nieuwe vacature aanmaken</h2>
+                <p>Na het invullen van de velden kunt u eerst een preview bekijken
+                    voordat u de vacature plaatst.</p>
+                <div>
+                    {{-- Formulier --}}
+                    <form action="{{ route('mijn-vacatures.store') }}" method="post" enctype="multipart/form-data">
+                        <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                            @csrf
+                            {{-- Naam van de vacature --}}
+                            <div class="sm:col-span-2">
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Titel</label>
+                                <input type="text" name="name" id="name"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
+                                       placeholder="Voer de titel van de vacature in" required="">
+                            </div>
 
-    <script src="{{ asset('js/popup.js') }}"></script>
+                            {{-- Salaris indicatie --}}
+                            <div class="sm:col-span-2">
+                                <label for="salary" class="block mb-2 text-sm font-medium text-gray-900">Salaris
+                                    indicatie</label>
+                                <input type="text" name="salary" id="salary"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
+                                       placeholder="Bijvoorbeeld: €2.500 - €3.000 bruto per maand" required="">
+                            </div>
 
-    @section('title', 'Mijn vacatures')
+                            {{-- Locatie --}}
+                            <div class="sm:col-span-2">
+                                <label for="location"
+                                       class="block mb-2 text-sm font-medium text-gray-900">Locatie</label>
+                                <input type="text" name="location" id="location"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
+                                       placeholder="Bijvoorbeeld: Stationsstraat 12, 1012 AB Amsterdam" required="">
+                            </div>
 
-    {{--    Hier begint de sectie van alle vacatures --}}
-    <div class="bg-gray-100 min-h-screen flex flex-col items-center">
-        <div class="vacancy-list w-full max-w-4xl space-y-6 mt-10">
+                            {{-- Uren per week --}}
+                            <div class="sm:col-span-2">
+                                <label for="hours" class="block mb-2 text-sm font-medium text-gray-900">Uren per
+                                    week</label>
+                                <input type="number" name="hours" id="hours"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
+                                       placeholder="Voer het aantal uren per week in" required="">
+                            </div>
 
-            @if ($vacancies->isEmpty())
-                <p class="text-gray-500 text-center">Er zijn momenteel geen vacatures.</p>
-            @else
+                            {{-- Contract type --}}
+                            <div class="sm:col-span-2">
+                                <label for="contract_type" class="block mb-2 text-sm font-medium text-gray-900">Contract
+                                    type</label>
+                                <select name="contract_type" id="contract_type"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5">
+                                    <option selected="">Selecteer het type contract</option>
+                                    <option value="full-time">full-time</option>
+                                    <option value="part-time">part-time</option>
+                                </select>
+                            </div>
 
-                {{--                alle vacatures opbouwen die bij de ingelogde persoon hoort--}}
-                @foreach ($vacancies as $vacancy)
+                            {{-- Tekstvak voor beschrijving --}}
+                            <div class="sm:col-span-2">
+                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Beschrijving</label>
+                                <textarea name="description" id="description" rows="6"
+                                          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#AA0061] focus:border-[#AA0061]"
+                                          placeholder="Voer een beschrijving van de functie in"></textarea>
+                            </div>
 
-                    @php
-                        $imagePath = Vite::asset('resources/images/' . $vacancy->name . '.jpg');
-                    @endphp
-
-                    <div class="vacature bg-white p-6 rounded-lg shadow-lg flex items-center justify-between">
-
-                        <img src="{{ $imagePath }}" alt="{{ $vacancy->name }} image" class="w-40 h-24 object-cover">
-
-
-                        <div class="flex-1 ml-6">
-                            <h2 class="text-xl font-bold">
-                                <a
-                                        href="{{ route('mijn-vacatures.show', $vacancy->id) }}"
-                                        class="text-blue-600 hover:underline focus:outline focus:outline-2 focus:outline-blue-500"
-                                >
-                                    {{ $vacancy->name }}
-                                </a>
-                            </h2>
-                            <p class="text-gray-600">Wachtenden: {{ $vacancy->waiting }}</p>
-                        </div>
-
-
-                        <div id="app">
-                            <!-- Invite Button -->
-                            <button
-                                    id="inviteButton"
-                                    class="border-b-4 border-[#7c1a51] px-6 py-3 bg-violetOH-500 text-white font-medium rounded-lg hover:bg-violetOH-600"
-                                    data-waiting="{{$vacancy->waiting}}"
-                            >
-                                Uitnodigen
-                            </button>
-
-                            <!-- Popup -->
-                            <div
-                                    id="popup"
-                                    class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center hidden"
-                            >
-                                <div class="bg-white p-6 rounded-lg w-96 shadow-lg text-center">
-                                    <h2 class="text-xl font-bold mb-4">Nodig werknemers uit.</h2>
-                                    <p class="mb-4">Aantal werknemers:</p>
-
-                                    <div class="flex items-center gap-4 justify-center">
-                                        <button
-                                                id="decrement"
-                                                class="w-8 h-8 bg-gray-300 text-gray-800 rounded-full hover:bg-gray-400"
-                                        >
-                                            -
-                                        </button>
-                                        <span id="userCount" class="text-2xl font-semibold">1</span>
-                                        <button
-                                                id="increment"
-                                                class="w-8 h-8 bg-gray-300 text-gray-800 rounded-full hover:bg-gray-400"
-                                        >
-                                            +
-                                        </button>
-                                    </div>
-
-                                    <div class="mt-6 flex justify-center gap-4">
-                                        <button
-                                                id="cancelButton"
-                                                class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
-                                        >
-                                            Annuleren
-                                        </button>
-                                        <button
-                                                id="confirmButton"
-                                                class="px-4 py-2 bg-violetOH-500 text-white rounded hover:bg-violetOH-600"
-                                        >
-                                            Uitnodigen
-                                        </button>
+                            {{-- Aanvullende eisen checkbox --}}
+                            <div class="sm:col-span-2 mt-4">
+                                <label for="requirement" class="block mb-2 text-sm font-medium text-gray-900">Voeg een
+                                    vereiste toe...</label>
+                                <div id="checkboxContainer" class="space-y-4">
+                                    <div class="flex items-center space-x-3">
+                                        <input type="checkbox"
+                                               class="w-5 h-5 bg-gray-50 border border-gray-300 text-primary-500 rounded focus:ring-[#AA0061] focus:ring-[#AA0061]"
+                                        />
+                                        <input type="text" placeholder="Bijvoorbeeld: Rijbewijs"
+                                               class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#AA0061] focus:border-[#AA0061] p-2.5"
+                                               name="requirement"/>
                                     </div>
                                 </div>
+                                <button id="addCheckboxBtn" type="button"
+                                        class="mt-4 w-[150px] bg-[#AA0061] text-white font-medium text-xs rounded-lg px-2 py-1.5 hover:bg-primary-600 focus:outline-none focus:ring-[#AA0061] focus:ring-[#AA0061]">
+                                    Extra veld
+                                </button>
+                            </div>
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    const checkboxContainer = document.getElementById('checkboxContainer');
+                                    const addCheckboxBtn = document.getElementById('addCheckboxBtn');
+
+                                    if (checkboxContainer && addCheckboxBtn) {
+                                        addCheckboxBtn.addEventListener('click', () => {
+                                            const newCheckboxDiv = document.createElement('div');
+                                            newCheckboxDiv.classList.add('flex', 'items-center', 'space-x-3');
+
+                                            const newCheckbox = document.createElement('input');
+                                            newCheckbox.type = 'checkbox';
+                                            newCheckbox.classList.add('w-5', 'h-5', 'bg-gray-50', 'border', 'border-gray-300', 'text-primary-500', 'rounded', 'focus:ring-primary-500', 'focus:ring-2');
+
+                                            const newInput = document.createElement('input');
+                                            newInput.type = 'text';
+                                            newInput.placeholder = 'Bijvoorbeeld: Rijbewijs';
+                                            newInput.classList.add('block', 'w-full', 'text-sm', 'text-gray-900', 'bg-gray-50', 'rounded-lg', 'border', 'border-gray-300', 'focus:ring-primary-500', 'focus:border-primary-500', 'p-2.5');
+
+                                            newCheckboxDiv.appendChild(newCheckbox);
+                                            newCheckboxDiv.appendChild(newInput);
+
+                                            checkboxContainer.appendChild(newCheckboxDiv);
+                                        });
+                                    } else {
+                                        console.error('Checkbox container or add button not found.');
+                                    }
+                                });
+                            </script>
+
+                            {{-- Afbeelding uploaden --}}
+                            <div class="sm:col-span-2">
+                                <label class="block mb-2 text-sm font-medium text-gray-900" for="image_url">Afbeelding
+                                    uploaden</label>
+                                <input
+                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+                                    aria-describedby="Foto gaan uploaden" id="image_url" name="image_url" type="file">
                             </div>
                         </div>
 
-                        {{--                        Dit is om te deleten, hier zit ook een svg in en de kleur van de svg veranderd op hover--}}
-                        <form action="{{route('mijn-vacatures.destroy', $vacancy->id)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="h-[52px] flex items-center justify-center group ml-5">
-                                <svg
-                                        id="Layer_1"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 512 512"
-                                        class="w-6 h-6 transition-colors"
-                                >
-                                    <defs>
-                                        <style>
-                                            .cls-1 {
-                                                fill: #c9c9c9; /* Default color */
-                                            }
-
-                                            .group:hover .cls-1 {
-                                                fill: #aa0160; /* Hover color */
-                                            }
-
-                                            .cls-2 {
-                                                fill: #fff;
-                                            }
-                                        </style>
-                                    </defs>
-                                    <rect class="cls-1" x="96" y="111.67" width="312" height="374" />
-                                    <path
-                                            class="cls-1"
-                                            d="M469.33,85.33h-106.67v-42.67c0-23.56-19.1-42.67-42.67-42.67h-128c-23.56,0-42.67,19.1-42.67,42.67v42.67H42.67v42.67h42.67v320c0,35.35,28.65,64,64,64h213.33c35.35,0,64-28.65,64-64V128h42.67v-42.67ZM192,42.67h128v42.67h-128v-42.67ZM384,448c0,11.78-9.55,21.33-21.33,21.33h-213.33c-11.78,0-21.33-9.55-21.33-21.33V128h256v320Z"
-                                    />
-                                    <rect class="cls-2" x="192" y="213.33" width="42.67" height="170.67" />
-                                    <rect class="cls-2" x="277.33" y="213.33" width="42.67" height="170.67" />
-                                </svg>
+                        <div class="flex justify-center items-center mt-4">
+                            <button id="previewButton" type="submit"
+                                    class="w-48 bg-[#AA0061] text-white font-medium text-sm rounded-lg px-4 py-2 hover:bg-[#88004E] focus:outline-none focus:ring-2 focus:ring-[#AA0061]">
+                                Preview
                             </button>
-                        </form>
-
-                    </div>
-                @endforeach
-            @endif
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <!-- Always-visible button -->
-        <button
-                class="mt-10 font-bold w-12 h-12 bg-violetOH-500 text-white text-4xl rounded-full flex items-center justify-center hover:bg-violetOH-600"
-        >
-            <a href="{{ url(route('mijn-vacatures.create')) }}">+</a>
-        </button>
     </div>
 </x-layout>
+

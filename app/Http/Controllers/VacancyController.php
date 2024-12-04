@@ -57,9 +57,10 @@ class VacancyController extends Controller
 
         // Afbeelding uploaden
         if ($request->hasFile('image_url')) {
-            $nameOfFile = $request->file('image_url')->store('images', 'public');
+            $nameOfFile = $request->file('image_url')->store('images', 'public'); // Geen slash aan het begin
             $vacancy->image_url = $nameOfFile;
         }
+
 
         $vacancy->name = $request->input('name');
         $vacancy->salary = $request->input('salary');
