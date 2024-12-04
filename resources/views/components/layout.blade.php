@@ -10,5 +10,6 @@
 <body>
     <x-nav> </x-nav>
     {{$slot}}
+    <x-footer></x-footer>
 </body>
 </html>
