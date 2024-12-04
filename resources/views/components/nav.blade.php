@@ -32,7 +32,7 @@
         <div class="relative group">
             <a href="#" class="text-gray-800 text-[18px] font-radikal px-4 py-2 hover:text-violetOH-500 hover:underline cursor-pointer
                 @if(Request::is('profile') || Request::is('vacatures'))  @endif font-custom ">
-                Profile
+                Profiel
             </a>
             <div class="absolute top-full right-0 bg-violetOH-500 p-4 rounded-lg shadow-lg opacity-0 transition-all duration-300 h-0 overflow-hidden min-w-[200px] group-hover:h-auto group-hover:opacity-100 group-focus-within:h-auto group-focus-within:opacity-100">
                 <a href="/profile" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
