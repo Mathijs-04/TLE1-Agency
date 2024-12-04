@@ -20,6 +20,10 @@ Route::get('/bevestiging', function () {
     return view('bevestiging');
 })->name('bevestiging');
 
+Route::get('/404', function () {
+    return view('404');
+})->name('404');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
