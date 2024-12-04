@@ -40,7 +40,7 @@
         </div>
 
         <!-- Logo -->
-        <img src="{{ Vite::asset('resources/images/Logo.png') }}" class="h-14 absolute top-4 right-4" alt="Logo">
+        <img src="{{ asset('public/images/Logo.png') }}" class="h-14" alt="Logo">
 
         <!-- Copyright en Footer Styling -->
         <div class="mt-6 border-t border-gray-700 pt-4 text-center text-base">
