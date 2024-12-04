@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Create vacancy</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @vite('resources/css/app.css')
 </head>
-<body>
+
 
 
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <!-- Main Card Wrapper -->
     <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Nieuwe vacature aanmaken</h2>
             <p class="font-custom font-normal">Na het invullen van de velden kunt u eerst een preview bekijken voordat u de vacature plaatst.</p>
             <div>
-                        {{--                Formulier--}}
                 <form action="{{ route('my-vacancies.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
@@ -24,7 +26,7 @@
                         {{--                     Naam van de vacature--}}
                         <div class="sm:col-span-2">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titel</label>
-                            <input type="text" name="name" id="name" class="bg-[#AA0061] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:ring-[#AA0061] focus:border-[#AA0061]" placeholder="Voer de titel van de vacature in" required="">
+                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:ring-[#AA0061] focus:border-[#AA0061]" placeholder="Voer de titel van de vacature in" required="">
                         </div>
 
                         {{--                     Salaris indicatie--}}
@@ -79,8 +81,6 @@
                                 Extra veld
                             </button>
                         </div>
-
-{{--                         JavaScript voor het toevoegen van een nieuwe checkbox--}}
                         <script>
                             document.addEventListener('DOMContentLoaded', () => {
                                 // Selecteer de container en de knop
@@ -156,7 +156,7 @@
                         {{--                    Afbeelding uploaden--}}
                         <div class="sm:col-span-2">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image_url">Afbeelding uploaden</label>
-                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-[#AA0061] dark:placeholder-gray-400" aria-describedby="Foto gaan uploaden" id="image_url" name="image_url" type="file">
+                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-[#AA0061] dark:placeholder-gray-400" aria-describedby="upload_image" id="image_url" name="image_url" type="file">
                         </div>
                     </div>
 
@@ -173,7 +173,6 @@
     </div></div>
 
 
-</body>
-</html>
+
 
 
