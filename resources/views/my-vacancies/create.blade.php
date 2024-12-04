@@ -6,7 +6,7 @@
     <title>Create vacancy</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
+    @vite('resources/css/app.css')
 </head>
 <body>
 
@@ -19,31 +19,31 @@
                 @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
 
-                    {{-- Naam van de vacature --}}
+{{--                     Naam van de vacature--}}
                     <div class="sm:col-span-2">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titel</label>
                         <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Voer de titel van de vacature in" required="">
                     </div>
 
-                    {{-- Salaris indicatie --}}
+{{--                     Salaris indicatie--}}
                     <div class="w-full">
                         <label for="salary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Salaris indicatie</label>
                         <input type="text" name="salary" id="salary" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Bijvoorbeeld: €2.500 - €3.000 bruto per maand" required="">
                     </div>
 
-                    {{-- Bedrijfsadres --}}
+{{--                     Locatie--}}
                     <div class="w-full">
-                        <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bedrijfsadres</label>
+                        <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Locatie</label>
                         <input type="text" name="location" id="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Bijvoorbeeld: Stationsstraat 12, 1012 AB Amsterdam" required="">
                     </div>
 
-                    {{-- Uren per week --}}
+{{--                     Uren per week--}}
                     <div>
                         <label for="hours" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Uren per week</label>
                         <input type="number" name="hours" id="hours" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Voer het aantal uren per week in" required="">
                     </div>
 
-                    {{-- Contract type --}}
+{{--                     Contract type--}}
                     <div>
                         <label for="contract_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contract type</label>
                         <select name="contract_type" id="contract_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -53,19 +53,13 @@
                         </select>
                     </div>
 
-                    {{-- Tekstvak voor beschrijving --}}
+{{--                     Tekstvak voor beschrijving--}}
                     <div class="sm:col-span-2">
                         <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Beschrijving</label>
                         <textarea name="description" id="description" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Voer een beschrijving van de functie in"></textarea>
                     </div>
 
-{{--                    --}}{{-- Tekstvak voor aanvullende eisen --}}
-{{--                    <div class="sm:col-span-2">--}}
-{{--                        <label for="requirement" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Aanvullende eisen</label>--}}
-{{--                        <textarea id="requirement" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Voer aanvullende eisen voor de functie in"></textarea>--}}
-{{--                    </div>--}}
-
-                    {{-- Aanvullende eisen checkbox --}}
+{{--                     Aanvullende eisen checkbox--}}
                     <div class="sm:col-span-2 mt-4">
                         <label for="requirement" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Voeg een vereiste toe...</label>
                         <!-- Container voor dynamische checkboxes -->
@@ -82,8 +76,6 @@
                             Extra veld
                         </button>
                     </div>
-
-
                     <script>
                         // Selecteer de container en de knop
                         const checkboxContainer = document.getElementById('checkboxContainer');
@@ -135,7 +127,7 @@
                         });
                     </script>
 
-                    {{--Afbeelding uploaden--}}
+{{--                    Afbeelding uploaden--}}
                     <div class="sm:col-span-2">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image_url">Afbeelding uploaden</label>
                         <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="upload_image" id="image_url" name="image_url" type="file">
@@ -143,7 +135,7 @@
                 </div>
 
 
-                {{-- Submit button --}}
+{{--                 Preview button--}}
                 <button type="submit" id="preview-button" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-pink-50 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                     Preview
                 </button>
