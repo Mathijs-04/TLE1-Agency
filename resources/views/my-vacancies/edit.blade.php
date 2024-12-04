@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Create vacancy</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="">
     @vite('resources/css/app.css')
 </head>
 <body>
@@ -162,7 +163,7 @@
 
 
                     <div class="flex justify-center items-center mt-4">
-                        <button id="previewButton" type="button" class="w-48 bg-[#AA0061] text-white font-medium text-sm rounded-lg px-4 py-2 hover:bg-[#88004E] focus:outline-none focus:ring-2 focus:ring-[#AA0061] dark:focus:ring-[#88004E]">
+                        <button id="preview-Button" type="button" class="w-48  text-white font-medium text-sm rounded-lg px-4 py-2 hover:bg-[#88004E] focus:outline-none focus:ring-2 focus:ring-[#AA0061] dark:focus:ring-[#88004E]">
                             Preview
                         </button>
                     </div>

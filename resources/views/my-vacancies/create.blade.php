@@ -14,7 +14,6 @@
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
     <!-- Main Card Wrapper -->
     <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
-
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Nieuwe vacature aanmaken</h2>
             <p class="font-custom font-normal">Na het invullen van de velden kunt u eerst een preview bekijken voordat u de vacature plaatst.</p>
@@ -26,13 +25,13 @@
                         {{--                     Naam van de vacature--}}
                         <div class="sm:col-span-2">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titel</label>
-                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:ring-[#AA0061] focus:border-[#AA0061]" placeholder="Voer de titel van de vacature in" required="">
+                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#AA0061] dark:focus:border-[#AA0061]" placeholder="Voer de titel van de vacature in" required="">
                         </div>
 
                         {{--                     Salaris indicatie--}}
                         <div class="sm:col-span-2">
                             <label for="salary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Salaris indicatie</label>
-                            <input type="text" name="salary" id="salary" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#AA0061] focus:border-[#AA0061]" placeholder="Bijvoorbeeld: €2.500 - €3.000 bruto per maand" required="">
+                            <input type="text" name="salary" id="salary" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#AA0061] dark:focus:border-[#AA0061]" placeholder="Bijvoorbeeld: €2.500 - €3.000 bruto per maand" required="">
                         </div>
 
                         {{--                     Locatie--}}
@@ -71,13 +70,13 @@
                             <div id="checkboxContainer" class="space-y-4">
                                 <!-- Start met één checkbox -->
                                 <div class="flex items-center space-x-3">
-                                    <input type="checkbox" class="w-5 h-5 bg-gray-50 border border-gray-300 text-primary-500 rounded focus:ring-[#AA0061] focus:ring-[#AA0061] dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[#AA0061] dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"/>
+                                    <input type="checkbox" class="w-5 h-5 bg-gray-50 border border-gray-300 text-primary-500 rounded focus:ring-[#AA0061] focus:border-[#AA0061] dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[#AA0061] dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"/>
                                     <input type="text" placeholder="Bijvoorbeeld: Rijbewijs" class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#AA0061] focus:border-[#AA0061] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"/>
                                 </div>
                             </div>
 
                             <!-- Knop om nieuwe checkbox toe te voegen -->
-                            <button id="addCheckboxBtn" type="button" class="mt-4 w-[150px] bg-[#AA0061] text-white font-medium text-xs rounded-lg px-2 py-1.5 hover:bg-primary-600 focus:outline-none focus:ring-[#AA0061] focus:ring-[#AA0061] dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                            <button id="addCheckboxBtn" type="button" class="mt-4 w-[150px] bg-[#AA0061] text-white font-medium text-xs rounded-lg px-2 py-1.5 hover:bg-primary-600 focus:outline-none focus:ring-[#AA0061] focus:border-[#AA0061] dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                 Extra veld
                             </button>
                         </div>
@@ -156,7 +155,7 @@
                         {{--                    Afbeelding uploaden--}}
                         <div class="sm:col-span-2">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image_url">Afbeelding uploaden</label>
-                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-[#AA0061] dark:placeholder-gray-400" aria-describedby="upload_image" id="image_url" name="image_url" type="file">
+                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-[#AA0061] dark:placeholder-gray-400" aria-describedby="Foto uploaden" id="image_url" name="image_url" type="file">
                         </div>
                     </div>
 
@@ -168,9 +167,8 @@
                     </div>
                 </form>
             </div>
-
         </div>
-    </div></div>
+    </div>
 
 
 
