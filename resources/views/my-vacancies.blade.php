@@ -16,7 +16,7 @@
                 @foreach ($vacancies as $vacancy)
 
                     @php
-                        $imagePath = Vite::asset('resources/images/' . $vacancy->name . '.jpg');
+                        $imagePath = asset('images/placeholder.webp');
                     @endphp
 
                     <div class="vacature bg-white p-6 rounded-lg shadow-lg flex items-center justify-between">
@@ -133,10 +133,8 @@
         </div>
 
         <!-- Always-visible button -->
-        <button
-                class="mt-10 font-bold w-12 h-12 bg-violetOH-500 text-white text-4xl rounded-full flex items-center justify-center hover:bg-violetOH-600"
-        >
+        <a href="{{ route('mijn-vacatures.create') }}" class="mt-10 font-bold w-12 h-12 bg-violetOH-500 text-white text-4xl rounded-full flex items-center justify-center hover:bg-violetOH-600">
             +
-        </button>
+        </a>
     </div>
 </x-layout>
