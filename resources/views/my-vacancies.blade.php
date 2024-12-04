@@ -82,6 +82,6 @@
         >
             +
         </button>
-
+</div>
 
 </x-layout>

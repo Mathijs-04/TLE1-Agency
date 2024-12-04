@@ -2,49 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Uitnodigen</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="{{ asset('js/invite.js') }}" defer></script>
 </head>
 <body class="bg-white flex flex-col items-center min-h-screen">
 <div class="text-center my-8">
     <h1 class="text-4xl font-bold">Uitnodigen</h1>
 </div>
-<div class="container mx-auto flex justify-center space-x-8 px-4">
-    <div class="bg-gray-200 p-8 rounded-md w-64">
-        <h3 class="font-custom font-bold mb-4">Wachtende 1</h3>
-        <form>
-            <label for="time1" class="block mb-2">Kies een tijd:</label>
-            <input type="time" id="time1" class="w-full mb-4 p-2 rounded-md bg-gray-300">
-            <label for="date1" class="block mb-2">Kies een datum:</label>
-            <input type="date" id="date1" class="w-full mb-4 p-2 rounded-md bg-gray-300">
-        </form>
-    </div>
-    <div class="bg-gray-200 p-8 rounded-md w-64">
-        <h3 class="font-custom font-bold mb-4">Wachtende 2</h3>
-        <form>
-            <label for="time2" class="block mb-2">Kies een tijd:</label>
-            <input type="time" id="time2" class="w-full mb-4 p-2 rounded-md bg-gray-300">
-            <label for="date2" class="block mb-2">Kies een datum:</label>
-            <input type="date" id="date2" class="w-full mb-4 p-2 rounded-md bg-gray-300">
-        </form>
-    </div>
-    <div class="bg-gray-200 p-8 rounded-md w-64">
-        <h3 class="font-custom font-bold mb-4">Wachtende 3</h3>
-        <form>
-            <label for="time3" class="block mb-2">Kies een tijd:</label>
-            <input type="time" id="time3" class="w-full mb-4 p-2 rounded-md bg-gray-300">
-            <label for="date3" class="block mb-2">Kies een datum:</label>
-            <input type="date" id="date3" class="w-full mb-4 p-2 rounded-md bg-gray-300">
-        </form>
-    </div>
+<div class="container mx-auto px-4">
+    <div id="invite-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center"></div>
 </div>
 <div class="text-center mt-8">
     <form action="{{ route('bevestiging') }}" method="GET">
-        <button type="submit" class="relative bg-violetOH-500 hover:bg-violetOH-600 w-72 h-14 rounded-full border-b-4 border-[#7c1a51] font-bold text-cream text-base">
+        <button type="submit" class="relative bg-violetOH-500 hover:bg-violetOH-600 w-72 h-14 rounded-full border-b-4 border-[#7c1a51] font-bold text-cream text-base mb-10">
             Versturen
         </button>
     </form>
