@@ -88,6 +88,8 @@ class VacancyController extends Controller
     public function edit(string $id)
     {
         //
+        $vacancy = Vacancy::findOrFail($id); //a
+        return view('my-vacancies/edit', compact('vacancy'));
     }
 
     /**
@@ -96,6 +98,29 @@ class VacancyController extends Controller
     public function update(Request $request, string $id)
     {
         //
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'salary' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'hours' => 'required|numeric|min:0',
+            'contract_type' => 'required|string',
+            'description' => 'nullable|string',
+            'requirement' => 'nullable|string',
+            'image_url' => 'nullable|image|max:2048',
+            'waiting' => 'nullable|integer|min:0', // Optioneel veld
+            'available_positions' => 'nullable|integer|min:0', // Optioneel veld
+            'employer_id' => 'nullable|integer|min:0', // Laat employer_id optioneel
+        ]);
+
+        $vacancy = Vacancy::findOrFail($id);
+
+        // Alleen de toegestane velden bijwerken
+        $updateData = $request->except(['waiting', 'available_position', 'employer_id']);
+
+        $vacancy->update($updateData);
+
+        return redirect()->route('vacancies.index')->with('success', 'Vacancy updated successfully.');
     }
 
     /**
