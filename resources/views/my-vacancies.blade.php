@@ -17,7 +17,7 @@
 
                     <div class="vacature bg-white p-6 rounded-lg shadow-lg flex items-center justify-between">
                         {{--                   Image ophalen die is geupload--}}
-                        <img src="{{ Vite::asset('storage/app/public/' . $vacancy->image_url) }}"
+                        <img src="{{ asset('storage/' . $vacancy->image_url) }}"
                              alt="{{ $vacancy->name }} image" class="w-40 h-24 object-cover">
 
                         <div class="flex-1 ml-6">

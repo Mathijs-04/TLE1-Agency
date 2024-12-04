@@ -1,7 +1,7 @@
 <nav class="flex justify-between items-center p-5 bg-white border-b-2 border-gray-200">
     <!-- Logo -->
     <a href="/" id="nav-OH-logo">
-        <img src="{{ Vite::asset('resources/images/Logo.png') }}" class="h-14" alt="Logo">
+        <img src="{{ asset('images/Logo.png') }}" class="h-14" alt="Logo">
     </a>
     <!-- Midden navigatie-items -->
     <div class="flex gap-5 justify-center items-center absolute left-1/2 transform -translate-x-1/2">
