@@ -12,12 +12,17 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/uitnodigen', function () {
+    return view('invite');
+})->name('invite');
+
+Route::get('/bevestiging', function () {
+    return view('bevestiging');
+})->name('bevestiging');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::resource('my-vacancies', VacancyController::class);
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -25,4 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+//route naar vacature controller
+Route::resource('mijn-vacatures', VacancyController::class);
