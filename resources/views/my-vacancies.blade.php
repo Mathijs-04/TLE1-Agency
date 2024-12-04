@@ -53,8 +53,8 @@
                                     class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center hidden"
                             >
                                 <div class="bg-white p-6 rounded-lg w-96 shadow-lg text-center">
-                                    <h2 class="text-xl font-bold mb-4">Nodig mensen uit.</h2>
-                                    <p class="mb-4">Hoeveel mensen:</p>
+                                    <h2 class="text-xl font-bold mb-4">Nodig werknemers uit.</h2>
+                                    <p class="mb-4">Aantal werknemers:</p>
 
                                     <div class="flex items-center gap-4 justify-center">
                                         <button
