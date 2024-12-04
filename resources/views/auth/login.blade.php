@@ -11,7 +11,7 @@
 <body>
 
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
-    <!-- Login Card -->
+    <!-- Login kaart -->
     <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
         <!-- Logo -->
         <div class="flex justify-center mb-6">
