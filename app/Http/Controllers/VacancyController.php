@@ -60,8 +60,11 @@ class VacancyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        //deleten van mijn vacature
+        $vacancy = Vacancy::find($id);
+        $vacancy->delete();
+        return redirect(route('mijn-vacatures.index'));
     }
 }
