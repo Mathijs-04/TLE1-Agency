@@ -8,7 +8,7 @@
         </div>
         <div class="text-center mt-8">
             <form action="{{ route('bevestiging') }}" method="GET">
-                <button type="submit" class="relative bg-violetOH-500 hover:bg-violetOH-600 w-72 h-14 rounded-full border-b-4 border-[#7c1a51] font-bold text-cream text-base mb-10">
+                <button type="submit" class="relative w-72 h-14 rounded-full border-b-4 font-bold text-cream text-base mb-10 cursor-not-allowed" style="background-color: #d3d3d3; border-color: #a9a9a9;">
                     Versturen
                 </button>
             </form>
