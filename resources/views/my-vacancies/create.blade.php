@@ -7,7 +7,7 @@
                     voordat u de vacature plaatst.</p>
                 <div>
                     {{-- Formulier --}}
-                    <form action="{{ route('my-vacancies.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('mijn-vacatures.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
 
