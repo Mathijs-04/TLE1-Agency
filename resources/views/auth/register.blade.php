@@ -15,7 +15,9 @@
     <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
         <!-- Logo -->
         <div class="flex justify-center mb-6">
-            <img src="{{ Vite::asset('resources/images/Logo.png') }}" alt="Logo" class="h-18">
+            <a href="/" id="register-OH-logo">
+                <img src="{{ Vite::asset('resources/images/Logo.png') }}" alt="Logo" class="h-18">
+            </a>
         </div>
 
         <!-- Titel -->
@@ -59,6 +61,7 @@
                 <input id="password" name="password" type="password"
                        class="block w-full h-12 px-4 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
                        placeholder="Voer je wachtwoord in" required>
+                <p class="mt-1 text-sm text-gray-600">Wachtwoord moet minimaal 8 karakters lang zijn.</p>
                 @error('password')
                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
@@ -74,6 +77,7 @@
                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
             </div>
+
 
             <!-- Actions -->
             <div class="flex items-center justify-between mb-6">

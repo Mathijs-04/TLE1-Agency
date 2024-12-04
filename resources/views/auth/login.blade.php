@@ -15,7 +15,9 @@
     <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
         <!-- Logo -->
         <div class="flex justify-center mb-6">
-            <img src="{{ Vite::asset('resources/images/Logo.png') }}" alt="Logo" class="h-18">
+            <a href="/" id="login-OH-logo">
+                <img src="{{ Vite::asset('resources/images/Logo.png') }}" alt="Logo" class="h-18">
+            </a>
         </div>
 
         <!-- Titel -->
