@@ -3,38 +3,38 @@
         <div class="grid grid-cols-5 gap-6 justify-items-center">
             <!-- Werkzoekend -->
             <div class="flex flex-col w-full md:w-1/4 ml-auto">
-                <h3 class="text-lg font-semibold text-yellow-400 mb-3 text-base">Werkzoekend</h3>
+                <h3 class="text-lg font-semibold text-yellow-400 mb-3 text-base whitespace-nowrap">Werkzoekend</h3>
                 <ul class="space-y-2 text-base">
-                    <li><a href="/vind-een-baan" class="hover:text-violetOH-500">Vind een baan</a></li>
-                    <li><a href="/veel-gestelde-vragen" class="hover:text-violetOH-500">Veelgestelde vragen</a></li>
+                    <li><a href="/vind-een-baan" class="hover:text-violetOH-500 whitespace-nowrap">Vind een baan</a></li>
+                    <li><a href="/veel-gestelde-vragen" class="hover:text-violetOH-500 whitespace-nowrap">Veelgestelde vragen</a></li>
                 </ul>
             </div>
 
             <!-- Werkgever -->
             <div class="flex flex-col w-full md:w-1/4 ml-auto">
-                <h3 class="text-lg font-semibold text-yellow-400 mb-3 text-base">Werkgever</h3>
+                <h3 class="text-lg font-semibold text-yellow-400 mb-3 text-base whitespace-nowrap">Werkgever</h3>
                 <ul class="space-y-2 text-base">
-                    <li><a href="/spelregels" class="hover:text-violetOH-500">Spelregels</a></li>
-                    <li><a href="/veel-gestelde-vragen" class="hover:text-violetOH-500">Veelgestelde vragen</a></li>
+                    <li><a href="/spelregels" class="hover:text-violetOH-500 whitespace-nowrap">Spelregels</a></li>
+                    <li><a href="/veel-gestelde-vragen" class="hover:text-violetOH-500 whitespace-nowrap">Veelgestelde vragen</a></li>
                 </ul>
             </div>
 
             <!-- Over Open Hiring -->
             <div class="flex flex-col w-full md:w-1/4 ml-auto">
-                <h3 class="text-lg font-semibold text-yellow-400 mb-3 text-base">Open Hiring</h3>
+                <h3 class="text-lg font-semibold text-yellow-400 mb-3 text-base whitespace-nowrap">Open Hiring</h3>
                 <ul class="space-y-2 text-base">
-                    <li><a href="/ontstaan" class="hover:text-violetOH-500">Ontstaan</a></li>
-                    <li><a href="/privacy-beleid" class="hover:text-violetOH-500">Privacybeleid</a></li>
+                    <li><a href="/ontstaan" class="hover:text-violetOH-500 whitespace-nowrap">Ontstaan</a></li>
+                    <li><a href="/privacy-beleid" class="hover:text-violetOH-500 whitespace-nowrap">Privacybeleid</a></li>
                 </ul>
             </div>
 
             <!-- Volg ons -->
             <div class="flex flex-col w-full md:w-1/4 ml-auto">
-                <h3 class="text-lg font-semibold text-yellow-400 mb-3 text-base">Volg ons</h3>
+                <h3 class="text-lg font-semibold text-yellow-400 mb-3 text-base whitespace-nowrap">Volg ons</h3>
                 <ul class="space-y-2 text-base">
-                    <li><a href="https://linkedin.com" target="_blank" class="hover:text-violetOH-500">LinkedIn</a></li>
-                    <li><a href="https://instagram.com" target="_blank" class="hover:text-violetOH-500">Instagram</a></li>
-                    <li><a href="https://facebook.com" target="_blank" class="hover:text-violetOH-500">Facebook</a></li>
+                    <li><a href="https://linkedin.com" target="_blank" class="hover:text-violetOH-500 whitespace-nowrap">LinkedIn</a></li>
+                    <li><a href="https://instagram.com" target="_blank" class="hover:text-violetOH-500 whitespace-nowrap">Instagram</a></li>
+                    <li><a href="https://facebook.com" target="_blank" class="hover:text-violetOH-500 whitespace-nowrap">Facebook</a></li>
                 </ul>
             </div>
         </div>
