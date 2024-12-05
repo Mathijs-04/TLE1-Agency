@@ -1,7 +1,7 @@
 <x-layout>
     @section('title', 'Homepagina')
     <div class="bg-gray-100 h-full">
-        <div class="homepage">
+        <div class="homepage pt-24 pb-24">
             <div class="flex p-6 items-center justify-between">
                 <!-- Text section -->
                 <div class="w-full md:w-3/5">
