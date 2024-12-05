@@ -2,8 +2,8 @@
     <div class="flex justify-center items-center min-h-screen bg-gray-100">
         <div class="bg-white shadow-lg rounded-xl p-8 m-8 w-full max-w-md">
             <div class="mx-auto max-w-2xl">
-                <h2 class="mb-4 text-xl font-bold text-gray-900">Nieuwe vacature aanmaken</h2>
-                <p>Na het invullen van de velden kunt u eerst een preview bekijken
+                <h2 class="mb-2 text-xl font-bold text-gray-900">Nieuwe vacature aanmaken</h2>
+                <p class="mb-4">Na het invullen van de velden kunt u eerst een preview bekijken
                     voordat u de vacature plaatst.</p>
                 <div>
                     {{-- Formulier --}}
@@ -15,7 +15,7 @@
                                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Titel</label>
                                 <input type="text" name="name" id="name"
                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
-                                       placeholder="Voer de titel van de vacature in" required="">
+                                       placeholder="Bijvoorbeeld: Vulploeg medewerker Jumbo" required="">
                             </div>
 
                             {{-- Salaris indicatie --}}
@@ -42,7 +42,7 @@
                                     week</label>
                                 <input type="number" name="hours" id="hours"
                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
-                                       placeholder="Voer het aantal uren per week in" required="">
+                                       placeholder="Bijvoorbeeld: 40 uur" required="">
                             </div>
 
                             {{-- Contract type --}}
@@ -67,14 +67,13 @@
 
                             {{-- Aanvullende eisen checkbox --}}
                             <div class="sm:col-span-2 mt-4">
-                                <label for="requirement" class="block mb-2 text-sm font-medium text-gray-900">Voeg een
-                                    vereiste toe...</label>
+                                <label for="requirement" class="block mb-2 text-sm font-medium text-gray-900">Aanvullende eisen (optioneel)</label>
                                 <div id="checkboxContainer" class="space-y-4">
                                     <div class="flex items-center space-x-3">
                                         <input type="checkbox"
                                                class="w-5 h-5 bg-gray-50 border border-gray-300 text-primary-500 rounded focus:ring-[#AA0061] focus:ring-[#AA0061]"
                                         />
-                                        <input type="text" placeholder="Bijvoorbeeld: Rijbewijs"
+                                        <input type="text" placeholder="Bijvoorbeeld: Rijbewijs B"
                                                class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#AA0061] focus:border-[#AA0061] p-2.5"
                                                name="requirement"/>
                                     </div>
@@ -117,7 +116,7 @@
 
                             {{-- Afbeelding uploaden --}}
                             <div class="sm:col-span-2">
-                                <label class="block mb-2 text-sm font-medium text-gray-900" for="image_url">Afbeelding
+                                <label class="block mb-2 text-sm font-medium text-gray-900" for="image_url">Afbeelding vacature
                                     uploaden</label>
                                 <input
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
@@ -128,7 +127,7 @@
                         <div class="flex justify-center items-center mt-4">
                             <button id="previewButton" type="submit"
                                     class="w-48 bg-[#AA0061] text-white font-medium text-sm rounded-lg px-4 py-2 hover:bg-[#88004E] focus:outline-none focus:ring-2 focus:ring-[#AA0061]">
-                                Preview
+                                Aanmaken
                             </button>
                         </div>
                     </form>
