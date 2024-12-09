@@ -33,11 +33,10 @@ class VacancyController extends Controller
     {
         //
 
-
         $request->validate([
             'name' => 'required|string|max:255',
             'salary' => 'required|numeric|min:0',
-            'postcode' => 'required|string|max:10',
+            'postalcode' => 'required|string|max:10',
             'housenumber' => 'required|numeric|min:1',
             'streetname' => 'required|string|max:255',
             'city' => 'required|string|max:255',
@@ -61,9 +60,9 @@ class VacancyController extends Controller
             'salary.min' => 'Het salaris mag niet negatief zijn.',
 
             // Postcode Validatie
-            'postcode.required' => 'Een postcode is verplicht.',
-            'postcode.string' => 'De postcode moet een tekst zijn.',
-            'postcode.max' => 'De postcode mag niet meer dan 10 tekens bevatten.',
+            'postalcode.required' => 'Een postcode is verplicht.',
+            'postalcode.string' => 'De postcode moet een tekst zijn.',
+            'postalcode.max' => 'De postcode mag niet meer dan 10 tekens bevatten.',
 
             // Huisnummer Validatie
             'housenumber.required' => 'Een huisnummer is verplicht.',
@@ -130,12 +129,12 @@ class VacancyController extends Controller
 
         $vacancy->name = $request->input('name');
         $vacancy->salary = $request->input('salary');
-        $vacancy->location = $request->input('location');
+//        $vacancy->location = $request->input('location');
         $vacancy->hours = $request->input('hours');
         $vacancy->contract_type = $request->input('contract_type');
         $vacancy->description = $request->input('description');
         $vacancy->requirement = $request->input('requirement');
-        $vacancy->postcode = $request->input('postcode');
+        $vacancy->postalcode = $request->input('postalcode');
         $vacancy->housenumber = $request->input('housenumber');
         $vacancy->streetname = $request->input('streetname');
         $vacancy->city = $request->input('city');
@@ -143,7 +142,7 @@ class VacancyController extends Controller
 // Check of de velden zijn ingevuld of stel een standaardwaarde in
         $vacancy->waiting = $request->input('waiting', 3); // Standaardwaarde 3
         $vacancy->available_positions = $request->input('available_positions', 1); // Standaardwaarde null
-        $vacancy->employer_id = $employerId; // Zorg ervoor dat ID 1 bestaat in de employers-tabel
+        $vacancy->employer_id = $employerId;
 
 //        dd($vacancy);
         $vacancy->save();
@@ -187,7 +186,7 @@ class VacancyController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'salary' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
+//            'location' => 'required|string|max:255',
             'hours' => 'required|numeric|min:0',
             'contract_type' => 'required|string',
             'description' => 'nullable|string',
