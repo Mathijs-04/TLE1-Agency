@@ -6,7 +6,15 @@
 
     {{--    Hier begint de sectie van alle vacatures --}}
     <div class="bg-gray-100 min-h-screen flex flex-col items-center">
-        <div class="vacancy-list w-full max-w-4xl space-y-6 mt-10">
+        <!-- Always-visible button -->
+        <button
+            class="mt-10 px-4 py-2 bg-violetOH-500 text-white text-lg font-medium rounded-lg flex items-center justify-center shadow-lg hover:bg-violetOH-600"
+        >
+            <a href="{{ url(route('mijn-vacatures.create')) }}" class="flex items-center">
+                <span class="mr-2">Creëer nieuwe vacature</span>
+            </a>
+        </button>
+        <div class="vacancy-list w-full max-w-4xl space-y-6 mt-10 mb-10">
 
             @if ($vacancies->isEmpty())
                 <p class="text-gray-500 text-center">Er zijn momenteel geen vacatures.</p>
@@ -124,11 +132,5 @@
             @endif
         </div>
 
-        <!-- Always-visible button -->
-        <button
-                class="mt-10 font-bold w-12 h-12 bg-violetOH-500 text-white text-4xl rounded-full flex items-center justify-center hover:bg-violetOH-600"
-        >
-            <a href="{{ url(route('mijn-vacatures.create')) }}">+</a>
-        </button>
     </div>
 </x-layout>
