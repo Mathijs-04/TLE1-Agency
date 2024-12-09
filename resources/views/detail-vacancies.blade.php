@@ -7,7 +7,7 @@
                      class="w-96 h-56 object-cover rounded-lg shadow-sm mb-4">
             </div>
             <h1 class="text-3xl font-bold text-violetOH-500 mb-4 text-center">{{ $vacancy->name }}</h1>
-            <p class="text-gray-700 mb-6 text-left">{{ $vacancy->description }}</p>
+            <p class="text-gray-700 mb-6 ml-10 mr-10 text-left">{{ $vacancy->description }}</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <!-- Locatie -->
@@ -36,10 +36,16 @@
             </div>
 
             <!-- Aanvullende eisen -->
-            <h2 class="text-xl font-bold text-violetOH-500 mb-4 mt-4">Aanvullende eisen:</h2>
-            <p class="text-gray-700 mb-6 text-left">- {{ $vacancy->requirement }}</p>
+            <div class="ml-10">
+                <h2 class="text-xl font-bold text-violetOH-500 mb-4 mt-4">Aanvullende eisen:</h2>
+                @if($vacancy->requirement)
+                    <p class="text-gray-700 mb-6 text-left">- {{ $vacancy->requirement }}</p>
+                @else
+                    <p class="text-gray-700 mb-6 text-left">Geen aanvullende eisen</p>
+                @endif
+            </div>
 
-            <div class="mt-6">
+            <div class="mt-6 ml-10">
                 <a
                     href="{{ route('mijn-vacatures.index') }}"
                     class="inline-block bg-violetOH-500 text-white px-6 py-3 rounded-lg shadow hover:bg-violetOH-600"
