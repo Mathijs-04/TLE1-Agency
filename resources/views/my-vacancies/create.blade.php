@@ -95,16 +95,16 @@
                                 @enderror
                             </div>
 
-                            {{-- Bedrijfsnaam --}}
+                            {{-- Contract type --}}
                             <div class="sm:col-span-2">
-                                <label for="company_name" class="block mb-2 text-sm font-medium text-gray-900">Bedrijfsnaam</label>
-                                <input type="text" name="company_name" id="company_name"
-                                       class="bg-gray-50 border @error('company_name') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
-                                       placeholder="Bijvoorbeeld: Jumbo" required=""
-                                       value="{{ old('company_name') }}">
-                                @error('company_name')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
+                                <label for="contract_type" class="block mb-2 text-sm font-medium text-gray-900">Contract
+                                    type</label>
+                                <select name="contract_type" id="contract_type"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5">
+                                    <option selected="">Selecteer het type contract</option>
+                                    <option value="full-time">full-time</option>
+                                    <option value="part-time">part-time</option>
+                                </select>
                             </div>
 
                             {{-- Beschrijving --}}
