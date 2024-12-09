@@ -33,6 +33,7 @@ class VacancyController extends Controller
     {
         //
 
+
         $request->validate([
             'name' => 'required|string|max:255',
             'salary' => 'required|string|max:255',
@@ -47,7 +48,12 @@ class VacancyController extends Controller
             'employer_id' => 'nullable|integer|min:0', // Laat employer_id optioneel
         ]);
 
+
         $vacancy = new Vacancy();
+        $employerId = auth()->user()->employer_id;
+
+//        insert into "vacancies" ("name", "salary", "location", "hours", "contract_type", "description", "requirement", "waiting", "available_positions", "employer_id", "updated_at", "created_at")
+//        values (Dawn Peck, Sed ipsum sequi sed, Sint deleniti fugit, 17, full-time, Porro voluptatum fug, ?, 1, 1, 1, 2024-12-04 12:44:21, 2024-12-04 12:44:21)
 
         // Afbeelding uploaden
         if ($request->hasFile('image_url')) {
@@ -66,9 +72,11 @@ class VacancyController extends Controller
 // Check of de velden zijn ingevuld of stel een standaardwaarde in
         $vacancy->waiting = $request->input('waiting', 1); // Standaardwaarde null
         $vacancy->available_positions = $request->input('available_positions', 1); // Standaardwaarde null
-        $vacancy->employer_id = $request->input('employer_id', 1); // Zorg ervoor dat ID 1 bestaat in de employers-tabel
+        $vacancy->employer_id = $employerId; // Zorg ervoor dat ID 1 bestaat in de employers-tabel
 
+//        dd($vacancy);
         $vacancy->save();
+
 
         return redirect()->route('mijn-vacatures.index');
 
@@ -126,7 +134,7 @@ class VacancyController extends Controller
 
         $vacancy->update($updateData);
 
-        return redirect()->route('vacancies.index')->with('success', 'Vacancy updated successfully.');
+        return redirect()->route('mijn-vacatures.index')->with('success', 'Vacature succesvol geupdate.');
     }
 
     /**

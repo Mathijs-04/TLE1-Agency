@@ -10,7 +10,7 @@ Route::get('/vacatures', function () {
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/uitnodigen', function () {
     return view('invite');
@@ -20,9 +20,19 @@ Route::get('/bevestiging', function () {
     return view('bevestiging');
 })->name('bevestiging');
 
+Route::get('/404', function () {
+    return view('404');
+})->name('404');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::resource('my-vacancies', VacancyController::class);
+
+Route::middleware('auth')->group(function () {
+    Route::resource('mijn-vacatures', VacancyController::class);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,5 +42,3 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-//route naar vacature controller
-Route::resource('mijn-vacatures', VacancyController::class);

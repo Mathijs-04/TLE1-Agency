@@ -8,18 +8,19 @@ document.addEventListener('DOMContentLoaded', function () {
         const div = document.createElement('div');
         div.className = 'mx-auto';
         div.style.width = '30rem';
-        div.style.backgroundColor = '#E2ECC8';
+        div.style.backgroundColor = '#AA0160';
         div.style.padding = '2rem';
         div.style.border = '1px solid black';
         div.style.borderRadius = '0.5rem';
+        div.style.color = 'white';
         div.innerHTML = `
 <!--            Fill the div with content-->
             <h3 class="font-custom font-bold mb-4">Wachtende ${i}</h3>
             <form>
                 <label for="date${i}" class="block mb-2">Kies een datum:</label>
-                <input type="date" id="date${i}" class="w-full mb-4 p-2 rounded-md" style="background-color: #FBFCF6;" required>
+                <input type="date" id="date${i}" class="w-full mb-4 p-2 rounded-md" style="color : black; background-color: #FBFCF6;" required>
                 <label for="time${i}" class="block mb-2">Kies een tijd:</label>
-                <input type="time" id="time${i}" class="w-full mb-4 p-2 rounded-md" style="background-color: #FBFCF6;" required>
+                <input type="time" id="time${i}" class="w-full mb-4 p-2 rounded-md" style="color : black; background-color: #FBFCF6;" required>
             </form>
         `;
         container.appendChild(div);
