@@ -57,14 +57,13 @@
                                 </div>
 
                                 <div id="app">
-                                    <button
+                                    <a href="{{ route('mijn-vacatures.show', $vacancy->id) }}"
                                         class=" border-b-4 border-[#7c1a51] px-6 py-3 bg-violetOH-500 text-white font-medium rounded-lg hover:bg-violetOH-600"
-                                        data-waiting="{{ route('mijn-vacatures.show', $vacancy->id) }}"
                                     >
                                         Details
-                                    </button>
+                                    </a>
 
-                                    
+
                                 </div>
 
                                 {{--                        Dit is om te deleten, hier zit ook een svg in en de kleur van de svg veranderd op hover--}}
