@@ -13,7 +13,8 @@
             ">
                 Open Hiring
             </span>
-            <div class="absolute top-full left-1/2 transform -translate-x-1/2 bg-violetOH-500 p-4 rounded-lg shadow-lg opacity-0 transition-all duration-300 h-0 overflow-hidden min-w-[200px] group-hover:h-auto group-hover:opacity-100 group-focus-within:h-auto group-focus-within:opacity-100">
+            <div
+                class="absolute top-full left-1/2 transform -translate-x-1/2 bg-violetOH-500 p-4 rounded-lg shadow-lg opacity-0 transition-all duration-300 h-0 overflow-hidden min-w-[200px] group-hover:h-auto group-hover:opacity-100 group-focus-within:h-auto group-focus-within:opacity-100">
                 <a href="/404" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
                 @if(Request::is('about-us')) text-yellow-400 @endif font-custom font-bold">Over ons</a>
                 <a href="/404" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
@@ -34,12 +35,17 @@
                 @if(Request::is('profile') || Request::is('vacatures'))  @endif font-custom ">
                 Profiel
             </a>
-            <div class="absolute top-full right-0 bg-violetOH-500 p-4 rounded-lg shadow-lg opacity-0 transition-all duration-300 h-0 overflow-hidden min-w-[200px] group-hover:h-auto group-hover:opacity-100 group-focus-within:h-auto group-focus-within:opacity-100">
+            <div
+                class="absolute top-full right-0 bg-violetOH-500 p-4 rounded-lg shadow-lg opacity-0 transition-all duration-300 h-0 overflow-hidden min-w-[200px] group-hover:h-auto group-hover:opacity-100 group-focus-within:h-auto group-focus-within:opacity-100">
                 <a href="/profile" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
                 @if(Request::is('profile')) text-yellow-400 font-custom font-bold @endif ">Mijn Profiel</a>
                 <a href="/mijn-vacatures" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
                 @if(Request::is('vacatures')) text-yellow-400 font-custom font-bold @endif ">Mijn Vacatures</a>
-
+                <a href="/{{ Auth::user()->name }}" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
+                @if(Request::is(Auth::user()->name)) text-yellow-400 font-custom font-bold @endif ">
+                    Mijn {{ Auth::user()->name }} Pagina
+                </a>
+                
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                    class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400 font-custom font-bold">
                     Uitloggen
