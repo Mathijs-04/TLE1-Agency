@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
@@ -28,10 +29,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('my-vacancies', VacancyController::class);
-
 Route::middleware('auth')->group(function () {
     Route::resource('mijn-vacatures', VacancyController::class);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::resource('mijn-uitnodigingen', InvitationController::class);
 });
 
 Route::middleware('auth')->group(function () {
