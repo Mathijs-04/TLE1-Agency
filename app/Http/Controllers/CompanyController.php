@@ -15,9 +15,9 @@ class CompanyController extends Controller
     {
         $user = Auth::user();
 
-        if (!Profile::where('employer_id', $user->id)->exists()) {
-            return redirect('/');
-        }
+//        if (!Profile::where('employer_id', $user->id)->exists()) {
+//            return redirect('/');
+//        }
 
         $profile = Profile::where('employer_id', $user->id)->first();
 
