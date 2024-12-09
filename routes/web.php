@@ -24,9 +24,9 @@ Route::get('/404', function () {
     return view('404');
 })->name('404');
 
-Route::get('/info-werkzoekend', function () {
-    return view('info-werkzoekend');
-})->name('info-werkzoekend');
+Route::get('/info-werkgever', function () {
+    return view('info-werkgever');
+})->name('info-werkgever');
 
 Route::resource('my-vacancies', VacancyController::class);
 
