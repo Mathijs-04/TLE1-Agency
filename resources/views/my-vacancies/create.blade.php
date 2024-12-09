@@ -83,6 +83,18 @@
                                 @enderror
                             </div>
 
+                            {{-- Aantanl uren --}}
+                            <div class="sm:col-span-2">
+                                <label for="hours" class="block mb-2 text-sm font-medium text-gray-900">Uren per
+                                    week</label>
+                                <input type="number" name="hours" id="hours"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
+                                       placeholder="Bijvoorbeeld: 40 uur" required="">
+                                @error('hours')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
                             {{-- Bedrijfsnaam --}}
                             <div class="sm:col-span-2">
                                 <label for="company_name" class="block mb-2 text-sm font-medium text-gray-900">Bedrijfsnaam</label>
