@@ -118,28 +118,62 @@
                                 @enderror
                             </div>
 
-                            {{-- E-mailadres --}}
+                            {{-- Aanvullende eisen checkbox --}}
                             <div class="sm:col-span-2">
-                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-mailadres</label>
-                                <input type="email" name="email" id="email"
-                                       class="bg-gray-50 border @error('email') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
-                                       placeholder="Bijvoorbeeld: voorbeeld@bedrijf.nl" required=""
-                                       value="{{ old('email') }}">
-                                @error('email')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
+                                <label for="requirement" class="block mb-2 text-sm font-medium text-gray-900">Aanvullende eisen (optioneel)</label>
+                                <div id="checkboxContainer" class="space-y-4">
+                                    <div class="flex items-center space-x-3">
+                                        <input type="checkbox"
+                                               class="w-5 h-5 bg-gray-50 border border-gray-300 text-primary-500 rounded focus:ring-[#AA0061] focus:ring-[#AA0061]"
+                                        />
+                                        <input type="text" placeholder="Bijvoorbeeld: Rijbewijs B"
+                                               class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#AA0061] focus:border-[#AA0061] p-2.5"
+                                               name="requirement"/>
+                                    </div>
+                                </div>
+                                <button id="addCheckboxBtn" type="button"
+                                        class="mt-4 w-[150px] bg-[#AA0061] text-white font-medium text-xs rounded-lg px-2 py-1.5 hover:bg-primary-600 focus:outline-none focus:ring-[#AA0061] focus:ring-[#AA0061]">
+                                    Extra veld
+                                </button>
                             </div>
 
-                            {{-- Telefoonnummer --}}
+                            <script>
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    const checkboxContainer = document.getElementById('checkboxContainer');
+                                    const addCheckboxBtn = document.getElementById('addCheckboxBtn');
+
+                                    if (checkboxContainer && addCheckboxBtn) {
+                                        addCheckboxBtn.addEventListener('click', () => {
+                                            const newCheckboxDiv = document.createElement('div');
+                                            newCheckboxDiv.classList.add('flex', 'items-center', 'space-x-3');
+
+                                            const newCheckbox = document.createElement('input');
+                                            newCheckbox.type = 'checkbox';
+                                            newCheckbox.classList.add('w-5', 'h-5', 'bg-gray-50', 'border', 'border-gray-300', 'text-primary-500', 'rounded', 'focus:ring-primary-500', 'focus:ring-2');
+
+                                            const newInput = document.createElement('input');
+                                            newInput.type = 'text';
+                                            newInput.placeholder = 'Bijvoorbeeld: Rijbewijs';
+                                            newInput.classList.add('block', 'w-full', 'text-sm', 'text-gray-900', 'bg-gray-50', 'rounded-lg', 'border', 'border-gray-300', 'focus:ring-primary-500', 'focus:border-primary-500', 'p-2.5');
+
+                                            newCheckboxDiv.appendChild(newCheckbox);
+                                            newCheckboxDiv.appendChild(newInput);
+
+                                            checkboxContainer.appendChild(newCheckboxDiv);
+                                        });
+                                    } else {
+                                        console.error('Checkbox container or add button not found.');
+                                    }
+                                });
+                            </script>
+
+                            {{-- Afbeelding uploaden --}}
                             <div class="sm:col-span-2">
-                                <label for="phone_number" class="block mb-2 text-sm font-medium text-gray-900">Telefoonnummer</label>
-                                <input type="text" name="phone_number" id="phone_number"
-                                       class="bg-gray-50 border @error('phone_number') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
-                                       placeholder="Bijvoorbeeld: +31 6 12345678" required=""
-                                       value="{{ old('phone_number') }}">
-                                @error('phone_number')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
+                                <label class="block mb-2 text-sm font-medium text-gray-900" for="image_url">Afbeelding vacature
+                                    uploaden</label>
+                                <input
+                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+                                    aria-describedby="Foto gaan uploaden" id="image_url" name="image_url" type="file">
                             </div>
                         </div>
 
