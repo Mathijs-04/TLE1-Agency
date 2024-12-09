@@ -123,9 +123,9 @@
                                 <label for="requirement" class="block mb-2 text-sm font-medium text-gray-900">Aanvullende eisen (optioneel)</label>
                                 <div id="checkboxContainer" class="space-y-4">
                                     <div class="flex items-center space-x-3">
-                                        <input type="checkbox"
-                                               class="w-5 h-5 bg-gray-50 border border-gray-300 text-primary-500 rounded focus:ring-[#AA0061] focus:ring-[#AA0061]"
-                                        />
+{{--                                        <input type="checkbox"--}}
+{{--                                               class="w-5 h-5 bg-gray-50 border border-gray-300 text-primary-500 rounded focus:ring-[#AA0061] focus:ring-[#AA0061]"--}}
+{{--                                        />--}}
                                         <input type="text" placeholder="Bijvoorbeeld: Rijbewijs B"
                                                class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#AA0061] focus:border-[#AA0061] p-2.5"
                                                name="requirement"/>
