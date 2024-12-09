@@ -39,7 +39,9 @@
             <div class="ml-10">
                 <h2 class="text-xl font-bold text-violetOH-500 mb-4 mt-4">Aanvullende eisen:</h2>
                 @if($vacancy->requirement)
-                    <p class="text-gray-700 mb-6 text-left">- {{ $vacancy->requirement }}</p>
+                    @foreach(explode(',', $vacancy->requirement) as $requirement)
+                        <p class="text-gray-700 mb-6 text-left">- {{ trim($requirement) }}</p>
+                    @endforeach
                 @else
                     <p class="text-gray-700 mb-6 text-left">Geen aanvullende eisen</p>
                 @endif
