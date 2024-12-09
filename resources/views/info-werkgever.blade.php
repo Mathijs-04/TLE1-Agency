@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <div id="why_container" class="max-w-7xl mx-auto p-6 mb-20"> <!-- Hier is de marge toegevoegd -->
+    <div id="why_container" class="max-w-7xl mx-auto p-6 mb-20">
         <!-- Titel gecentreerd -->
         <h1 class="text-3xl font-bold text-center mb-10">Waarom kiezen voor Open Hiring?</h1>
 

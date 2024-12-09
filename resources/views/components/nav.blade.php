@@ -15,7 +15,7 @@
             </span>
             <div class="absolute top-full left-1/2 transform -translate-x-1/2 bg-violetOH-500 p-4 rounded-lg shadow-lg opacity-0 transition-all duration-300 h-0 overflow-hidden min-w-[200px] group-hover:h-auto group-hover:opacity-100 group-focus-within:h-auto group-focus-within:opacity-100">
                 <a href="/404" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
-                @if(Request::is('Werkzoekend')) text-yellow-400 @endif font-custom font-bold">Werkzoekend</a>
+                @if(Request::is('Werkzoekend')) text-yellow-400 font-bold @endif font-custom ">Werkzoekend</a>
                 <a href="/info-werkgever" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
                 @if(Request::is('info-werkgever')) text-yellow-400 font-custom font-bold @endif">Werkgever</a>
             </div>
