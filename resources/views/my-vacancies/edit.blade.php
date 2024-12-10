@@ -128,7 +128,7 @@
                                 <label for="requirements" class="block mb-2 text-sm font-medium text-gray-900">Aanvullende eisen (optioneel)</label>
                                 <p class="mb-2 text-sm text-gray-600">Bijvoorbeeld: Rijbewijs B, MBO-Niveau 4, Nederlandse taal, Veel lopen.</p>
                                 <div id="inputContainer" class="space-y-4">
-                                    @foreach(old('requirements', explode(',', $vacancy->requirement)) as $requirement)
+                                    @foreach(old('requirements', explode(',', str_replace(['[', ']', '"'], '', $vacancy->requirement))) as $requirement)
                                         <div class="flex items-center space-x-3">
                                             <input type="text" name="requirements[]" placeholder="Bijvoorbeeld: Rijbewijs B"
                                                    class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#AA0061] focus:border-[#AA0061] p-2.5"
@@ -168,10 +168,15 @@
                             </script>
                             {{-- Afbeelding uploaden --}}
                             <div class="sm:col-span-2">
-                                <label class="block mt-2 mb-0 text-sm font-medium text-gray-900" for="image_url">Afbeelding  uploaden (optioneel)</label>
-                                <p class="mb-2 text-sm text-gray-600">Voeg een passende afbeelding toe (max. 2 MB).</p>                                <input
+                                <label class="block mt-2 mb-0 text-sm font-medium text-gray-900" for="image_url">Nieuwe afbeelding uploaden (optioneel)</label>
+                                <p class="text-sm text-gray-600">Voeg een passende afbeelding toe (max. 2 MB).</p>
+                                <p class="mb-2 text-sm text-gray-600">Laat dit veld leeg om de oude afbeelding te bewaren</p>
+                                <input
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
                                     aria-describedby="Banner van de vacature uploaden" id="image_url" name="image_url" type="file">
+                                @if($vacancy->image_url)
+                                    <input type="hidden" name="current_image" value="{{ $vacancy->image_url }}">
+                                @endif
                             </div>
                         </div>
 
