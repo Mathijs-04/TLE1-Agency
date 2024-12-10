@@ -47,18 +47,12 @@
                 @endif
             </div>
 
-            <div class="mt-6 ml-10 flex justify-between">
+            <div class="mt-6 ml-10">
                 <a
                     href="{{ route('mijn-vacatures.index') }}"
                     class="inline-block bg-violetOH-500 text-white px-6 py-3 rounded-lg shadow hover:bg-violetOH-600"
                 >
                     Terug naar overzicht
-                </a>
-                <a
-                    href="{{ route('mijn-vacatures.edit', $vacancy->id) }}"
-                    class="inline-block mr-10 bg-violetOH-500 text-white px-6 py-3 rounded-lg shadow hover:bg-violetOH-600"
-                >
-                    Bewerk vacature
                 </a>
             </div>
         </div>
