@@ -117,7 +117,7 @@ class VacancyController extends Controller
 
         $vacancy->save();
 
-        return redirect()->route('mijn-vacatures.index')->with('success', 'Vacature succesvol geupdate.');
+        return view('detail-vacancies', compact('vacancy'));
     }
 
     public function destroy($id)
