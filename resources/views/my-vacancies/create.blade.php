@@ -156,7 +156,6 @@
                                     }
                                 });
                             </script>
-                            
                             {{-- Afbeelding uploaden --}}
                             <div class="sm:col-span-2">
                                 <label class="block mt-2 mb-0 text-sm font-medium text-gray-900" for="image_url">Afbeelding  uploaden (optioneel)</label>
