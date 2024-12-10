@@ -13,7 +13,7 @@
                 <!-- Locatie -->
                 <div class="bg-gray-50 p-4 rounded-lg shadow text-center">
                     <h2 class="text-lg font-semibold text-gray-800">Locatie</h2>
-                    <p class="text-gray-600">{{ $vacancy->location }}</p>
+                    <p class="text-gray-600">{{ $vacancy->streetname }}, {{ $vacancy->city }}</p>
                 </div>
 
                 <!-- Uren -->
@@ -40,7 +40,10 @@
                 <h2 class="text-xl font-bold text-violetOH-500 mb-4 mt-4">Aanvullende eisen:</h2>
                 @if($vacancy->requirement)
                     @foreach(explode(',', $vacancy->requirement) as $requirement)
-                        <p class="text-gray-700 mb-1 text-left">- {{ trim($requirement) }}</p>
+                        @php
+                            $requirement = str_replace(['[', ']', '"'], '', trim($requirement));
+                        @endphp
+                        <p class="text-gray-700 mb-1 text-left">- {{ $requirement }}</p>
                     @endforeach
                 @else
                     <p class="text-gray-700 mb-1 text-left">Geen aanvullende eisen</p>
