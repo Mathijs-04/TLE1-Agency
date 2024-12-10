@@ -170,19 +170,18 @@ class VacancyController extends Controller
             'description' => 'nullable|string',
             'requirements' => 'array', // Valideer als array
             'requirements.*' => 'string|nullable', // Elk item in de array
-            'image_url' => 'nullable|image|max:2048',
+            'image_url' => 'nullable|image|max:2048', // Alleen afbeeldingen tot 2MB toegestaan
         ]);
 
-                $vacancy = new Vacancy();
+        $vacancy = new Vacancy();
         $employerId = auth()->user()->employer_id;
 
 
         // Afbeelding uploaden
         if ($request->hasFile('image_url')) {
-            $nameOfFile = $request->file('image_url')->store('images', 'public'); // Geen slash aan het begin
+            $nameOfFile = $request->file('image_url')->store('images', 'public');
             $vacancy->image_url = $nameOfFile;
         }
-
         $vacancy = new Vacancy();
         $vacancy->name = $request->input('name');
         $vacancy->salary = $request->input('salary');
@@ -194,6 +193,7 @@ class VacancyController extends Controller
         $vacancy->contract_type = $request->input('contract_type');
         $vacancy->description = $request->input('description');
         $vacancy->requirement = json_encode($request->input('requirements', [])); // JSON-string opslaan
+        $vacancy->image_url = $nameOfFile;
 
 
         //// Check of de velden zijn ingevuld of stel een standaardwaarde in
