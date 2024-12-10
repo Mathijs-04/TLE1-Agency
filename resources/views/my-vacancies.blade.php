@@ -144,7 +144,11 @@
                                         Hier kun je gedetailleerde informatie over de vacature tonen, zoals een
                                         beschrijving,
                                         vereisten of andere relevante details.
+
                                     </p>
+                                    @foreach ($vacancy->matches as $vacancymatch)
+                                        {{ $vacancymatch->start_date }}
+                                    @endforeach
                                 </div>
                             </div>
 
