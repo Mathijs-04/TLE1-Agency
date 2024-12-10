@@ -1,3 +1,9 @@
+<?php
+
+use Illuminate\Support\Carbon;
+
+?>
+
 <x-layout>
 
     <script src="{{ asset('js/popup.js') }}"></script>
@@ -50,7 +56,7 @@
                                             {{ $vacancy->name }}
                                         </a>
                                     </h2>
-                                    <p class="text-gray-600">Wachtenden: {{ $vacancy->waiting }}</p>
+                                    <p class="text-gray-600">Wachtlijst: {{ $vacancy->waiting }}</p>
                                 </div>
                                 <div id="app">
                                     <a href="{{ route('mijn-vacatures.show', $vacancy->id) }}"
@@ -140,15 +146,83 @@
 
                                 <!-- Uitklapbare Inhoud -->
                                 <div id="info-{{ $vacancy->id }}" class="hidden mt-4 p-4 bg-gray-100 rounded-lg">
-                                    <p class="text-gray-700">
-                                        Hier kun je gedetailleerde informatie over de vacature tonen, zoals een
-                                        beschrijving,
-                                        vereisten of andere relevante details.
 
-                                    </p>
-                                    @foreach ($vacancy->matches as $vacancymatch)
-                                        {{ $vacancymatch->start_date }}
-                                    @endforeach
+                                    <div class="matches-container">
+                                        @php
+                                            $groupedMatches = $vacancy->matches->groupBy('is_accepted');
+                                        @endphp
+
+                                        @if ($groupedMatches->has(1))
+                                            <div class="status-group">
+                                                <h3 class="status-heading">Geaccepteerd</h3>
+                                                @foreach ($groupedMatches[1] as $vacancymatch)
+                                                    @php
+                                                        // Datum formatteren
+                                                        $formattedDate = Carbon::parse($vacancymatch->start_date)->format('d-m-Y');
+                                                    @endphp
+
+                                                    <div class="flex items-center space-x-4 my-2">
+                                                        <!-- SVG -->
+                                                        <svg width="16" height="19" viewBox="0 0 16 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M15 19V17C15 15.9391 14.5786 14.9217 13.8284 14.1716C13.0783 13.4214 12.0609 13 11 13H5C3.93913 13 2.92172 13.4214 2.17157 14.1716C1.42143 14.9217 1 15.9391 1 17V19"
+                                                                stroke="#92AA83" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                            <path
+                                                                d="M8 9C10.2091 9 12 7.20914 12 5C12 2.79086 10.2091 1 8 1C5.79086 1 4 2.79086 4 5C4 7.20914 5.79086 9 8 9Z"
+                                                                stroke="#92AA83" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+
+                                                        <!-- User ID -->
+{{--                                                        <span class="text-gray-700 font-medium">{{ $vacancymatch->user_id }}</span>--}}
+
+                                                        <div class="">
+                                                            <p class="font-bold text-sm">Startdatum</p>
+                                                            <span class="text-gray-500">{{ $formattedDate }}</span>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
+
+
+                                        @php
+                                            $statuses = [
+                                                2 => ['label' => 'Geweigerd', 'color' => '#AA0160'], // Rood
+                                                0 => ['label' => 'Niet beantwoord', 'color' => '#A0A0A0'] // Grijs
+                                            ];
+                                        @endphp
+
+                                        @foreach ($statuses as $status => $details)
+                                            {{-- Haal het aantal op, of gebruik 0 als er geen matches zijn --}}
+                                            @php
+                                                $count = $groupedMatches->get($status, collect())->count();
+                                            @endphp
+
+                                            <div class="status-group">
+                                                <h3 class="status-heading">
+                                                    {{ $details['label'] }}
+                                                    <div class="flex items-center space-x-4 my-2">
+                                                        <svg width="16" height="19" viewBox="0 0 16 19" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M15 19V17C15 15.9391 14.5786 14.9217 13.8284 14.1716C13.0783 13.4214 12.0609 13 11 13H5C3.93913 13 2.92172 13.4214 2.17157 14.1716C1.42143 14.9217 1 15.9391 1 17V19"
+                                                                stroke="{{ $details['color'] }}" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"/>
+                                                            <path
+                                                                d="M8 9C10.2091 9 12 7.20914 12 5C12 2.79086 10.2091 1 8 1C5.79086 1 4 2.79086 4 5C4 7.20914 5.79086 9 8 9Z"
+                                                                stroke="{{ $details['color'] }}" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+
+                                                        <span class="text-gray-700 font-medium">{{ $count }}</span>
+                                                    </div>
+                                                </h3>
+                                            </div>
+                                        @endforeach
+
+                                    </div>
+
+
                                 </div>
                             </div>
 
