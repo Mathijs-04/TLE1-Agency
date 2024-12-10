@@ -1,4 +1,5 @@
 <x-layout>
+    @section('title', 'Mijn bedrijfspagina')
     <div class="max-w-7xl mx-auto px-4 py-8 space-y-12">
         <!-- Titel gecentreerd -->
         <header class="text-center">

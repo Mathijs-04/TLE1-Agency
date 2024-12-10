@@ -43,4 +43,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::resource('company', CompanyController::class);
+Route::middleware('auth')->prefix('company')->name('company.')->group(function () {
+    Route::get('index', [CompanyController::class, 'index'])->name('index');
+    Route::get('create', [CompanyController::class, 'create'])->name('create');
+    Route::post('store', [CompanyController::class, 'store'])->name('store');
+});

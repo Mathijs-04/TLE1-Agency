@@ -12,63 +12,59 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // CompanyController.php
+
     public function index()
     {
         $user = Auth::user();
-        // Haal alle vacatures van dit bedrijf op
-        $vacancies = Vacancy::where('employer_id', $user->id)->get();
 
-        $profile = Profile::where('employer_id', $user->id)->first();
+        // Kijk of de gebruiker al een bedrijfspagina heeft
+        $profile = Profile::where('employer_id', $user->employer_id)->first();
+
+        if (!$profile) {
+            // Als de gebruiker geen profiel heeft, stuur hem naar de create pagina
+            return redirect()->route('company.create');
+        }
+
+        // Haal de vacatures van het bedrijf op
+        $vacancies = Vacancy::where('employer_id', $user->employer_id)->get();
 
         return view('company.index', compact('vacancies', 'profile'));
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('company.create'); // Toon het formulier om een bedrijfspagina te maken
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        $profile = new Profile(); // Gebruik Profile in plaats van Company
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        // Validatie
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'image_url' => 'nullable|image|max:2048',
+            'city' => 'required|string|max:255',
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        // Afbeelding uploaden
+        if ($request->hasFile('image_url')) {
+            // De afbeelding opslaan in de 'public/storage/images' map
+            $imagePath = $request->file('image_url')->store('images', 'public');
+            $profile->image_url = $imagePath;  // Sla het pad op in de database
+        }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        // Vul de andere velden in
+        $profile->title = $request->input('title');
+        $profile->description = $request->input('description');
+        $profile->city = $request->input('city');
+        $profile->employer_id = auth()->user()->employer_id;  // Zorg ervoor dat je de employer_id instelt
+//        dd($profile);
+        // Sla het profiel op
+        $profile->save();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('company.index'); // Verwijst naar een profieloverzicht, pas de route aan indien nodig
     }
 }

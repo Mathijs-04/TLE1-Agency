@@ -41,6 +41,7 @@
                 @if(Request::is('profile')) text-yellow-400 font-custom font-bold @endif ">Mijn Profiel</a>
                 <a href="/mijn-vacatures" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
                 @if(Request::is('vacatures')) text-yellow-400 font-custom font-bold @endif ">Mijn Vacatures</a>
+
                 <a href="{{ route('company.index')}}"
                    class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
                 @if(Request::is('company.index')) text-yellow-400 font-custom font-bold @endif">
