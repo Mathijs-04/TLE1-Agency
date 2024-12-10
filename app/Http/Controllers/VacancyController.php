@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Matches;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class VacancyController extends Controller
     {
         //ophalen van mijn vacatures met een check voor ingelogde user
         $vacancies = Vacancy::whereColumn(auth()->user()->employer_id, 'employer_id')->get();
-        return view('my-vacancies', compact('vacancies'));
+        $matches = Matches::all();
+        return view('my-vacancies', compact('vacancies', 'matches'));
     }
 
     /**

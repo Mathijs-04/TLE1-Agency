@@ -91,16 +91,47 @@
                                         <div id="app">
                                             <button
                                                 class="inviteButton border-b-4 border-[#7c1a51] px-6 py-3 bg-violetOH-500 text-white font-medium rounded-lg hover:bg-violetOH-600"
-                                                data-waiting="{{$vacancy->waiting}}">
+                                                data-waiting="{{$vacancy->waiting}}"
+                                            >
                                                 Uitnodigen
                                             </button>
+                                        </div>
+                                        <div id="popup"
+                                             class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center hidden">
+                                            <div class="bg-white p-6 rounded-lg w-96 shadow-lg text-center"><h2
+                                                    class="text-xl font-bold mb-4">Nodig werknemers uit.</h2>
+                                                <p class="mb-4">Aantal werknemers:</p>
+                                                <div class="flex items-center gap-4 justify-center">
+                                                    <button id="decrement"
+                                                            class="w-8 h-8 bg-gray-300 text-gray-800 rounded-full hover:bg-gray-400">
+                                                        -
+                                                    </button>
+                                                    <span id="userCount" class="text-2xl font-semibold">1</span>
+                                                    <button id="increment"
+                                                            class="w-8 h-8 bg-gray-300 text-gray-800 rounded-full hover:bg-gray-400">
+                                                        +
+                                                    </button>
+                                                </div>
+                                                <div class="mt-6 flex justify-center gap-4">
+                                                    <button id="cancelButton"
+                                                            class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">
+                                                        Annuleren
+                                                    </button>
+                                                    <button id="confirmButton"
+                                                            class="px-4 py-2 bg-violetOH-500 text-white rounded hover:bg-violetOH-600">
+                                                        Uitnodigen
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                         <!-- Pijl voor uitklappen -->
                                         <button
                                             class="ml-4 flex items-center justify-center w-8 h-8 text-gray-600 hover:text-violetOH-500 transform transition-transform"
                                             data-id="info-{{ $vacancy->id }}">
-                                            <svg class="dropdown" width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 1L9 9L17 1" stroke="#AA0160" stroke-width="2" stroke-linecap="round"/>
+                                            <svg class="dropdown" width="18" height="11" viewBox="0 0 18 11" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1 1L9 9L17 1" stroke="#AA0160" stroke-width="2"
+                                                      stroke-linecap="round"/>
                                             </svg>
 
                                         </button>
@@ -110,7 +141,8 @@
                                 <!-- Uitklapbare Inhoud -->
                                 <div id="info-{{ $vacancy->id }}" class="hidden mt-4 p-4 bg-gray-100 rounded-lg">
                                     <p class="text-gray-700">
-                                        Hier kun je gedetailleerde informatie over de vacature tonen, zoals een beschrijving,
+                                        Hier kun je gedetailleerde informatie over de vacature tonen, zoals een
+                                        beschrijving,
                                         vereisten of andere relevante details.
                                     </p>
                                 </div>
