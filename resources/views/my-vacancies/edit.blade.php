@@ -2,13 +2,13 @@
     <div class="flex justify-center items-center min-h-screen bg-gray-100">
         <div class="bg-white shadow-lg rounded-xl p-8 m-8 w-full max-w-md">
             <div class="mx-auto max-w-2xl">
-                <h2 class="mb-2 text-xl font-bold text-gray-900">Nieuwe vacature aanmaken</h2>
+                <h2 class="mb-2 text-xl font-bold text-gray-900">Vacature bewerken</h2>
                 <p class="mb-4">Na het invullen van de velden kunt u eerst een preview bekijken
                     voordat u de vacature plaatst.</p>
                 <div>
                     {{-- Formulier --}}
                     <form action="{{ route('mijn-vacatures.store') }}" method="post" enctype="multipart/form-data">
-                        <p><strong>*</strong> Velden verplicht invullen</p>
+                        <p><strong>*</strong> = verplicht</p>
                         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                             @csrf
                             {{-- Naam van de vacature --}}
@@ -119,7 +119,7 @@
                             {{-- Aanvullende eisen (optioneel) --}}
                             <div class="sm:col-span-2">
                                 <label for="requirements" class="block mb-2 text-sm font-medium text-gray-900">Aanvullende eisen (optioneel)</label>
-                                <p class="mb-2 text-sm text-gray-600">Bijvoorbeeld: Rijbewijs B, minimaal MBO-niveau, Nederlands vereist</p>
+                                <p class="mb-2 text-sm text-gray-600">Bijvoorbeeld: Rijbewijs B, MBO-Niveau 4, Nederlandse taal, Veel lopen.</p>
                                 <div id="inputContainer" class="space-y-4">
                                     <div class="flex items-center space-x-3">
                                         <input type="text" name="requirements[]" placeholder="Bijvoorbeeld: Rijbewijs B"
@@ -168,7 +168,7 @@
                         <div class="flex justify-center items-center mt-4">
                             <button id="previewButton" type="submit"
                                     class="w-48 bg-[#AA0061] text-white font-medium text-sm rounded-lg px-4 py-2 hover:bg-[#88004E] focus:outline-none focus:ring-2 focus:ring-[#AA0061]">
-                                Aanmaken
+                                Bewerken
                             </button>
                         </div>
                     </form>
