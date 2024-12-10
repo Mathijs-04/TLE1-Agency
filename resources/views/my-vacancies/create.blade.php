@@ -152,15 +152,16 @@
                                             inputContainer.appendChild(newInputDiv);
                                         });
                                     } else {
-                                        console.error('Input container or add button not found.');
+                                        console.error('Input container of button niet gevonden.');
                                     }
                                 });
                             </script>
                             {{-- Afbeelding uploaden --}}
                             <div class="sm:col-span-2">
                                 <label class="block mt-2 mb-0 text-sm font-medium text-gray-900" for="image_url">Afbeelding  uploaden (optioneel)</label>
-                                <p class="mb-2 text-sm text-gray-600">voeg een bijpassende afbeelding toe die bij de vacature hoort.</p>
-                                <input
+                                <p class="mb-2 text-sm text-gray-600">
+                                    Voeg een passende afbeelding toe (max. 2 MB).
+                                </p>                                <input
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="Banner van de vacature uploaden"
                                     id="image_url" name="image_url" type="file">
                             </div>
