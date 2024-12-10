@@ -1,5 +1,6 @@
 <x-layout>
     <div class="max-w-7xl mx-auto px-4 py-8 space-y-12">
+        @dd($vacancies)
         <!-- Titel gecentreerd -->
         <header class="text-center">
             <h1 class="text-5xl font-extrabold text-violetOH-500">{{ $profile->title }}</h1>
@@ -16,7 +17,8 @@
             </div>
             <!-- Logo rechts -->
             <div class="flex justify-center">
-                <img src="{{ asset('storage/images/' . $profile->image_url) }}" class="h-60 w-auto rounded-lg shadow-lg" alt="Logo">
+                <img src="{{ asset('storage/images/' . $profile->image_url) }}" class="h-60 w-auto rounded-lg shadow-lg"
+                     alt="Logo">
             </div>
         </section>
 

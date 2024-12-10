@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,9 @@ class CompanyController extends Controller
         // Haal alle vacatures van dit bedrijf op
         $vacancies = Vacancy::where('employer_id', $user->id)->get();
 
-        return view('company.index', compact('vacancies'));
+        $profile = Profile::where('employer_id', $user->id)->first();
+
+        return view('company.index', compact('vacancies', 'profile'));
     }
 
 
