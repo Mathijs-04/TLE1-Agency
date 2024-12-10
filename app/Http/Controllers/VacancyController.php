@@ -134,4 +134,11 @@ class VacancyController extends Controller
         $vacancy->delete();
         return redirect(route('mijn-vacatures.index'));
     }
+
+    public function showAllVacancy()
+    {
+        $vacancies = Vacancy::all(); // Haalt alle vacatures op
+        return view('vacatures', compact('vacancies'));
+    }
+
 }
