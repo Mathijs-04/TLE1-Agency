@@ -44,7 +44,7 @@ class VacancyController extends Controller
             'description' => 'nullable|string',
             'requirements' => 'array', // Valideer als array
             'requirements.*' => 'string|nullable', // Elk item in de array
-            'image_url' => 'nullable|image|max:2048|mines:jpeg,jpg,png,webp', // Alleen afbeeldingen tot 2MB toegestaan
+            'image_url' => 'nullable|image|max:2048|mimes:jpeg,jpg,png,webp', // Alleen afbeeldingen tot 2MB toegestaan
         ]);
 
         $vacancy = new Vacancy();
@@ -115,16 +115,17 @@ class VacancyController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'salary' => 'required|string|max:255',
-//            'location' => 'required|string|max:255',
+            'salary' => 'required|numeric|min:0',
+            'postalcode' => 'required|string|max:10',
+            'housenumber' => 'required|numeric|min:1',
+            'streetname' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
             'hours' => 'required|numeric|min:0',
             'contract_type' => 'required|string',
             'description' => 'nullable|string',
-            'requirement' => 'nullable|string',
-            'image_url' => 'nullable|image|max:2048',
-            'waiting' => 'nullable|integer|min:0', // Optioneel veld
-            'available_positions' => 'nullable|integer|min:0', // Optioneel veld
-            'employer_id' => 'nullable|integer|min:0', // Laat employer_id optioneel
+            'requirements' => 'array', // Valideer als array
+            'requirements.*' => 'string|nullable', // Elk item in de array
+            'image_url' => 'nullable|image|max:2048|mimes:jpeg,jpg,png,webp', // Alleen afbeeldingen tot 2MB toegestaan
         ]);
 
         $vacancy = Vacancy::findOrFail($id);

@@ -1,4 +1,9 @@
 <x-layout>
+    <style>
+        .purple-asterisk {
+            color: #AA0061;
+        }
+    </style>
     <div class="flex justify-center items-center min-h-screen bg-gray-100">
         <div class="bg-white shadow-lg rounded-xl p-8 m-8 w-full max-w-md">
             <div class="mx-auto max-w-2xl">
@@ -7,17 +12,18 @@
                     voordat u de vacature plaatst.</p>
                 <div>
                     {{-- Formulier --}}
-                    <form action="{{ route('mijn-vacatures.store') }}" method="post" enctype="multipart/form-data">
-                        <p><strong>*</strong> = verplicht</p>
+                    <form action="{{ route('mijn-vacatures.update', $vacancy->id) }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <p><strong class="purple-asterisk">*</strong> = verplicht</p>
                         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                            @csrf
                             {{-- Naam van de vacature --}}
                             <div class="sm:col-span-2">
-                                <label for="name" class="block mt-4 mb-2 text-sm font-medium text-gray-900">Titel * </label>
+                                <label for="name" class="block mt-4 mb-2 text-sm font-medium text-gray-900">Titel <span class="purple-asterisk">*</span> </label>
                                 <input type="text" name="name" id="name"
                                        class="bg-gray-50 border @error('name') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: Vulploeg medewerker Jumbo" required=""
-                                       value="{{ old('name') }}">
+                                       value="{{ old('name', $vacancy->name) }}">
                                 @error('name')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -25,11 +31,11 @@
 
                             {{-- Salaris indicatie --}}
                             <div class="sm:col-span-2">
-                                <label for="salary" class="block mb-2 text-sm font-medium text-gray-900">Salaris indicatie * </label>
+                                <label for="salary" class="block mb-2 text-sm font-medium text-gray-900">Salaris indicatie <span class="purple-asterisk">*</span> </label>
                                 <input type="number" min="0" name="salary" id="salary"
                                        class="bg-gray-50 border @error('salary') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: €2.500 - €3.000 bruto per maand" required=""
-                                       value="{{ old('salary') }}">
+                                       value="{{ old('salary', $vacancy->salary) }}">
                                 @error('salary')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -37,11 +43,11 @@
 
                             {{-- Postcode --}}
                             <div class="">
-                                <label for="postcode" class="block mb-2 text-sm font-medium text-gray-900">Postcode * </label>
+                                <label for="postcode" class="block mb-2 text-sm font-medium text-gray-900">Postcode <span class="purple-asterisk">*</span> </label>
                                 <input type="text" name="postalcode" id="postcode"
                                        class="bg-gray-50 border @error('postcode') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: 1012 AB" required=""
-                                       value="{{ old('postcode') }}">
+                                       value="{{ old('postalcode', $vacancy->postalcode) }}">
                                 @error('postcode')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -49,11 +55,11 @@
 
                             {{-- Huisnummer --}}
                             <div class="">
-                                <label for="housenumber" class="block mb-2 text-sm font-medium text-gray-900">Huisnummer * </label>
+                                <label for="housenumber" class="block mb-2 text-sm font-medium text-gray-900">Huisnummer <span class="purple-asterisk">*</span> </label>
                                 <input type="text" name="housenumber" id="housenumber"
                                        class="bg-gray-50 border @error('housenumber') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: 12" required=""
-                                       value="{{ old('housenumber') }}">
+                                       value="{{ old('housenumber', $vacancy->housenumber) }}">
                                 @error('housenumber')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -61,11 +67,11 @@
 
                             {{-- Straatnaam --}}
                             <div class=" sm:col-span-2">
-                                <label for="streetname" class="block mb-2 text-sm font-medium text-gray-900">Straatnaam * </label>
+                                <label for="streetname" class="block mb-2 text-sm font-medium text-gray-900">Straatnaam <span class="purple-asterisk">*</span> </label>
                                 <input type="text" name="streetname" id="streetname"
                                        class="bg-gray-50 border @error('streetname') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: Stationsstraat" required=""
-                                       value="{{ old('streetname') }}">
+                                       value="{{ old('streetname', $vacancy->streetname) }}">
                                 @error('streetname')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -73,22 +79,23 @@
 
                             {{-- Plaats --}}
                             <div class="sm:col-span-2">
-                                <label for="city" class="block mb-2 text-sm font-medium text-gray-900">Plaats * </label>
+                                <label for="city" class="block mb-2 text-sm font-medium text-gray-900">Plaats <span class="purple-asterisk">*</span> </label>
                                 <input type="text" name="city" id="city"
                                        class="bg-gray-50 border @error('city') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: Amsterdam" required=""
-                                       value="{{ old('city') }}">
+                                       value="{{ old('city', $vacancy->city) }}">
                                 @error('city')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
 
-                            {{-- Aantanl uren --}}
+                            {{-- Aantal uren --}}
                             <div class="sm:col-span-2">
-                                <label for="hours" class="block mb-2 text-sm font-medium text-gray-900">Uren per week *</label>
+                                <label for="hours" class="block mb-2 text-sm font-medium text-gray-900">Uren per week <span class="purple-asterisk">*</span></label>
                                 <input type="number" name="hours" id="hours" min="0"
                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
-                                       placeholder="Bijvoorbeeld: 40 uur" required="">
+                                       placeholder="Bijvoorbeeld: 40 uur" required=""
+                                       value="{{ old('hours', $vacancy->hours) }}">
                                 @error('hours')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -96,21 +103,21 @@
 
                             {{-- Contract type --}}
                             <div class="sm:col-span-2">
-                                <label for="contract_type" class="block mb-2 text-sm font-medium text-gray-900">Contract type *</label>
+                                <label for="contract_type" class="block mb-2 text-sm font-medium text-gray-900">Contract type <span class="purple-asterisk">*</span></label>
                                 <select name="contract_type" id="contract_type"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5">
                                     <option selected="">Selecteer het type contract</option>
-                                    <option value="full-time">full-time</option>
-                                    <option value="part-time">part-time</option>
+                                    <option value="full-time" {{ old('contract_type', $vacancy->contract_type) == 'full-time' ? 'selected' : '' }}>full-time</option>
+                                    <option value="part-time" {{ old('contract_type', $vacancy->contract_type) == 'part-time' ? 'selected' : '' }}>part-time</option>
                                 </select>
                             </div>
 
                             {{-- Beschrijving --}}
                             <div class="sm:col-span-2">
-                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Beschrijving * </label>
+                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Beschrijving <span class="purple-asterisk">*</span> </label>
                                 <textarea id="description" name="description" rows="6"
                                           class="bg-gray-50 border @error('description') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
-                                          placeholder="Beschrijf hier de functie">{{ old('description') }}</textarea>
+                                          placeholder="Beschrijf hier de functie">{{ old('description', $vacancy->description) }}</textarea>
                                 @error('description')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -121,10 +128,13 @@
                                 <label for="requirements" class="block mb-2 text-sm font-medium text-gray-900">Aanvullende eisen (optioneel)</label>
                                 <p class="mb-2 text-sm text-gray-600">Bijvoorbeeld: Rijbewijs B, MBO-Niveau 4, Nederlandse taal, Veel lopen.</p>
                                 <div id="inputContainer" class="space-y-4">
-                                    <div class="flex items-center space-x-3">
-                                        <input type="text" name="requirements[]" placeholder="Bijvoorbeeld: Rijbewijs B"
-                                               class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#AA0061] focus:border-[#AA0061] p-2.5">
-                                    </div>
+                                    @foreach(old('requirements', explode(',', $vacancy->requirement)) as $requirement)
+                                        <div class="flex items-center space-x-3">
+                                            <input type="text" name="requirements[]" placeholder="Bijvoorbeeld: Rijbewijs B"
+                                                   class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#AA0061] focus:border-[#AA0061] p-2.5"
+                                                   value="{{ $requirement }}">
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <button id="addInputBtn" type="button"
@@ -152,14 +162,14 @@
                                             inputContainer.appendChild(newInputDiv);
                                         });
                                     } else {
-                                        console.error('Input container or add button not found.');
+                                        console.error('Input container of button niet gevonden.');
                                     }
                                 });
                             </script>
                             {{-- Afbeelding uploaden --}}
                             <div class="sm:col-span-2">
                                 <label class="block mt-2 mb-0 text-sm font-medium text-gray-900" for="image_url">Afbeelding  uploaden (optioneel)</label>
-                                <p class="mb-2 text-sm text-gray-600">voeg een bijpassende afbeelding toe die bij de vacature hoort.</p>                                <input
+                                <p class="mb-2 text-sm text-gray-600">Voeg een passende afbeelding toe (max. 2 MB).</p>                                <input
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
                                     aria-describedby="Banner van de vacature uploaden" id="image_url" name="image_url" type="file">
                             </div>
