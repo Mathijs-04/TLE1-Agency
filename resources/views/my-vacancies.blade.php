@@ -190,34 +190,55 @@ use Illuminate\Support\Carbon;
                                         @endphp
 
                                         @if ($groupedMatches->has(1))
-                                            <div class="status-group">
-                                                <h3 class="status-heading">Geaccepteerd</h3>
-                                                @foreach ($groupedMatches[1] as $vacancymatch)
-                                                    @php
-                                                        // Datum formatteren
-                                                        $formattedDate = Carbon::parse($vacancymatch->start_date)->format('d-m-Y');
-                                                    @endphp
+                                            @foreach ($groupedMatches[1] as $vacancymatch)
+                                                @php
+                                                    // Datum formatteren
+                                                    $formattedDate = Carbon::parse($vacancymatch->start_date)->format('d-m-Y');
+                                                @endphp
 
-                                                    <div class="flex items-center space-x-4 my-2">
-                                                        <!-- SVG -->
-                                                        <svg width="16" height="19" viewBox="0 0 16 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M15 19V17C15 15.9391 14.5786 14.9217 13.8284 14.1716C13.0783 13.4214 12.0609 13 11 13H5C3.93913 13 2.92172 13.4214 2.17157 14.1716C1.42143 14.9217 1 15.9391 1 17V19"
-                                                                stroke="#92AA83" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                            <path
-                                                                d="M8 9C10.2091 9 12 7.20914 12 5C12 2.79086 10.2091 1 8 1C5.79086 1 4 2.79086 4 5C4 7.20914 5.79086 9 8 9Z"
-                                                                stroke="#92AA83" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                                        </svg>
+                                                <div class="flex items-center space-x-4 my-2">
+                                                    <!-- SVG -->
+                                                    <svg width="16" height="19" viewBox="0 0 16 19" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M15 19V17C15 15.9391 14.5786 14.9217 13.8284 14.1716C13.0783 13.4214 12.0609 13 11 13H5C3.93913 13 2.92172 13.4214 2.17157 14.1716C1.42143 14.9217 1 15.9391 1 17V19"
+                                                            stroke="#92AA83" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"/>
+                                                        <path
+                                                            d="M8 9C10.2091 9 12 7.20914 12 5C12 2.79086 10.2091 1 8 1C5.79086 1 4 2.79086 4 5C4 7.20914 5.79086 9 8 9Z"
+                                                            stroke="#92AA83" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"/>
+                                                    </svg>
 
-                                                        <!-- User ID -->
-{{--                                                        <span class="text-gray-700 font-medium">{{ $vacancymatch->user_id }}</span>--}}
-
-                                                        <div class="">
-                                                            <p class="font-bold text-sm">Startdatum</p>
-                                                            <span class="text-gray-500">{{ $formattedDate }}</span>
-                                                        </div>
+                                                    <!-- User Info -->
+                                                    <div class="">
+                                                        <p class="font-bold text-sm">Startdatum</p>
+                                                        <span class="text-gray-500">{{ $formattedDate }}</span>
                                                     </div>
-                                                @endforeach
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <!-- Als er geen geaccepteerden zijn -->
+                                            <div class="status-group">
+                                                <div class="">
+                                                    <h3 class="status-heading">Aantal geaccepteerd</h3>
+                                                </div>
+                                                <div class="flex items-center space-x-4 my-2">
+                                                    <!-- SVG -->
+                                                    <svg width="16" height="19" viewBox="0 0 16 19" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M15 19V17C15 15.9391 14.5786 14.9217 13.8284 14.1716C13.0783 13.4214 12.0609 13 11 13H5C3.93913 13 2.92172 13.4214 2.17157 14.1716C1.42143 14.9217 1 15.9391 1 17V19"
+                                                            stroke="#92AA83" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"/>
+                                                        <path
+                                                            d="M8 9C10.2091 9 12 7.20914 12 5C12 2.79086 10.2091 1 8 1C5.79086 1 4 2.79086 4 5C4 7.20914 5.79086 9 8 9Z"
+                                                            stroke="#92AA83" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"/>
+                                                    </svg>
+
+                                                    <span class="text-gray-500">0</span>
+                                                </div>
                                             </div>
                                         @endif
 
