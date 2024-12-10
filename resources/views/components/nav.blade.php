@@ -44,7 +44,7 @@
                 <a href="{{ route('company.index')}}"
                    class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
                 @if(Request::is('company.index')) text-yellow-400 font-custom font-bold @endif">
-                    Mijn {{ Auth::user()->name }} Pagina
+                    Mijn Bedrijfspagina
                 </a>
 
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
