@@ -47,7 +47,6 @@
                     Mijn {{ Auth::user()->name }} Pagina
                 </a>
 
-
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                    class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400 font-custom font-bold">
                     Uitloggen
