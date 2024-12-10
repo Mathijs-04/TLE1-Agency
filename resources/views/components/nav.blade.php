@@ -23,7 +23,7 @@
 
         <a href="/404" class="text-gray-800 text-[18px] font-radikal px-4 py-2 hover:text-violetOH-500 hover:underline
             @if(Request::is('contact')) text-violetOH-500 font-custom font-bold @endif ">Contact</a>
-        <a href="/404" class="text-gray-800 text-[18px] font-radikal px-4 py-2 hover:text-violetOH-500 hover:underline
+        <a href="{{route('vacatures.index')}}" class="text-gray-800 text-[18px] font-radikal px-4 py-2 hover:text-violetOH-500 hover:underline
             @if(Request::is('vacatures')) text-violetOH-500 font-custom font-bold @endif">Vacatures</a>
     </div>
 
