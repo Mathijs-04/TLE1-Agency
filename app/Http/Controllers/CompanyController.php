@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
+use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,18 +11,15 @@ class CompanyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($request)
+    public function index()
     {
         $user = Auth::user();
+        // Haal alle vacatures van dit bedrijf op
+        $vacancies = Vacancy::where('employer_id', $user->id)->get();
 
-        if (!Profile::where('employer_id', $user->id)->exists()) {
-            return redirect('/');
-        }
-
-        $profile = Profile::where('employer_id', $user->id)->first();
-
-        return view('company.index', compact('profile'));
+        return view('company.index', compact('vacancies'));
     }
+
 
     /**
      * Show the form for creating a new resource.
