@@ -5,7 +5,7 @@
     @section('title', 'Mijn vacatures')
 
     <!-- Toggle knop met sliding effect -->
-    <div class="container mx-auto mt-10 text-center">
+    <div class="container mx-auto mt-10 mb-8 text-center">
         <div id="toggleSwitch"
              class="relative inline-flex items-center w-64 h-10 rounded-full bg-gray-200 cursor-pointer">
             <!-- Sliding achtergrond -->
@@ -24,9 +24,10 @@
     </div>
 
     <!-- Secties -->
-    <div class="container mx-auto mt-6">
+    <div class="">
         <!-- Sectie 1 -->
-        <div id="section1" class="bg-white p-6 shadow rounded">
+        <div id="section1" class="">
+
             <div class="bg-gray-100 min-h-screen flex flex-col items-center">
                 <button
                     class="mt-10 px-4 py-2 bg-violetOH-500 text-white text-lg font-medium rounded-lg flex items-center justify-center shadow-lg hover:bg-violetOH-600">
@@ -65,33 +66,58 @@
         </div>
 
         <!-- Sectie 2 -->
-        <div id="section2" class="bg-white p-6 shadow rounded hidden">
+        <div id="section2" class="">
             <div class="bg-gray-100 min-h-screen flex flex-col items-center">
                 <div class="vacancy-list w-full max-w-4xl space-y-6 mt-10 mb-10">
                     @if ($vacancies->isEmpty())
                         <p class="text-gray-500 text-center">Er zijn momenteel geen vacatures.</p>
                     @else
                         @foreach ($vacancies as $vacancy)
-                            <div class="vacature bg-white p-6 rounded-lg shadow-lg flex items-center justify-between">
-                                <img src="{{ asset('storage/' . $vacancy->image_url) }}"
-                                     alt="{{ $vacancy->name }} image" class="w-40 h-24 object-cover">
-                                <div class="flex-1 ml-6">
-                                    <h2 class="text-xl font-bold">
-                                        <a href="{{ route('mijn-vacatures.show', $vacancy->id) }}"
-                                           class="text-blue-600 hover:underline focus:outline focus:outline-2 focus:outline-blue-500">
-                                            {{ $vacancy->name }}
-                                        </a>
-                                    </h2>
+                            <div class="vacature bg-white p-6 rounded-lg shadow-lg">
+                                <!-- Vacature Details -->
+                                <div class="flex items-center justify-between">
+                                    <img src="{{ asset('storage/' . $vacancy->image_url) }}"
+                                         alt="{{ $vacancy->name }} image" class="w-40 h-24 object-cover">
+                                    <div class="flex-1 ml-6">
+                                        <h2 class="text-xl font-bold">
+                                            <a href="{{ route('mijn-vacatures.show', $vacancy->id) }}"
+                                               class="text-blue-600 hover:underline focus:outline focus:outline-2 focus:outline-blue-500">
+                                                {{ $vacancy->name }}
+                                            </a>
+                                        </h2>
+                                        <p class="text-gray-600">Wachtenden: {{ $vacancy->waiting }}</p>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div id="app">
+                                            <button
+                                                class="inviteButton border-b-4 border-[#7c1a51] px-6 py-3 bg-violetOH-500 text-white font-medium rounded-lg hover:bg-violetOH-600"
+                                                data-waiting="{{$vacancy->waiting}}">
+                                                Uitnodigen
+                                            </button>
+                                        </div>
+                                        <!-- Pijl voor uitklappen -->
+                                        <button
+                                            class="ml-4 flex items-center justify-center w-8 h-8 text-gray-600 hover:text-violetOH-500 transform transition-transform"
+                                            data-id="info-{{ $vacancy->id }}">
+                                            <svg class="dropdown" width="18" height="11" viewBox="0 0 18 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1 1L9 9L17 1" stroke="#AA0160" stroke-width="2" stroke-linecap="round"/>
+                                            </svg>
+
+                                        </button>
+                                    </div>
                                 </div>
-                                <div id="app">
-                                    <button
-                                        class="inviteButton border-b-4 border-[#7c1a51] px-6 py-3 bg-violetOH-500 text-white font-medium rounded-lg hover:bg-violetOH-600"
-                                        data-waiting="{{$vacancy->waiting}}">
-                                        Uitnodigen
-                                    </button>
+
+                                <!-- Uitklapbare Inhoud -->
+                                <div id="info-{{ $vacancy->id }}" class="hidden mt-4 p-4 bg-gray-100 rounded-lg">
+                                    <p class="text-gray-700">
+                                        Hier kun je gedetailleerde informatie over de vacature tonen, zoals een beschrijving,
+                                        vereisten of andere relevante details.
+                                    </p>
                                 </div>
                             </div>
+
                         @endforeach
+
                     @endif
                 </div>
             </div>
@@ -138,6 +164,28 @@
 
         // Stel bij het laden van de pagina de UI in
         document.addEventListener('DOMContentLoaded', updateUI);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButtons = document.querySelectorAll('.dropdown');
+
+            toggleButtons.forEach(button => {
+                const parentButton = button.parentElement;
+                parentButton.addEventListener('click', () => {
+                    const contentId = parentButton.getAttribute('data-id');
+                    const content = document.getElementById(contentId);
+
+                    if (content.classList.contains('hidden')) {
+                        content.classList.remove('hidden');
+                        button.style.transform = 'rotate(180deg)';
+                    } else {
+                        content.classList.add('hidden');
+                        button.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+        });
     </script>
 
 
