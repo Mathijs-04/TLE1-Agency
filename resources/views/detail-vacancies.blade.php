@@ -52,10 +52,10 @@
 
             <div class="mt-6 ml-10 flex justify-between">
                 <a
-                    href="{{ route('mijn-vacatures.index') }}"
+                    href="javascript:history.back()"
                     class="inline-block bg-violetOH-500 text-white px-6 py-3 rounded-lg shadow hover:bg-violetOH-600"
                 >
-                    Terug naar overzicht
+                    Vorige pagina
                 </a>
                 <a
                     href="{{ route('mijn-vacatures.edit', $vacancy->id) }}"
