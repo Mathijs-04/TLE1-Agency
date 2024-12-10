@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VacancyController;
+use App\Http\Controllers\MatchsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/vacatures', function () {
-    return view('vacatures');
-});
+//Route::get('/vacatures', function () {
+//    return view('vacatures');
+//});
 
 Route::get('/', function () {
     return view('home');
@@ -27,6 +28,10 @@ Route::get('/404', function () {
 Route::get('/info-werkgever', function () {
     return view('info-werkgever');
 })->name('info-werkgever');
+
+Route::get('/vacatures', [VacancyController::class, 'showAllVacancy'])->name('vacatures.index');
+
+
 
 Route::resource('my-vacancies', VacancyController::class);
 
