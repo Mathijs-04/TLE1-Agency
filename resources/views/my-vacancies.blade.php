@@ -7,6 +7,8 @@ use Illuminate\Support\Carbon;
 <x-layout>
 
     <script src="{{ asset('js/popup.js') }}"></script>
+    <script src="{{ asset('js/switch.js') }}"></script>
+    <script src="{{ asset('js/dropdown.js') }}"></script>
 
     @section('title', 'Mijn vacatures')
 
@@ -36,7 +38,7 @@ use Illuminate\Support\Carbon;
 
             <div class="bg-gray-100 min-h-screen flex flex-col items-center">
                 <button
-                    class="mt-10 px-4 py-2 bg-violetOH-500 text-white text-lg font-medium rounded-lg flex items-center justify-center shadow-lg hover:bg-violetOH-600">
+                    class="mt-10 px-4 py-2 bg-violetOH-500 text-white text-lg font-medium rounded-lg flex  shadow-lg hover:bg-violetOH-600">
                     <a href="{{ url(route('mijn-vacatures.create')) }}" class="flex items-center">
                         <span class="mr-2">Creëer nieuwe vacature</span>
                     </a>
@@ -64,6 +66,41 @@ use Illuminate\Support\Carbon;
                                         Details
                                     </a>
                                 </div>
+                                <form action="{{route('mijn-vacatures.destroy', $vacancy->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="h-[52px] flex items-center justify-center group ml-5">
+                                        <svg
+                                            id="Layer_1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 512 512"
+                                            class="w-6 h-6 transition-colors"
+                                        >
+                                            <defs>
+                                                <style>
+                                                    .cls-1 {
+                                                        fill: #c9c9c9;
+                                                    }
+
+                                                    .group:hover .cls-1 {
+                                                        fill: #aa0160;
+                                                    }
+
+                                                    .cls-2 {
+                                                        fill: #fff;
+                                                    }
+                                                </style>
+                                            </defs>
+                                            <rect class="cls-1" x="96" y="111.67" width="312" height="374"/>
+                                            <path
+                                                class="cls-1"
+                                                d="M469.33,85.33h-106.67v-42.67c0-23.56-19.1-42.67-42.67-42.67h-128c-23.56,0-42.67,19.1-42.67,42.67v42.67H42.67v42.67h42.67v320c0,35.35,28.65,64,64,64h213.33c35.35,0,64-28.65,64-64V128h42.67v-42.67ZM192,42.67h128v42.67h-128v-42.67ZM384,448c0,11.78-9.55,21.33-21.33,21.33h-213.33c-11.78,0-21.33-9.55-21.33-21.33V128h256v320Z"
+                                            />
+                                            <rect class="cls-2" x="192" y="213.33" width="42.67" height="170.67"/>
+                                            <rect class="cls-2" x="277.33" y="213.33" width="42.67" height="170.67"/>
+                                        </svg>
+                                    </button>
+                                </form>
                             </div>
                         @endforeach
                     @endif
@@ -233,70 +270,4 @@ use Illuminate\Support\Carbon;
             </div>
         </div>
     </div>
-
-    <!-- JavaScript -->
-    <script>
-        const toggleSwitch = document.getElementById('toggleSwitch');
-        const slider = document.getElementById('slider');
-        const section1Label = document.getElementById('section1Label');
-        const section2Label = document.getElementById('section2Label');
-        const section1 = document.getElementById('section1');
-        const section2 = document.getElementById('section2');
-
-        let activeSection = 1; // Initialiseer met sectie 1 als actief
-
-        // Functie om de UI bij te werken op basis van de actieve sectie
-        function updateUI() {
-            if (activeSection === 1) {
-                slider.style.transform = 'translateX(0)';
-                section1.classList.remove('hidden');
-                section2.classList.add('hidden');
-                section1Label.classList.add('text-white');
-                section1Label.classList.remove('text-gray-900');
-                section2Label.classList.add('text-gray-900');
-                section2Label.classList.remove('text-white');
-            } else {
-                slider.style.transform = 'translateX(100%)';
-                section2.classList.remove('hidden');
-                section1.classList.add('hidden');
-                section2Label.classList.add('text-white');
-                section2Label.classList.remove('text-gray-900');
-                section1Label.classList.add('text-gray-900');
-                section1Label.classList.remove('text-white');
-            }
-        }
-
-        // Eventlistener voor klikken op de toggle
-        toggleSwitch.addEventListener('click', () => {
-            activeSection = activeSection === 1 ? 2 : 1;
-            updateUI();
-        });
-
-        // Stel bij het laden van de pagina de UI in
-        document.addEventListener('DOMContentLoaded', updateUI);
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleButtons = document.querySelectorAll('.dropdown');
-
-            toggleButtons.forEach(button => {
-                const parentButton = button.parentElement;
-                parentButton.addEventListener('click', () => {
-                    const contentId = parentButton.getAttribute('data-id');
-                    const content = document.getElementById(contentId);
-
-                    if (content.classList.contains('hidden')) {
-                        content.classList.remove('hidden');
-                        button.style.transform = 'rotate(180deg)';
-                    } else {
-                        content.classList.add('hidden');
-                        button.style.transform = 'rotate(0deg)';
-                    }
-                });
-            });
-        });
-    </script>
-
-
 </x-layout>
