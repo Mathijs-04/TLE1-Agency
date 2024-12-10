@@ -116,57 +116,50 @@
                                 @enderror
                             </div>
 
-                            {{-- Aanvullende eisen checkbox --}}
+                            {{-- Aanvullende eisen (optioneel) --}}
                             <div class="sm:col-span-2">
-                                <label for="requirement" class="block mb-2 text-sm font-medium text-gray-900">Aanvullende eisen (optioneel)</label>
+                                <label for="requirements" class="block mb-2 text-sm font-medium text-gray-900">Aanvullende eisen (optioneel)</label>
                                 <p class="mb-2 text-sm text-gray-600">Bijvoorbeeld: Rijbewijs B, minimaal MBO-niveau, Nederlands vereist</p>
-                                <div id="checkboxContainer" class="space-y-4">
+                                <div id="inputContainer" class="space-y-4">
                                     <div class="flex items-center space-x-3">
-                                        <input type="text" placeholder="Bijvoorbeeld: Rijbewijs B"
-                                               class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#AA0061] focus:border-[#AA0061] p-2.5"
-                                               name="requirement"/>
+                                        <input type="text" name="requirements[]" placeholder="Bijvoorbeeld: Rijbewijs B"
+                                               class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#AA0061] focus:border-[#AA0061] p-2.5">
                                     </div>
                                 </div>
                             </div>
-                                <button id="addCheckboxBtn" type="button"
-                                        class="mt-4 w-[150px] bg-[#AA0061] text-white font-medium text-xs rounded-lg px-2 py-1.5 hover:bg-primary-600 focus:outline-none focus:ring-[#AA0061] focus:ring-[#AA0061]">
-                                    Extra veld
-                                </button>
-                            </div>
+                            <button id="addInputBtn" type="button"
+                                    class="mt-0 w-[150px] bg-[#AA0061] text-white font-medium text-xs rounded-lg px-2 py-1.5 hover:bg-primary-600 focus:outline-none focus:ring-[#AA0061] focus:ring-[#AA0061]">
+                                Extra veld
+                            </button>
 
                             <script>
                                 document.addEventListener('DOMContentLoaded', () => {
-                                    const checkboxContainer = document.getElementById('checkboxContainer');
-                                    const addCheckboxBtn = document.getElementById('addCheckboxBtn');
+                                    const inputContainer = document.getElementById('inputContainer');
+                                    const addInputBtn = document.getElementById('addInputBtn');
 
-                                    if (checkboxContainer && addCheckboxBtn) {
-                                        addCheckboxBtn.addEventListener('click', () => {
-                                            const newCheckboxDiv = document.createElement('div');
-                                            newCheckboxDiv.classList.add('flex', 'items-center', 'space-x-3');
-
-                                            const newCheckbox = document.createElement('input');
-                                            newCheckbox.type = 'checkbox';
-                                            newCheckbox.classList.add('w-5', 'h-5', 'bg-gray-50', 'border', 'border-gray-300', 'text-primary-500', 'rounded', 'focus:ring-primary-500', 'focus:ring-2');
+                                    if (inputContainer && addInputBtn) {
+                                        addInputBtn.addEventListener('click', () => {
+                                            const newInputDiv = document.createElement('div');
+                                            newInputDiv.classList.add('flex', 'items-center', 'space-x-3');
 
                                             const newInput = document.createElement('input');
                                             newInput.type = 'text';
+                                            newInput.name = 'requirements[]';
                                             newInput.placeholder = 'Bijvoorbeeld: Rijbewijs';
                                             newInput.classList.add('block', 'w-full', 'text-sm', 'text-gray-900', 'bg-gray-50', 'rounded-lg', 'border', 'border-gray-300', 'focus:ring-primary-500', 'focus:border-primary-500', 'p-2.5');
 
-                                            newCheckboxDiv.appendChild(newCheckbox);
-                                            newCheckboxDiv.appendChild(newInput);
-
-                                            checkboxContainer.appendChild(newCheckboxDiv);
+                                            newInputDiv.appendChild(newInput);
+                                            inputContainer.appendChild(newInputDiv);
                                         });
                                     } else {
-                                        console.error('Checkbox container or add button not found.');
+                                        console.error('Input container or add button not found.');
                                     }
                                 });
                             </script>
-
+                            
                             {{-- Afbeelding uploaden --}}
                             <div class="sm:col-span-2">
-                                <label class="block mb-0 text-sm font-medium text-gray-900" for="image_url">Afbeelding  uploaden (optioneel)</label>
+                                <label class="block mt-2 mb-0 text-sm font-medium text-gray-900" for="image_url">Afbeelding  uploaden (optioneel)</label>
                                 <p class="mb-2 text-sm text-gray-600">voeg een bijpassende afbeelding toe die bij de vacature hoort.</p>                                <input
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
                                     aria-describedby="Banner van de vacature uploaden" id="image_url" name="image_url" type="file">
