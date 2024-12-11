@@ -50,4 +50,10 @@ class User extends Authenticatable
     public function vacancy(): BelongsTo{
         return $this->belongsTo(Vacancy::class);
     }
+
+    public function matches()
+    {
+        return $this->hasMany(Matchs::class);
+    }
+
 }
