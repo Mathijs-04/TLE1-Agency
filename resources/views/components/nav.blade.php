@@ -6,18 +6,19 @@
     <!-- Midden navigatie-items -->
     <div class="flex gap-5 z-10 justify-center items-center absolute left-1/2 transform -translate-x-1/2">
 
-        <!-- Dropdown About -->
+        <!-- Dropdown Informatie -->
         <div class="relative group">
             <span class="text-gray-800 text-[18px] font-radikal px-4 py-2 hover:text-violetOH-500 hover:underline cursor-pointer
-                @if(Request::is('about-us') || Request::is('open-hiring')) text-violetOH-500 @endif
+                @if(Request::is('info-werkgever') || Request::is('Werkzoekend')) text-violetOH-500 font-custom font-bold underline @endif
             ">
-                Open Hiring
+                Informatie
             </span>
-            <div class="absolute top-full left-1/2 transform -translate-x-1/2 bg-violetOH-500 p-4 rounded-lg shadow-lg opacity-0 transition-all duration-300 h-0 overflow-hidden min-w-[200px] group-hover:h-auto group-hover:opacity-100 group-focus-within:h-auto group-focus-within:opacity-100">
+            <div
+                class="absolute top-full left-1/2 transform -translate-x-1/2 bg-violetOH-500 p-4 rounded-lg shadow-lg opacity-0 transition-all duration-300 h-0 overflow-hidden min-w-[200px] group-hover:h-auto group-hover:opacity-100 group-focus-within:h-auto group-focus-within:opacity-100">
                 <a href="/404" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
-                @if(Request::is('about-us')) text-yellow-400 @endif font-custom font-bold">Over ons</a>
-                <a href="/404" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
-                @if(Request::is('open-hiring')) text-yellow-400 @endif font-custom font-bold">Hoe werkt Open Hiring?</a>
+                @if(Request::is('Werkzoekend')) text-yellow-400 font-bold @endif font-custom ">Werkzoekend</a>
+                <a href="/info-werkgever" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
+                @if(Request::is('info-werkgever')) text-yellow-400 font-custom font-bold @endif">Werkgever</a>
             </div>
         </div>
 
@@ -34,13 +35,20 @@
                 @if(Request::is('profile') || Request::is('vacatures') || Request::is('uitnodigingen'))  @endif font-custom ">
                 Profiel
             </a>
-            <div class="absolute top-full right-0 bg-violetOH-500 p-4 rounded-lg shadow-lg opacity-0 transition-all duration-300 h-0 overflow-hidden min-w-[200px] group-hover:h-auto group-hover:opacity-100 group-focus-within:h-auto group-focus-within:opacity-100">
+            <div
+                class="absolute top-full right-0 bg-violetOH-500 p-4 rounded-lg shadow-lg opacity-0 transition-all duration-300 h-0 overflow-hidden min-w-[200px] group-hover:h-auto group-hover:opacity-100 group-focus-within:h-auto group-focus-within:opacity-100">
                 <a href="/profile" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
                 @if(Request::is('profile')) text-yellow-400 font-custom font-bold @endif ">Mijn Profiel</a>
                 <a href="/mijn-vacatures" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
                 @if(Request::is('vacatures')) text-yellow-400 font-custom font-bold @endif ">Mijn Vacatures</a>
                 <a href="/mijn-uitnodigingen" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
                 @if(Request::is('uitnodigingen')) text-yellow-400 font-custom font-bold @endif ">Mijn Uitnodigingen</a>
+
+                <a href="{{ route('company.index')}}"
+                   class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
+                @if(Request::is('company.index')) text-yellow-400 font-custom font-bold @endif">
+                    Mijn Bedrijfspagina
+                </a>
 
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                    class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400 font-custom font-bold">

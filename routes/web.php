@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
@@ -25,9 +24,9 @@ Route::get('/404', function () {
     return view('404');
 })->name('404');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/info-werkgever', function () {
+    return view('info-werkgever');
+})->name('info-werkgever');
 
 Route::middleware('auth')->group(function () {
     Route::resource('mijn-vacatures', VacancyController::class);
@@ -44,4 +43,13 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Route::middleware('auth')->prefix('company')->name('company.')->group(function () {
+    Route::get('index', [CompanyController::class, 'index'])->name('index');
+    Route::get('create', [CompanyController::class, 'create'])->name('create');
+    Route::post('store', [CompanyController::class, 'store'])->name('store');
+});
+
+Route::get('/company/edit', [CompanyController::class, 'edit'])->name('company.edit');
+Route::put('/company/update', [CompanyController::class, 'update'])->name('company.update');
 
