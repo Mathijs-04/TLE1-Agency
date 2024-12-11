@@ -37,12 +37,12 @@
 
                             {{-- Postcode --}}
                             <div class="">
-                                <label for="postcode" class="block mb-2 text-sm font-medium text-gray-900">Postcode <span class="text-violetOH-500">*</span> </label>
+                                <label for="postalcode" class="block mb-2 text-sm font-medium text-gray-900">Postcode <span class="text-violetOH-500">*</span> </label>
                                 <input type="text" name="postalcode" id="postcode"
-                                       class="bg-gray-50 border @error('postcode') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
+                                       class="bg-gray-50 border @error('postalcode') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: 1012 AB" required=""
                                        value="{{ old('postalcode') }}">
-                                @error('postcode')
+                                @error('postalcode')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
