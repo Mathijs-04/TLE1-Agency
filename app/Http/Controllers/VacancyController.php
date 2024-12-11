@@ -25,7 +25,7 @@ class VacancyController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'salary' => 'required|numeric|min:0',
-            'postalcode' => 'required|string|max:10',
+            'postalcode' => ['required', 'regex:/^\d{4}[A-Za-z]{2}$/'],
             'housenumber' => 'required|numeric|min:1',
             'streetname' => 'required|string|max:255',
             'city' => 'required|string|max:255',
@@ -35,7 +35,69 @@ class VacancyController extends Controller
             'requirements' => 'array',
             'requirements.*' => 'string|nullable',
             'image_url' => 'nullable|image|max:2048|mimes:jpeg,jpg,png,webp',
+        ],[
+            // Name Validatie
+            'name.required' => 'Een naam is verplicht.',
+            'name.string' => 'De naam moet een tekst zijn.',
+            'name.max' => 'De naam mag niet meer dan 255 tekens bevatten.',
+
+            // Salary Validatie
+            'salary.required' => 'Een salarisindicatie is verplicht.',
+            'salary.numeric' => 'Het salaris moet een numerieke waarde zijn.',
+            'salary.min' => 'Het salaris mag niet negatief zijn.',
+
+            // Postcode Validatie
+            'postalcode.required' => 'Een postcode is verplicht.',
+            'postalcode.regex' => 'De ingevoerde postcode is onjuist. Gebruik het formaat: 1234AB.',
+
+
+            // Huisnummer Validatie
+            'housenumber.required' => 'Een huisnummer is verplicht.',
+            'housenumber.numeric' => 'Het huisnummer moet een numerieke waarde zijn.',
+            'housenumber.min' => 'Het huisnummer moet minstens 1 zijn.',
+
+            // Straatnaam Validatie
+            'streetname.required' => 'Een straatnaam is verplicht.',
+            'streetname.string' => 'De straatnaam moet een tekst zijn.',
+            'streetname.max' => 'De straatnaam mag niet meer dan 255 tekens bevatten.',
+
+            // Plaats Validatie
+            'city.required' => 'Een plaats is verplicht.',
+            'city.string' => 'De plaats moet een tekst zijn.',
+            'city.max' => 'De plaats mag niet meer dan 255 tekens bevatten.',
+
+            // Uren Validatie
+            'hours.required' => 'Het aantal uren per week is verplicht.',
+            'hours.numeric' => 'Het aantal uren moet een numerieke waarde zijn.',
+            'hours.min' => 'Het aantal uren mag niet kleiner zijn dan 0.',
+
+            // Contract Type Validatie
+            'contract_type.required' => 'Het type contract is verplicht.',
+            'contract_type.string' => 'Het type contract moet een tekst zijn.',
+
+            // Beschrijving Validatie
+            'description.string' => 'De beschrijving moet een tekst zijn.',
+
+            // Vereisten Validatie
+            'requirement.string' => 'De vereisten moeten een tekst zijn.',
+
+            // Afbeelding Validatie
+            'image_url.image' => 'Het geüploade bestand moet een afbeelding zijn.',
+            'image_url.max' => 'De afbeelding mag niet groter zijn dan 2 MB.',
+
+            // Wachtende Validatie
+            'waiting.integer' => 'Het aantal wachtende moet een geheel getal zijn.',
+            'waiting.min' => 'Het aantal wachtende mag niet kleiner zijn dan 0.',
+
+            // Beschikbare Posities Validatie
+            'available_positions.integer' => 'Het aantal beschikbare posities moet een geheel getal zijn.',
+            'available_positions.min' => 'Het aantal beschikbare posities mag niet kleiner zijn dan 0.',
+
+            // Werkgever-ID Validatie
+            'employer_id.integer' => 'De werkgever-ID moet een geheel getal zijn.',
+            'employer_id.min' => 'De werkgever-ID mag niet kleiner zijn dan 0.',
         ]);
+
 
         $vacancy = new Vacancy();
         $employerId = auth()->user()->employer_id;
