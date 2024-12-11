@@ -2,9 +2,13 @@
     @section('title', 'Mijn bedrijfspagina')
     <div class="max-w-7xl mx-auto px-4 py-8 space-y-12">
         <!-- Titel gecentreerd -->
-        <header class="text-center">
+        <header class="flex justify-between items-center">
             <h1 class="text-5xl font-extrabold text-violetOH-500">{{ $profile->title }}</h1>
+            <a href="{{ route('company.edit') }}" class="text-sm bg-violetOH-500 text-white font-bold px-4 py-2 rounded-lg">
+                Profiel Bewerken
+            </a>
         </header>
+
 
         <!-- Over Ons en Logo Sectie -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-gray-50 p-8 rounded-lg shadow-lg">
@@ -17,8 +21,7 @@
             </div>
             <!-- Logo rechts -->
             <div class="flex justify-center">
-                <img src="{{ asset('storage/images/' . $profile->image_url) }}" class="h-60 w-auto rounded-lg shadow-lg"
-                     alt="Logo">
+                <img src="{{ asset('storage/' . $profile->image_url) }}" class="h-60 w-auto rounded-lg shadow-lg" alt="Logo">
             </div>
         </section>
 

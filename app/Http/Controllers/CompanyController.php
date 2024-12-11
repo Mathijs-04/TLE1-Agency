@@ -51,10 +51,10 @@ class CompanyController extends Controller
 
         // Afbeelding uploaden
         if ($request->hasFile('image_url')) {
-            // De afbeelding opslaan in de 'public/storage/images' map
             $imagePath = $request->file('image_url')->store('images', 'public');
-            $profile->image_url = $imagePath;  // Sla het pad op in de database
+            $profile->image_url = $imagePath; // Alleen het relatieve pad opslaan
         }
+
 
         // Vul de andere velden in
         $profile->title = $request->input('title');
@@ -67,4 +67,50 @@ class CompanyController extends Controller
 
         return redirect()->route('company.index'); // Verwijst naar een profieloverzicht, pas de route aan indien nodig
     }
+
+    public function edit()
+    {
+        $user = Auth::user();
+        $profile = Profile::where('employer_id', $user->employer_id)->first();
+
+        if (!$profile) {
+            return redirect()->route('company.create');
+        }
+
+        return view('company.edit', compact('profile'));
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $profile = Profile::where('employer_id', $user->employer_id)->first();
+
+        if (!$profile) {
+            return redirect()->route('company.create');
+        }
+
+        // Validatie
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'image_url' => 'nullable|image|max:2048',
+            'city' => 'required|string|max:255',
+        ]);
+
+        // Afbeelding uploaden
+        if ($request->hasFile('image_url')) {
+            $imagePath = $request->file('image_url')->store('images', 'public');
+            $profile->image_url = $imagePath;
+        }
+
+        // Velden updaten
+        $profile->title = $request->input('title');
+        $profile->description = $request->input('description');
+        $profile->city = $request->input('city');
+
+        $profile->save();
+
+        return redirect()->route('company.index')->with('success', 'Bedrijfspagina bijgewerkt.');
+    }
+
 }

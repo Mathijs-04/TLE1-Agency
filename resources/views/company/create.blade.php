@@ -1,38 +1,64 @@
 <x-layout>
     @section('title', 'Maak je Bedrijfspagina')
-        <div class="container mx-auto p-4">
-            <h2 class="text-xl font-bold mb-4">Maak je Bedrijfspagina</h2>
+    <div class="flex justify-center items-center min-h-screen bg-gray-100">
+        <div class="bg-white shadow-lg rounded-xl p-12 w-full max-w-2xl">
+            <!-- Titel -->
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-4">Maak je Bedrijfspagina</h2>
+            <p class="text-center text-gray-500 mb-10">Vul de onderstaande gegevens in om je pagina te maken</p>
 
             <form action="{{ route('company.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <div class="mb-4">
-                    <label for="title" class="block text-sm font-medium text-gray-700">Bedrijfstitel</label>
-                    <input type="text" id="title" name="title" value="{{ old('title') }}" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
-                    @error('title') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                <!-- Bedrijfstitel -->
+                <div class="mb-8">
+                    <label for="title" class="block text-gray-700 font-medium mb-2">Bedrijfstitel</label>
+                    <input id="title" name="title" type="text"
+                           class="block w-full h-14 px-4 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
+                           placeholder="Voer de titel van je bedrijf in" value="{{ old('title') }}" required autofocus>
+                    @error('title')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                 </div>
 
-                <div class="mb-4">
-                    <label for="description" class="block text-sm font-medium text-gray-700">Beschrijving</label>
-                    <textarea id="description" name="description" rows="4" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>{{ old('description') }}</textarea>
-                    @error('description') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                <!-- Beschrijving -->
+                <div class="mb-8">
+                    <label for="description" class="block text-gray-700 font-medium mb-2">Beschrijving</label>
+                    <textarea id="description" name="description" rows="8"
+                              class="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
+                              placeholder="Voeg een uitgebreide beschrijving toe van je bedrijf" required>{{ old('description') }}</textarea>
+                    @error('description')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                 </div>
 
-                <div class="mb-4">
-                    <label for="image_url" class="block text-sm font-medium text-gray-700">Afbeelding URL (optioneel)</label>
-                    <input type="file" id="image_url" name="image_url" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
-                    @error('image_url') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                <!-- Afbeelding URL -->
+                <div class="mb-8">
+                    <label for="image_url" class="block text-gray-700 font-medium mb-2">Afbeelding URL</label>
+                    <input id="image_url" name="image_url" type="file">
+                    @error('image_url')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                 </div>
 
-                <div class="mb-4">
-                    <label for="city" class="block text-sm font-medium text-gray-700">Stad</label>
-                    <input type="text" id="city" name="city" value="{{ old('city') }}" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
-                    @error('city') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                <!-- Stad -->
+                <div class="mb-8">
+                    <label for="city" class="block text-gray-700 font-medium mb-2">Stad (optioneel)</label>
+                    <input id="city" name="city" type="text"
+                           class="block w-full h-14 px-4 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
+                           placeholder="Voer de stad in" value="{{ old('city') }}">
+                    @error('city')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                 </div>
 
-                <div class="flex justify-end">
-                    <button type="submit" class="bg-violetOH-500 text-white px-4 py-2 rounded-md">Maak Bedrijfspagina</button>
+                <!-- Actie -->
+                <div class="flex items-center justify-between">
+                    <button type="submit"
+                            class="bg-violetOH-500 hover:bg-violetOH-600 text-white font-bold px-8 py-3 rounded-lg shadow-md focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200">
+                        Maak Bedrijfspagina
+                    </button>
                 </div>
             </form>
         </div>
+    </div>
 </x-layout>

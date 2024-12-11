@@ -48,3 +48,7 @@ Route::middleware('auth')->prefix('company')->name('company.')->group(function (
     Route::get('create', [CompanyController::class, 'create'])->name('create');
     Route::post('store', [CompanyController::class, 'store'])->name('store');
 });
+
+Route::get('/company/edit', [CompanyController::class, 'edit'])->name('company.edit');
+Route::put('/company/update', [CompanyController::class, 'update'])->name('company.update');
+
