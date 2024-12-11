@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/test-email', function () {
     Mail::raw('Dit is een testmail', function ($message) {
-        $message->to('cwcpokemon@gmail.com')->subject('Test Email');
+        $message->to('1073412@hr.nl')->subject('Test Email');
     });
     return 'Testmail verzonden!';
 });
@@ -58,6 +58,14 @@ Route::get('/test-email', function () {
 Route::post('/vacancies/{vacancy}/invite/{user}', [VacancyController::class, 'inviteUserToJob'])->name('vacancies.invite');
 Route::get('/emails/invitation/accept/{match}', [InvitationController::class, 'accept'])->name('invitation.accept');
 Route::get('/emails/invitation/decline/{match}', [InvitationController::class, 'decline'])->name('invitation.decline');
+
+Route::post('/vacancies/{vacancy}/invite', [VacancyController::class, 'inviteUserToJob'])->name('vacancies.invite');
+Route::middleware('auth')->group(function () {
+    Route::post('/vacancies/{vacancy}/invite/{user}', [VacancyController::class, 'inviteUserToJob'])->name('vacancies.invite');
+    Route::get('/emails/invitation/accept/{match}', [InvitationController::class, 'accept'])->name('invitation.accept');
+    Route::get('/emails/invitation/decline/{match}', [InvitationController::class, 'decline'])->name('invitation.decline');
+});
+
 
 
 require __DIR__ . '/auth.php';
