@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VacancyController;
@@ -60,4 +61,13 @@ Route::get('/emails/invitation/decline/{match}', [InvitationController::class, '
 
 
 require __DIR__ . '/auth.php';
+
+Route::middleware('auth')->prefix('company')->name('company.')->group(function () {
+    Route::get('index', [CompanyController::class, 'index'])->name('index');
+    Route::get('create', [CompanyController::class, 'create'])->name('create');
+    Route::post('store', [CompanyController::class, 'store'])->name('store');
+});
+
+Route::get('/company/edit', [CompanyController::class, 'edit'])->name('company.edit');
+Route::put('/company/update', [CompanyController::class, 'update'])->name('company.update');
 

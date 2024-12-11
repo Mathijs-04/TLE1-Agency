@@ -7,42 +7,32 @@ use Illuminate\Http\Request;
 
 class VacancyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //ophalen van mijn vacatures met een check voor ingelogde user
         $vacancies = Vacancy::whereColumn(auth()->user()->employer_id, 'employer_id')->get();
         return view('my-vacancies', compact('vacancies'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
         return view('my-vacancies/create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'salary' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
+            'salary' => 'required|numeric|min:0',
+            'postalcode' => 'required|string|max:10',
+            'housenumber' => 'required|numeric|min:1',
+            'streetname' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
             'hours' => 'required|numeric|min:0',
             'contract_type' => 'required|string',
             'description' => 'nullable|string',
-            'requirement' => 'nullable|string',
-            'image_url' => 'nullable|image|max:2048',
-            'waiting' => 'nullable|integer|min:0',
-            'available_positions' => 'nullable|integer|min:0',
-            'employer_id' => 'nullable|integer|min:0',
+            'requirements' => 'array',
+            'requirements.*' => 'string|nullable',
+            'image_url' => 'nullable|image|max:2048|mimes:jpeg,jpg,png,webp',
         ]);
 
         $vacancy = new Vacancy();
@@ -55,23 +45,24 @@ class VacancyController extends Controller
 
         $vacancy->name = $request->input('name');
         $vacancy->salary = $request->input('salary');
-        $vacancy->location = $request->input('location');
+        $vacancy->postalcode = $request->input('postalcode');
+        $vacancy->housenumber = $request->input('housenumber');
+        $vacancy->streetname = $request->input('streetname');
+        $vacancy->city = $request->input('city');
         $vacancy->hours = $request->input('hours');
         $vacancy->contract_type = $request->input('contract_type');
         $vacancy->description = $request->input('description');
-        $vacancy->requirement = $request->input('requirement');
+        $vacancy->requirement = json_encode($request->input('requirements', []));
+
         $vacancy->waiting = $request->input('waiting', 3);
         $vacancy->available_positions = $request->input('available_positions', 1);
         $vacancy->employer_id = $employerId;
 
         $vacancy->save();
 
-        return view('detail-vacancies', compact('vacancy'));
+        return redirect()->route('mijn-vacatures.index')->with('success', 'Vacature succesvol aangemaakt.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $vacancy = Vacancy::find($id);
@@ -83,53 +74,54 @@ class VacancyController extends Controller
         return view('detail-vacancies', compact('vacancy'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
-        $vacancy = Vacancy::findOrFail($id); //a
+        $vacancy = Vacancy::findOrFail($id);
         return view('my-vacancies/edit', compact('vacancy'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
-
         $request->validate([
             'name' => 'required|string|max:255',
-            'salary' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
+            'salary' => 'required|numeric|min:0',
+            'postalcode' => 'required|string|max:10',
+            'housenumber' => 'required|numeric|min:1',
+            'streetname' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
             'hours' => 'required|numeric|min:0',
             'contract_type' => 'required|string',
             'description' => 'nullable|string',
-            'requirement' => 'nullable|string',
-            'image_url' => 'nullable|image|max:2048',
-            'waiting' => 'nullable|integer|min:0', // Optioneel veld
-            'available_positions' => 'nullable|integer|min:0', // Optioneel veld
-            'employer_id' => 'nullable|integer|min:0', // Laat employer_id optioneel
+            'requirements' => 'array',
+            'requirements.*' => 'string|nullable',
+            'image_url' => 'nullable|image|max:2048|mimes:jpeg,jpg,png,webp',
         ]);
 
         $vacancy = Vacancy::findOrFail($id);
 
-        // Alleen de toegestane velden bijwerken
-        $updateData = $request->except(['waiting', 'available_position', 'employer_id']);
+        $vacancy->name = $request->input('name');
+        $vacancy->salary = $request->input('salary');
+        $vacancy->postalcode = $request->input('postalcode');
+        $vacancy->housenumber = $request->input('housenumber');
+        $vacancy->streetname = $request->input('streetname');
+        $vacancy->city = $request->input('city');
+        $vacancy->hours = $request->input('hours');
+        $vacancy->contract_type = $request->input('contract_type');
+        $vacancy->description = $request->input('description');
+        $vacancy->requirement = json_encode($request->input('requirements', []));
 
-        $vacancy->update($updateData);
+        if ($request->hasFile('image_url')) {
+            $nameOfFile = $request->file('image_url')->store('images', 'public');
+            $vacancy->image_url = $nameOfFile;
+        }
 
-        return redirect()->route('mijn-vacatures.index')->with('success', 'Vacature succesvol geupdate.');
+        $vacancy->save();
+
+        return view('detail-vacancies', compact('vacancy'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
-        //deleten van mijn vacature
         $vacancy = Vacancy::find($id);
         $vacancy->delete();
         return redirect(route('mijn-vacatures.index'));
