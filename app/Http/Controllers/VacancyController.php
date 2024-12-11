@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Matches;
+use App\Models\User;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,7 @@ class VacancyController extends Controller
     public function index()
     {
         //ophalen van mijn vacatures met een check voor ingelogde user
-        $vacancies = Vacancy::with('matches')->whereColumn(auth()->user()->employer_id, 'employer_id')->get();
+        $vacancies = Vacancy::with(['matches.users'])->whereColumn(auth()->user()->employer_id, 'employer_id')->get();
         return view('my-vacancies', compact('vacancies'));
     }
 
