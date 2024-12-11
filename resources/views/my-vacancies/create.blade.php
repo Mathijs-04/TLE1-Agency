@@ -103,6 +103,9 @@
                                     <option value="full-time">full-time</option>
                                     <option value="part-time">part-time</option>
                                 </select>
+                                @error('contract_type')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             {{-- Beschrijving --}}
