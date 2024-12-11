@@ -195,7 +195,7 @@ use Illuminate\Support\Carbon;
                                         @foreach ([1, 2, 0] as $status)
                                             {{-- Eerst groen (1), dan rood (2), dan grijs (0) --}}
                                             <div class="status-group">
-                                                <h3 class="status-heading">
+                                                <h2 class="font-bold">
                                                     @if ($status === 1)
                                                         Geaccepteerd
                                                     @elseif ($status === 2)
@@ -203,7 +203,7 @@ use Illuminate\Support\Carbon;
                                                     @else
                                                         In Afwachting
                                                     @endif
-                                                </h3>
+                                                </h2>
 
                                                 @if ($groupedMatches->has($status) && $groupedMatches[$status]->isNotEmpty())
                                                     @foreach ($groupedMatches[$status] as $vacancymatch)
@@ -217,7 +217,7 @@ use Illuminate\Support\Carbon;
                                                             };
 
                                                             // Datum formatteren
-                                                            $formattedDate = Carbon::parse($vacancymatch->start_date)->format('d-m-Y');
+                                                            $formattedDate = Carbon::createFromTimestampMs($vacancymatch->start_datetime)->format('Y-m-d H:i')
                                                         @endphp
 
                                                         <div class="flex items-center justify-between space-x-4 my-2">
@@ -239,7 +239,10 @@ use Illuminate\Support\Carbon;
                                                                 @foreach ($vacancy->matches as $match)
                                                                     @if ($match->users)
                                                                         @if($match->users->id ===  $vacancymatch->user_id && $match->is_accepted === 1)
-                                                                            <p>{{ $match->users->name  }}</p>
+                                                                            <div class="flex gap-4 items-center">
+                                                                                <p class="">{{ $match->users->name }}</p>
+                                                                                <p class="text-sm text-gray-500">{{ $match->users->email }}</p>
+                                                                            </div>
                                                                         @elseif($match->users->id ===  $vacancymatch->user_id)
                                                                             <p>Anoniem</p>
                                                                         @endif
@@ -282,7 +285,6 @@ use Illuminate\Support\Carbon;
                                             </div>
                                         @endforeach
                                     </div>
-
 
 
                                 </div>
