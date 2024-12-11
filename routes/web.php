@@ -25,9 +25,9 @@ Route::get('/404', function () {
     return view('404');
 })->name('404');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/info-werkgever', function () {
+    return view('info-werkgever');
+})->name('info-werkgever');
 
 Route::resource('my-vacancies', VacancyController::class);
 
