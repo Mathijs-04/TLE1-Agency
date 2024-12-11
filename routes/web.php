@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
@@ -26,10 +27,6 @@ Route::get('/info-werkgever', function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('mijn-vacatures', VacancyController::class);
-});
-
-Route::middleware('auth')->group(function () {
-    Route::resource('mijn-uitnodigingen', InvitationController::class);
 });
 
 Route::middleware('auth')->group(function () {
