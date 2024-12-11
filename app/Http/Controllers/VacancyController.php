@@ -3,14 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vacancy;
+use App\Models\User; // Zorg dat dit hier staat
+use App\Models\Matchs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\JobInvitation;
+
 
 class VacancyController extends Controller
 {
     public function index()
     {
-        $vacancies = Vacancy::whereColumn(auth()->user()->employer_id, 'employer_id')->get();
-        return view('my-vacancies', compact('vacancies'));
+        $vacancies = Vacancy::where('employer_id', auth()->user()->employer_id)->get();
+//        $users = User::all(); // Haalt alle gebruikers op (je kunt dit filteren voor alleen werkzoekenden)
+        $users = User::where('role', 'user')->get();
+
+        return view('my-vacancies', compact('vacancies', 'users'));
+
+//        $vacancies = Vacancy::whereColumn(auth()->user()->employer_id, 'employer_id')->get();
+//        return view('my-vacancies', compact('vacancies'));
     }
 
     public function create()
@@ -135,22 +146,36 @@ class VacancyController extends Controller
     }
 
     // Uitnodigen van een gebruiker voor een vacature
-    public function inviteUserToJob(Request $request, $vacancyId, $userId)
+    public function inviteUserToJob(Request $request, $vacancyId)
     {
         $vacancy = Vacancy::findOrFail($vacancyId);
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        $userId = $request->input('user_id');
         $user = User::findOrFail($userId);
 
-        // Controleer of er al een match bestaat
+        if (!$user) {
+            abort(403, 'Deze gebruiker is geen werkzoekende.');
+        }
+
         $match = Matchs::firstOrCreate(
-            ['vacancy_id' => $vacancy->id, 'user_id' => $user->id],
-            ['status' => Matchs::STATUS_PENDING]
+            [
+                'vacancy_id' => $vacancy->id,
+                'user_id' => $user->id,
+            ],
+            [
+                'status' => Matchs::STATUS_PENDING,
+                'start_date' => '2024-01-01 00:00:00', // Voeg een standaard startdatum toe
+            ]
         );
 
-        // Verstuur de e-mail
         Mail::to($user->email)->send(new JobInvitation($vacancy, $user, $match));
 
-        return redirect()->back()->with('success', 'Uitnodiging verzonden!');
+        return redirect()->route('mijn-vacatures.index')->with('success', 'Uitnodiging verzonden!');
     }
+
 
 
 }
