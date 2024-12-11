@@ -13,7 +13,7 @@ use Illuminate\Support\Carbon;
     @section('title', 'Mijn vacatures')
 
     <!-- Toggle knop met sliding effect -->
-    <div class="container mx-auto mt-10 mb-8 text-center">
+    <div class="container mx-auto mt-10 mb-8 text-center z-0">
         <div id="toggleSwitch"
              class="relative inline-flex items-center w-64 h-10 rounded-full bg-gray-200 cursor-pointer">
             <!-- Sliding achtergrond -->
@@ -168,6 +168,7 @@ use Illuminate\Support\Carbon;
                                             </div>
                                         </div>
                                         <!-- Pijl voor uitklappen -->
+{{--                                        @if($vacancy->matches->is_accepted !== 0 ||)--}}
                                         <button
                                             class="ml-4 flex items-center justify-center w-8 h-8 text-gray-600 hover:text-violetOH-500 transform transition-transform"
                                             data-id="info-{{ $vacancy->id }}">
