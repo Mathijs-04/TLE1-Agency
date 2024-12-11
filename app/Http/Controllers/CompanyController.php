@@ -61,7 +61,6 @@ class CompanyController extends Controller
         $profile->description = $request->input('description');
         $profile->city = $request->input('city');
         $profile->employer_id = auth()->user()->employer_id;  // Zorg ervoor dat je de employer_id instelt
-//        dd($profile);
         // Sla het profiel op
         $profile->save();
 

@@ -20,6 +20,17 @@
                     @enderror
                 </div>
 
+                <!-- Stad -->
+                <div class="mb-8">
+                    <label for="city" class="block text-gray-700 font-medium mb-2">Stad</label>
+                    <input id="city" name="city" type="text"
+                           class="block w-full h-14 px-4 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
+                           value="{{ old('city', $profile->city) }}" required>
+                    @error('city')
+                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
                 <!-- Beschrijving -->
                 <div class="mb-8">
                     <label for="description" class="block text-gray-700 font-medium mb-2">Beschrijving</label>
@@ -37,17 +48,6 @@
                     <input id="image_url" name="image_url" type="file"
                            class="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-lg focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200">
                     @error('image_url')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <!-- Stad -->
-                <div class="mb-8">
-                    <label for="city" class="block text-gray-700 font-medium mb-2">Stad</label>
-                    <input id="city" name="city" type="text"
-                           class="block w-full h-14 px-4 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
-                           value="{{ old('city', $profile->city) }}" required>
-                    @error('city')
                     <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>

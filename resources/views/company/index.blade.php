@@ -9,7 +9,6 @@
             </a>
         </header>
 
-
         <!-- Over Ons en Logo Sectie -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-gray-50 p-8 rounded-lg shadow-lg">
             <!-- Over Ons links -->
