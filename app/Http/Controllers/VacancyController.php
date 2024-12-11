@@ -135,10 +135,30 @@ class VacancyController extends Controller
         return redirect(route('mijn-vacatures.index'));
     }
 
+    // Laat alle vacatures zien (op de vacatures.blade.php pagina)
     public function showAllVacancy()
     {
         $vacancies = Vacancy::all(); // Haalt alle vacatures op
         return view('vacatures', compact('vacancies'));
     }
+
+    // Uitnodigen van een gebruiker voor een vacature
+    public function inviteUserToJob(Request $request, $vacancyId, $userId)
+    {
+        $vacancy = Vacancy::findOrFail($vacancyId);
+        $user = User::findOrFail($userId);
+
+        // Controleer of er al een match bestaat
+        $match = Matchs::firstOrCreate(
+            ['vacancy_id' => $vacancy->id, 'user_id' => $user->id],
+            ['status' => Matchs::STATUS_PENDING]
+        );
+
+        // Verstuur de e-mail
+        Mail::to($user->email)->send(new JobInvitation($vacancy, $user, $match));
+
+        return redirect()->back()->with('success', 'Uitnodiging verzonden!');
+    }
+
 
 }
