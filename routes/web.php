@@ -4,9 +4,11 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AllVacancyController;
 
-Route::get('/vacatures', function () {
-    return view('vacatures');
+Route::get('/vacatures', [AllVacancyController::class, 'index'])->name('vacancies.index');
+Route::middleware('auth')->group(function () {
+    Route::resource('vacatures', AllVacancyController::class);
 });
 
 Route::get('/', function () {

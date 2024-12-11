@@ -138,6 +138,11 @@ class VacancyController extends Controller
 
     public function edit(string $id)
     {
+        // Controleer of de vorige URL geen 'edit'-pagina is en sla deze op in de sessie
+        if (!str_contains(url()->previous(), '/edit')) {
+            session(['previous_url' => url()->previous()]);
+        }
+
         $vacancy = Vacancy::findOrFail($id);
         return view('my-vacancies/edit', compact('vacancy'));
     }
