@@ -12,6 +12,10 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/uitnodigen', function () {
+    return view('invite');
+})->name('invite');
+
 Route::get('/bevestiging', function () {
     return view('bevestiging');
 })->name('bevestiging');
