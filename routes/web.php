@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AllVacancyController;
 
 Route::get('/vacatures', [AllVacancyController::class, 'index'])->name('vacancies.index');
-Route::middleware('auth')->group(function () {
-    Route::resource('vacatures', AllVacancyController::class);
-});
 
 Route::get('/', function () {
     return view('home');

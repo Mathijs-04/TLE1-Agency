@@ -217,7 +217,7 @@ use Illuminate\Support\Carbon;
                                                             };
 
                                                             // Datum formatteren
-                                                            $formattedDate = Carbon::createFromTimestampMs($vacancymatch->start_datetime)->format('Y-m-d H:i')
+                                                            $formattedDate = Carbon::createFromTimestampMs($vacancymatch->start_datetime)->format('d-m-Y H:i')
                                                         @endphp
 
                                                         <div class="flex items-center justify-between space-x-4 my-2">
