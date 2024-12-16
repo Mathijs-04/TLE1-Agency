@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'employer_id',
     ];
 
     /**
@@ -35,6 +36,16 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function vacancy(): BelongsTo
+    {
+        return $this->belongsTo(Vacancy::class);
+    }
+
+    public function matches(): HasMany
+    {
+        return $this->hasMany(UserVacancyMatch::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -46,13 +57,5 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function vacancy(): BelongsTo{
-        return $this->belongsTo(Vacancy::class);
-    }
-
-    public function matches(): HasMany{
-        return $this->hasMany(UserVacancyMatch::class);
     }
 }

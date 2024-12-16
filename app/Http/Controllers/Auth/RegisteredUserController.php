@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employer;
 use App\Models\User;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,14 +17,6 @@ use Illuminate\View\View;
 class RegisteredUserController extends Controller
 {
     /**
-     * Display the registration view.
-     */
-    public function create(): View
-    {
-        return view('auth.register');
-    }
-
-    /**
      * Handle an incoming registration request.
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -31,14 +25,24 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        $employer = Employer::create([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        event(new Registered($employer));
+
+        $employer_id = Employer::where('email', $request->email)->first();
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'employer_id' => $employer_id->id,
         ]);
 
         event(new Registered($user));
@@ -46,5 +50,13 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(route('home', absolute: false));
+    }
+
+    /**
+     * Display the registration view.
+     */
+    public function create(): View
+    {
+        return view('auth.register');
     }
 }
