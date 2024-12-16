@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -51,9 +52,7 @@ class User extends Authenticatable
         return $this->belongsTo(Vacancy::class);
     }
 
-    public function matches()
-    {
-        return $this->hasMany(Matchs::class);
+    public function matches(): HasMany{
+        return $this->hasMany(UserVacancyMatch::class);
     }
-
 }

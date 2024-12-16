@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let maxUsers = 0;
 
     inviteButtons.forEach(button => {
+        console.log(button);
         button.addEventListener('click', () => {
             popup.classList.remove('hidden');
             maxUsers = button.getAttribute("data-waiting");

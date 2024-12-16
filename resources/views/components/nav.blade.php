@@ -4,7 +4,7 @@
         <img src="{{ asset('images/Logo.png') }}" class="h-14" alt="Logo">
     </a>
     <!-- Midden navigatie-items -->
-    <div class="flex gap-5 justify-center items-center absolute left-1/2 transform -translate-x-1/2">
+    <div class="flex gap-5 z-10 justify-center items-center absolute left-1/2 transform -translate-x-1/2">
 
         <!-- Dropdown Informatie -->
         <div class="relative group">
@@ -24,7 +24,7 @@
 
         <a href="/404" class="text-gray-800 text-[18px] font-radikal px-4 py-2 hover:text-violetOH-500 hover:underline
             @if(Request::is('contact')) text-violetOH-500 font-custom font-bold @endif ">Contact</a>
-        <a href="{{route('vacatures.index')}}" class="text-gray-800 text-[18px] font-radikal px-4 py-2 hover:text-violetOH-500 hover:underline
+        <a href="/vacatures" class="text-gray-800 text-[18px] font-radikal px-4 py-2 hover:text-violetOH-500 hover:underline
             @if(Request::is('vacatures')) text-violetOH-500 font-custom font-bold @endif">Vacatures</a>
     </div>
 
@@ -32,7 +32,7 @@
         <!-- Profile Dropdown -->
         <div class="relative group">
             <a href="#" class="text-gray-800 text-[18px] font-radikal px-4 py-2 hover:text-violetOH-500 hover:underline cursor-pointer
-                @if(Request::is('profile') || Request::is('vacatures'))  @endif font-custom ">
+                @if(Request::is('profile') || Request::is('vacatures') || Request::is('uitnodigingen'))  @endif font-custom ">
                 Profiel
             </a>
             <div
@@ -40,7 +40,7 @@
                 <a href="/profile" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
                 @if(Request::is('profile')) text-yellow-400 font-custom font-bold @endif ">Mijn Profiel</a>
                 <a href="/mijn-vacatures" class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
-                @if(Request::is('vacatures')) text-yellow-400 font-custom font-bold @endif ">Mijn Vacatures</a>
+                @if(Request::is('mijn-vacatures')) text-yellow-400 font-custom font-bold @endif ">Mijn Vacatures</a>
 
                 <a href="{{ route('company.index')}}"
                    class="block text-white text-[18px] font-radikal py-2 hover:text-yellow-400
