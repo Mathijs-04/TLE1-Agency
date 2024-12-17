@@ -20,29 +20,27 @@ use Illuminate\Support\Carbon;
             <div id="slider"
                  class="absolute top-0 left-0 h-full w-1/2 bg-violetOH-500 rounded-full transition-all duration-300"></div>
             <!-- Tekst voor de secties -->
-            <span id="section1Label"
-                  class="absolute left-0 w-1/2 h-full flex items-center justify-center text-gray-900 font-medium transition-colors duration-300">
+            <button id="section1Label"
+                    class="absolute left-0 w-1/2 h-full flex items-center justify-center text-gray-900 font-medium transition-colors duration-300">
                 Mijn vacatures
-            </span>
-            <span id="section2Label"
-                  class="absolute right-0 w-1/2 h-full flex items-center justify-center text-gray-900 font-medium transition-colors duration-300">
+            </button>
+            <button id="section2Label"
+                    class="absolute right-0 w-1/2 h-full flex items-center justify-center text-gray-900 font-medium transition-colors duration-300">
                 Uitnodigen
-            </span>
+            </button>
         </div>
     </div>
 
-    <!-- Secties -->
-    <div class="">
+    <!-- Secties met verbeterde overgang tussen wit en grijs -->
+    <div class="bg-gradient-to-b from-white via-gray-100 to-gray-200 shadow-md">
         <!-- Sectie 1 -->
         <div id="section1" class="">
 
             <div class="bg-gray-100 min-h-screen flex flex-col items-center">
-                <button
-                    class="mt-10 px-4 py-2 bg-violetOH-500 text-white text-lg font-medium rounded-lg flex  shadow-lg hover:bg-violetOH-600">
-                    <a href="{{ url(route('mijn-vacatures.create')) }}" class="flex items-center">
-                        <span class="mr-2">Creëer nieuwe vacature</span>
-                    </a>
-                </button>
+                <a href="{{ url(route('mijn-vacatures.create')) }}"
+                   class="flex items-center mt-10 px-4 py-2 bg-violetOH-500 text-white text-lg font-medium rounded-lg shadow-lg hover:bg-violetOH-600">
+                    <p class="mr-2">Creëer nieuwe vacature</p>
+                </a>
                 <div class="vacancy-list w-full max-w-4xl space-y-6 mt-10 mb-10">
                     @if ($vacancies->isEmpty())
                         <p class="text-gray-500 text-center">Er zijn momenteel geen vacatures.</p>

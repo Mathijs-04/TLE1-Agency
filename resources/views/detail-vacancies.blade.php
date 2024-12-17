@@ -1,7 +1,7 @@
 <x-layout>
     @section('title', $vacancy->name)
     <div class="bg-gray-100 min-h-screen flex items-center justify-center">
-        <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl w-full">
+        <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl w-full mt-3 mb-3">
             <div class="flex justify-center mb-4">
                 <img src="{{ asset('storage/' . $vacancy->image_url) }}" alt="{{ $vacancy->name }} image"
                      class="w-96 h-56 object-cover rounded-lg shadow-sm mb-4">
@@ -52,7 +52,7 @@
 
             <div class="mt-6 ml-10 flex justify-between">
                 <a
-                    href="javascript:history.back()"
+                    href="{{ session('origin_url', url('/vacatures')) }}"
                     class="inline-block bg-violetOH-500 text-white px-6 py-3 rounded-lg shadow hover:bg-violetOH-600"
                 >
                     Vorige pagina
