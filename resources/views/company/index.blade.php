@@ -2,7 +2,7 @@
     @section('title', 'Mijn bedrijfspagina')
     <div class="max-w-7xl mx-auto px-4 py-8 space-y-12">
         <!-- Titel gecentreerd -->
-        <header class="flex justify-between items-center">
+        <header class="flex justify-between items-center px-[10%]">
             <h1 class="text-5xl font-extrabold text-violetOH-500">{{ $profile->title }}</h1>
             <a href="{{ route('company.edit') }}" class="text-sm bg-violetOH-500 text-white font-bold px-4 py-2 rounded-lg">
                 Profiel Bewerken

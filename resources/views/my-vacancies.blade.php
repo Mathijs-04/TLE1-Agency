@@ -31,14 +31,14 @@ use Illuminate\Support\Carbon;
         </div>
     </div>
 
-    <!-- Secties -->
-    <div class="">
+    <!-- Secties met verbeterde overgang tussen wit en grijs -->
+    <div class="bg-gradient-to-b from-white via-gray-100 to-gray-200 shadow-md">
         <!-- Sectie 1 -->
         <div id="section1" class="">
 
             <div class="bg-gray-100 min-h-screen flex flex-col items-center">
                 <button
-                    class="mt-10 px-4 py-2 bg-violetOH-500 text-white text-lg font-medium rounded-lg flex  shadow-lg hover:bg-violetOH-600">
+                    class="mt-10 px-4 py-2 bg-violetOH-500 text-white text-lg font-medium rounded-lg flex shadow-lg hover:bg-violetOH-600">
                     <a href="{{ url(route('mijn-vacatures.create')) }}" class="flex items-center">
                         <span class="mr-2">Creëer nieuwe vacature</span>
                     </a>
