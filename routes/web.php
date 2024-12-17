@@ -60,6 +60,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
+//EMAIL API
+Route::post('/invite/test-email', [InvitationController::class, 'sendTestEmail'])->name('invite.testEmail');
 
 require __DIR__ . '/auth.php';
 

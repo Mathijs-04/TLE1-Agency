@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InviteMail; // Voeg dit toe voor de InviteMail class
 use Illuminate\Http\Request;
 
 class InvitationController extends Controller
@@ -61,4 +63,34 @@ class InvitationController extends Controller
     {
         //
     }
+
+    public function showInviteForm($vacancyId)
+    {
+        $vacancy = Vacancy::findOrFail($vacancyId);
+        return view('invite', ['vacancy' => $vacancy]);
+    }
+
+
+    // EMAIL API
+    public function sendTestEmail(Request $request)
+    {
+        $dates = $request->input('dates');
+        $times = $request->input('times');
+
+        // Bouw een array met de nodige informatie voor de e-mail
+        $details = [];
+        foreach ($dates as $index => $date) {
+            $details[] = [
+                'number' => $index + 1,
+                'date' => $date,
+                'time' => $times[$index],
+            ];
+        }
+
+        // Verstuur de e-mail met de details
+        Mail::to('1073412@hr.nl')->send(new InviteMail($details));
+
+        return back()->with('success', 'Bevestigingsmail is verzonden naar 1073412@hr.nl');
+    }
+
 }

@@ -55,4 +55,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     container.addEventListener('input', updateButtonState);
     updateButtonState();
+
+
+    // EMAIL AP
+    submitButton.addEventListener('click', function () {
+        const form = document.getElementById('invite-form');
+        const dateInputs = container.querySelectorAll('input[type="date"]');
+        const timeInputs = container.querySelectorAll('input[type="time"]');
+
+        dateInputs.forEach((dateInput, index) => {
+            const hiddenDate = document.createElement('input');
+            hiddenDate.type = 'hidden';
+            hiddenDate.name = `dates[${index}]`;
+            hiddenDate.value = dateInput.value;
+            form.appendChild(hiddenDate);
+        });
+
+        timeInputs.forEach((timeInput, index) => {
+            const hiddenTime = document.createElement('input');
+            hiddenTime.type = 'hidden';
+            hiddenTime.name = `times[${index}]`;
+            hiddenTime.value = timeInput.value;
+            form.appendChild(hiddenTime);
+        });
+
+        form.submit();
+    });
+
 });
