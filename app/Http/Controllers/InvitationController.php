@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InviteMail; // Voeg dit toe voor de InviteMail class
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class InvitationController extends Controller
 {
@@ -64,33 +67,48 @@ class InvitationController extends Controller
         //
     }
 
-    public function showInviteForm($vacancyId)
-    {
-        $vacancy = Vacancy::findOrFail($vacancyId);
-        return view('invite', ['vacancy' => $vacancy]);
-    }
 
 
     // EMAIL API
     public function sendTestEmail(Request $request)
     {
-        $dates = $request->input('dates');
-        $times = $request->input('times');
+        $request->validate([
+            'user_id' => 'required|integer',
+            'dates' => 'required|array',
+            'times' => 'required|array',
+        ]);
 
-        // Bouw een array met de nodige informatie voor de e-mail
+        // Haal de gebruiker op uit de database
+        $user = User::findOrFail($request->input('user_id'));
+
+        // Bouw de details voor de uitnodiging
         $details = [];
-        foreach ($dates as $index => $date) {
+        foreach ($request->input('dates') as $index => $date) {
             $details[] = [
                 'number' => $index + 1,
                 'date' => $date,
-                'time' => $times[$index],
+                'time' => $request->input('times')[$index],
             ];
         }
 
-        // Verstuur de e-mail met de details
-        Mail::to('1073412@hr.nl')->send(new InviteMail($details));
+        // Verstuur de e-mail naar het e-mailadres van de gebruiker
+        Mail::to($user->email)->send(new InviteMail($details));
 
-        return back()->with('success', 'Bevestigingsmail is verzonden naar 1073412@hr.nl');
+        return view('bevestiging');
+//        return back()->with('success', "Bevestigingsmail is verzonden naar {$user->email}.");
+
+    }
+
+    // Haalt de vacature en ingelogde gebruiker op en toont het uitnodigingsformulier.
+    public function showInviteForm($vacancyId)
+    {
+        $vacancy = Vacancy::findOrFail($vacancyId); // Haal de vacature op
+        $user = Auth::user(); // Haal de ingelogde gebruiker op
+
+        return view('invite', [
+            'vacancy' => $vacancy, // Stuur de vacature mee naar de view
+            'user' => $user, // Stuur de ingelogde gebruiker mee naar de view
+        ]);
     }
 
 }

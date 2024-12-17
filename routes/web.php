@@ -62,6 +62,9 @@ Route::middleware('auth')->group(function () {
 
 //EMAIL API
 Route::post('/invite/test-email', [InvitationController::class, 'sendTestEmail'])->name('invite.testEmail');
+Route::get('/uitnodigen/{vacancyId}', [InvitationController::class, 'showInviteForm'])->name('invite.form');
+
+
 
 require __DIR__ . '/auth.php';
 
