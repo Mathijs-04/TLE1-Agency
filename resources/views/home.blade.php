@@ -5,7 +5,7 @@
             <div class="flex p-6 items-center justify-between">
                 <!-- Text section -->
                 <div class="w-full md:w-3/5">
-                    <p class="text-center text-5xl font-bold text-gray-700 mb-6">Werk voor iedereen!</p>
+                    <h1 class="text-center text-5xl font-bold text-gray-700 mb-6">Werk voor iedereen!</h1>
                     <p class="text-center leading-relaxed text-gray-800 mb-6">
                         Met Open Hiring heeft iedereen een eerlijke kans<br/>op een baan. Wie wil én kan werken, kan zó
                         aan de

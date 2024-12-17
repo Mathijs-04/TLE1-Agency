@@ -13,7 +13,8 @@
                             @csrf
                             {{-- Naam van de vacature --}}
                             <div class="sm:col-span-2">
-                                <label for="name" class="block mt-4 mb-2 text-sm font-medium text-gray-900">Titel <span class="text-violetOH-500">*</span> </label>
+                                <label for="name" class="block mt-4 mb-2 text-sm font-medium text-gray-900">Titel <span
+                                        class="text-violetOH-500">*</span> </label>
                                 <input type="text" name="name" id="name"
                                        class="bg-gray-50 border @error('name') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: Vulploeg medewerker Jumbo" required=""
@@ -25,7 +26,8 @@
 
                             {{-- Salaris indicatie --}}
                             <div class="sm:col-span-2">
-                                <label for="salary" class="block mb-2 text-sm font-medium text-gray-900">Salaris indicatie <span class="text-violetOH-500">*</span> </label>
+                                <label for="salary" class="block mb-2 text-sm font-medium text-gray-900">Salaris
+                                    indicatie <span class="text-violetOH-500">*</span> </label>
                                 <input type="number" min="0" name="salary" id="salary"
                                        class="bg-gray-50 border @error('salary') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: €2.500 - €3.000 bruto per maand" required=""
@@ -37,8 +39,9 @@
 
                             {{-- Postcode --}}
                             <div class="">
-                                <label for="postalcode" class="block mb-2 text-sm font-medium text-gray-900">Postcode <span class="text-violetOH-500">*</span> </label>
-                                <input type="text" name="postalcode" id="postcode"
+                                <label for="postalcode" class="block mb-2 text-sm font-medium text-gray-900">Postcode
+                                    <span class="text-violetOH-500">*</span> </label>
+                                <input type="text" name="postalcode" id="postalcode"
                                        class="bg-gray-50 border @error('postalcode') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: 1012 AB" required=""
                                        value="{{ old('postalcode') }}">
@@ -49,7 +52,8 @@
 
                             {{-- Huisnummer --}}
                             <div class="">
-                                <label for="housenumber" class="block mb-2 text-sm font-medium text-gray-900">Huisnummer <span class="text-violetOH-500">*</span> </label>
+                                <label for="housenumber" class="block mb-2 text-sm font-medium text-gray-900">Huisnummer
+                                    <span class="text-violetOH-500">*</span> </label>
                                 <input type="text" name="housenumber" id="housenumber"
                                        class="bg-gray-50 border @error('housenumber') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: 12" required=""
@@ -61,7 +65,8 @@
 
                             {{-- Straatnaam --}}
                             <div class=" sm:col-span-2">
-                                <label for="streetname" class="block mb-2 text-sm font-medium text-gray-900">Straatnaam <span class="text-violetOH-500">*</span> </label>
+                                <label for="streetname" class="block mb-2 text-sm font-medium text-gray-900">Straatnaam
+                                    <span class="text-violetOH-500">*</span> </label>
                                 <input type="text" name="streetname" id="streetname"
                                        class="bg-gray-50 border @error('streetname') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: Stationsstraat" required=""
@@ -73,7 +78,8 @@
 
                             {{-- Plaats --}}
                             <div class="sm:col-span-2">
-                                <label for="city" class="block mb-2 text-sm font-medium text-gray-900">Plaats <span class="text-violetOH-500">*</span> </label>
+                                <label for="city" class="block mb-2 text-sm font-medium text-gray-900">Plaats <span
+                                        class="text-violetOH-500">*</span> </label>
                                 <input type="text" name="city" id="city"
                                        class="bg-gray-50 border @error('city') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: Amsterdam" required=""
@@ -85,7 +91,8 @@
 
                             {{-- Aantal uren --}}
                             <div class="sm:col-span-2">
-                                <label for="hours" class="block mb-2 text-sm font-medium text-gray-900">Uren per week <span class="text-violetOH-500">*</span></label>
+                                <label for="hours" class="block mb-2 text-sm font-medium text-gray-900">Uren per week
+                                    <span class="text-violetOH-500">*</span></label>
                                 <input type="number" name="hours" id="hours" min="0"
                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                        placeholder="Bijvoorbeeld: 40 uur" required="">
@@ -96,7 +103,8 @@
 
                             {{-- Contract type --}}
                             <div class="sm:col-span-2">
-                                <label for="contract_type" class="block mb-2 text-sm font-medium text-gray-900">Contract type <span class="text-violetOH-500">*</span></label>
+                                <label for="contract_type" class="block mb-2 text-sm font-medium text-gray-900">Contract
+                                    type <span class="text-violetOH-500">*</span></label>
                                 <select name="contract_type" id="contract_type"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5">
                                     <option selected="">Selecteer het type contract</option>
@@ -110,7 +118,8 @@
 
                             {{-- Beschrijving --}}
                             <div class="sm:col-span-2">
-                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Beschrijving <span class="text-violetOH-500">*</span> </label>
+                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Beschrijving
+                                    <span class="text-violetOH-500">*</span> </label>
                                 <textarea id="description" name="description" rows="6"
                                           class="bg-gray-50 border @error('description') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5"
                                           placeholder="Beschrijf hier de functie">{{ old('description') }}</textarea>
@@ -121,11 +130,14 @@
 
                             {{-- Aanvullende eisen (optioneel) --}}
                             <div class="sm:col-span-2">
-                                <label for="requirements" class="block mb-2 text-sm font-medium text-gray-900">Aanvullende eisen (optioneel)</label>
-                                <p class="mb-2 text-sm text-gray-600">Bijvoorbeeld: Rijbewijs B, MBO-Niveau 4, Nederlandse taal, Veel lopen.</p>
+                                <label for="requirements" class="block mb-2 text-sm font-medium text-gray-900">Aanvullende
+                                    eisen (optioneel)</label>
+                                <p class="mb-2 text-sm text-gray-600">Bijvoorbeeld: Rijbewijs B, MBO-Niveau 4,
+                                    Nederlandse taal, Veel lopen.</p>
                                 <div id="inputContainer" class="space-y-4">
                                     <div class="flex items-center space-x-3">
-                                        <input type="text" name="requirements[]" placeholder="Bijvoorbeeld: Rijbewijs B"
+                                        <input type="text" name="requirements[]" id="requirements"
+                                               placeholder="Bijvoorbeeld: Rijbewijs B"
                                                class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#AA0061] focus:border-[#AA0061] p-2.5">
                                     </div>
                                 </div>
@@ -161,13 +173,18 @@
                             </script>
                             {{-- Afbeelding uploaden --}}
                             <div class="sm:col-span-2">
-                                <label class="block mt-2 mb-0 text-sm font-medium text-gray-900" for="image_url">Afbeelding  uploaden (optioneel)</label>
-                                <p class="mb-2 text-sm text-gray-600">
-
-                                </p>                                <input
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="Banner van de vacature uploaden"
+                                <label class="block mt-2 mb-0 text-sm font-medium text-gray-900" for="image_url">
+                                    Afbeelding uploaden (optioneel)
+                                </label>
+                                <p id="image_description" class="mb-2 text-sm text-gray-600">
+                                    Banner van de vacature uploaden.
+                                </p>
+                                <input
+                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+                                    aria-describedby="image_description"
                                     id="image_url" name="image_url" type="file">
                             </div>
+
 
                         </div>
 
