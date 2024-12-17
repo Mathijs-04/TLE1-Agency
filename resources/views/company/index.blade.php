@@ -2,7 +2,7 @@
     @section('title', 'Mijn bedrijfspagina')
     <div class="max-w-7xl mx-auto px-4 py-8 space-y-12">
         <!-- Titel gecentreerd -->
-        <header class="flex justify-between items-center">
+        <header class="flex justify-between items-center px-[10%]">
             <h1 class="text-5xl font-extrabold text-violetOH-500">{{ $profile->title }}</h1>
             <a href="{{ route('company.edit') }}" class="text-sm bg-violetOH-500 text-white font-bold px-4 py-2 rounded-lg">
                 Profiel Bewerken
@@ -32,7 +32,7 @@
                     <a href="{{ route('mijn-vacatures.show', $vacancy->id) }}">
                         <div class="bg-gray-50 p-4 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
                             <div class="flex justify-center mb-4">
-                                <img src="{{ asset('storage/' . $vacancy->image_url) }}" alt="{{ $vacancy->name }} image" class="w-full h-32 object-cover rounded-lg shadow-sm">
+                                <img src="{{ asset('storage/' . $vacancy->image_url) }}" alt="{{ $vacancy->name }} image" class="w-full h-60 object-cover rounded-lg shadow-sm">
                             </div>
                             <h3 class="text-xl font-semibold text-violetOH-500 mb-2">{{ $vacancy->name }}</h3>
                             <p class="text-gray-700 mb-4">{{ Str::limit($vacancy->description, 100) }}</p>

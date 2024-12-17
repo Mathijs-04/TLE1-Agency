@@ -12,9 +12,14 @@ export default {
     theme: {
         extend: {
             colors: {
-                violetOH: { 500: '#aa0160',
-                            600: '#7c1a51'},
-                greenOH: { 500: '#92AA83' },
+                violetOH: {
+                    500: '#aa0160',
+                    600: '#7c1a51'
+                },
+                greenOH: {
+                    500: '#92AA83',
+                    600: '#2e342a'
+                },
                 cream: '#FBFCF6',
             },
             fontFamily: {
