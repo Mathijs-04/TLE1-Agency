@@ -130,7 +130,9 @@ use Illuminate\Support\Carbon;
                                                 {{ $vacancy->name }}
                                             </a>
                                         </h2>
-                                        <p class="text-gray-600">Wachtenden: {{ $vacancy->waiting }}</p>
+                                        <div class="flex">
+                                        <p class="text-gray-600 mr-1">Wachtlijst: {{ $vacancy->waiting }}</p>
+                                        </div>
                                     </div>
                                     <div class="flex items-center">
                                         <div id="app">
@@ -201,7 +203,7 @@ use Illuminate\Support\Carbon;
                                                     @elseif ($status === 2)
                                                         Geweigerd
                                                     @else
-                                                        In Afwachting
+                                                        Uitgenodigd
                                                     @endif
                                                 </h2>
 
