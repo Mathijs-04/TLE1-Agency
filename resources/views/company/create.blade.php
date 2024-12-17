@@ -11,7 +11,7 @@
 
                 <!-- Bedrijfstitel -->
                 <div class="mb-8">
-                    <label for="title" class="block text-gray-700 font-medium mb-2">Bedrijfstitel</label>
+                    <label for="title" class="block text-gray-700 font-medium mb-2">Bedrijfstitel <span class="text-violetOH-500">*</span></label>
                     <input id="title" name="title" type="text"
                            class="block w-full h-14 px-4 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
                            placeholder="Voer de titel van je bedrijf in" value="{{ old('title') }}" required autofocus>
@@ -22,7 +22,7 @@
 
                 <!-- Stad -->
                 <div class="mb-8">
-                    <label for="city" class="block text-gray-700 font-medium mb-2">Stad</label>
+                    <label for="city" class="block text-gray-700 font-medium mb-2">Stad <span class="text-violetOH-500">*</span></label>
                     <input id="city" name="city" type="text"
                            class="block w-full h-14 px-4 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
                            placeholder="Voer de stad in" value="{{ old('city') }}">
@@ -33,7 +33,7 @@
 
                 <!-- Beschrijving -->
                 <div class="mb-8">
-                    <label for="description" class="block text-gray-700 font-medium mb-2">Beschrijving</label>
+                    <label for="description" class="block text-gray-700 font-medium mb-2">Beschrijving <span class="text-violetOH-500">*</span></label>
                     <textarea id="description" name="description" rows="8"
                               class="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
                               placeholder="Voeg een uitgebreide beschrijving toe van je bedrijf" required>{{ old('description') }}</textarea>
@@ -44,7 +44,7 @@
 
                 <!-- Afbeelding URL -->
                 <div class="mb-8">
-                    <label for="image_url" class="block text-gray-700 font-medium mb-2">Afbeelding URL</label>
+                    <label for="image_url" class="block text-gray-700 font-medium mb-2">Upload een afbeelding <span class="text-violetOH-500">*</span></label>
                     <input id="image_url" name="image_url" type="file">
                     @error('image_url')
                     <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
