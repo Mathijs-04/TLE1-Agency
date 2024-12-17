@@ -4,16 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Vacancy;
+use App\Models\Matchs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\JobInvitation;
+
 
 class VacancyController extends Controller
 {
     public function index()
     {
-        //ophalen van mijn vacatures met een check voor ingelogde user
-        $vacancies = Vacancy::with(['matches.users'])->whereColumn(auth()->user()->employer_id, 'employer_id')->get();
+        // Haal vacatures op die behoren tot de ingelogde werkgever
+        $vacancies = Vacancy::with(['matches.users'])
+            ->where('employer_id', auth()->user()->employer_id)
+            ->get();
+
+        // Verwijder de opgeslagen 'origin_url' om een schone navigatie te garanderen
+        session()->forget('origin_url');
+
+        // Retourneer de Blade-view met de vacatures
         return view('my-vacancies', compact('vacancies'));
     }
+
 
     public function create()
     {
@@ -127,14 +139,18 @@ class VacancyController extends Controller
         return redirect()->route('mijn-vacatures.index')->with('success', 'Vacature succesvol aangemaakt.');
     }
 
-    public function show(string $id)
+    // In een controller of middleware
+    public function show($id)
     {
-        $vacancy = Vacancy::find($id);
+        $vacancy = Vacancy::findOrFail($id);
 
-        if (!$vacancy) {
-            abort(404, 'Vacature niet gevonden.');
+        // Controleer of de sessie al een 'origin_url' heeft
+        if (!session()->has('origin_url')) {
+            // Sla de vorige URL op in de sessie
+            if (request()->headers->get('referer')) {
+                session(['origin_url' => url()->previous()]);
+            }
         }
-
         return view('detail-vacancies', compact('vacancy'));
     }
 
@@ -195,4 +211,45 @@ class VacancyController extends Controller
         $vacancy->delete();
         return redirect(route('mijn-vacatures.index'));
     }
+
+    // Laat alle vacatures zien (op de vacatures.blade.php pagina)
+    public function showAllVacancy()
+    {
+        $vacancies = Vacancy::all(); // Haalt alle vacatures op
+        return view('vacatures', compact('vacancies'));
+    }
+
+    // Uitnodigen van een gebruiker voor een vacature
+    public function inviteUserToJob(Request $request, $vacancyId)
+    {
+        $vacancy = Vacancy::findOrFail($vacancyId);
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        $userId = $request->input('user_id');
+        $user = User::findOrFail($userId);
+
+        if (!$user) {
+            abort(403, 'Deze gebruiker is geen werkzoekende.');
+        }
+
+        $match = Matchs::firstOrCreate(
+            [
+                'vacancy_id' => $vacancy->id,
+                'user_id' => $user->id,
+            ],
+            [
+                'status' => Matchs::STATUS_PENDING,
+                'start_date' => '2024-01-01 00:00:00', // Voeg een standaard startdatum toe
+            ]
+        );
+
+        Mail::to($user->email)->send(new JobInvitation($vacancy, $user, $match));
+
+        return redirect()->route('mijn-vacatures.index')->with('success', 'Uitnodiging verzonden!');
+    }
+
+
+
 }

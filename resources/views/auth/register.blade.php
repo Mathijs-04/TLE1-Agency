@@ -11,7 +11,7 @@
 <body>
 
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
-    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md mt-3 mb-3">
         <!-- Logo -->
         <div class="flex justify-center mb-6">
             <a href="/" id="register-OH-logo">
@@ -32,7 +32,7 @@
                 <label for="name" class="block text-gray-700 font-medium mb-2">Naam</label>
                 <input id="name" name="name" type="text"
                        class="block w-full h-12 px-4 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
-                       placeholder="Voer je naam in" value="{{ old('name') }}" required autofocus>
+                       placeholder="Voer uw naam in" value="{{ old('name') }}" required autofocus>
                 @error('name')
                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
@@ -43,7 +43,7 @@
                 <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
                 <input id="email" name="email" type="email"
                        class="block w-full h-12 px-4 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
-                       placeholder="Voer je email in" value="{{ old('email') }}" required>
+                       placeholder="Voer uw email in" value="{{ old('email') }}" required>
                 @error('email')
                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror
@@ -54,7 +54,7 @@
                 <label for="password" class="block text-gray-700 font-medium mb-2">Wachtwoord</label>
                 <input id="password" name="password" type="password"
                        class="block w-full h-12 px-4 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
-                       placeholder="Voer je wachtwoord in" required>
+                       placeholder="Voer uw wachtwoord in" required>
                 <p class="mt-1 text-sm text-gray-600">Wachtwoord moet minimaal 8 karakters lang zijn.</p>
                 @error('password')
                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -66,7 +66,7 @@
                 <label for="password_confirmation" class="block text-gray-700 font-medium mb-2">Bevestig Wachtwoord</label>
                 <input id="password_confirmation" name="password_confirmation" type="password"
                        class="block w-full h-12 px-4 border border-gray-300 rounded-lg shadow-lg text-gray-800 focus:border-violetOH-500 focus:ring-2 focus:ring-violetOH-500 focus:outline-none transition duration-200"
-                       placeholder="Bevestig je wachtwoord" required>
+                       placeholder="Bevestig uw wachtwoord" required>
                 @error('password_confirmation')
                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                 @enderror

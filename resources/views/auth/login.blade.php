@@ -12,7 +12,7 @@
 
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
     <!-- Login kaart -->
-    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md mt-3 mb-3">
         <!-- Logo -->
         <div class="flex justify-center mb-6">
             <a href="/" id="login-OH-logo">

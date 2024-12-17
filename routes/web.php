@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VacancyController;
+use App\Http\Controllers\MatchsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AllVacancyController;
 
@@ -37,6 +39,32 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/test-email', function () {
+    Mail::raw('Dit is een testmail', function ($message) {
+        $message->to('1073412@hr.nl')->subject('Test Email');
+    });
+    return 'Testmail verzonden!';
+});
+
+
+Route::post('/vacancies/{vacancy}/invite/{user}', [VacancyController::class, 'inviteUserToJob'])->name('vacancies.invite');
+Route::get('/emails/invitation/accept/{match}', [InvitationController::class, 'accept'])->name('invitation.accept');
+Route::get('/emails/invitation/decline/{match}', [InvitationController::class, 'decline'])->name('invitation.decline');
+
+Route::post('/vacancies/{vacancy}/invite', [VacancyController::class, 'inviteUserToJob'])->name('vacancies.invite');
+Route::middleware('auth')->group(function () {
+    Route::post('/vacancies/{vacancy}/invite/{user}', [VacancyController::class, 'inviteUserToJob'])->name('vacancies.invite');
+    Route::get('/emails/invitation/accept/{match}', [InvitationController::class, 'accept'])->name('invitation.accept');
+    Route::get('/emails/invitation/decline/{match}', [InvitationController::class, 'decline'])->name('invitation.decline');
+});
+
+
+//EMAIL API
+Route::post('/invite/test-email', [InvitationController::class, 'sendTestEmail'])->name('invite.testEmail');
+Route::get('/uitnodigen/{vacancyId}', [InvitationController::class, 'showInviteForm'])->name('invite.form');
+
+
 
 require __DIR__ . '/auth.php';
 
