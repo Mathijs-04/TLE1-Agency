@@ -5,7 +5,7 @@
             <div class="flex flex-col w-full md:w-1/4 ml-auto">
                 <h2 class="text-lg font-semibold text-yellow-400 mb-3 text-base whitespace-nowrap">Werkzoekend</h2>
                 <ul class="space-y-2 text-base">
-                    <li><a href="/404" class="hover:text-violetOH-500 whitespace-nowrap">Vind een baan</a></li>
+                    <li><a href="/vacatures" class="hover:text-violetOH-500 whitespace-nowrap">Vind een baan</a></li>
                     <li><a href="/404" class="hover:text-violetOH-500 whitespace-nowrap">Veelgestelde vragen</a></li>
                 </ul>
             </div>
@@ -14,7 +14,7 @@
             <div class="flex flex-col w-full md:w-1/4 ml-auto">
                 <h3 class="text-lg font-semibold text-yellow-400 mb-3 text-base whitespace-nowrap">Werkgever</h3>
                 <ul class="space-y-2 text-base">
-                    <li><a href="/404" class="hover:text-violetOH-500 whitespace-nowrap">Informatie</a></li>
+                    <li><a href="/info-werkgever" class="hover:text-violetOH-500 whitespace-nowrap">Informatie</a></li>
                     <li><a href="/404" class="hover:text-violetOH-500 whitespace-nowrap">Veelgestelde vragen</a></li>
                 </ul>
             </div>

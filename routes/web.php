@@ -20,10 +20,6 @@ Route::middleware('auth')->group(function () {
     })->name('invite');
 });
 
-//Route::middleware('auth')->group(function () {
-//    Route::resource('uitnodigen', VacancyController::class);
-//});
-
 Route::get('/bevestiging', function () {
     return view('bevestiging');
 })->name('bevestiging');
