@@ -103,11 +103,12 @@
 
                             {{-- Contract type --}}
                             <div class="sm:col-span-2">
-                                <label for="contract_type" class="block mb-2 text-sm font-medium text-gray-900">Contract
-                                    type <span class="text-violetOH-500">*</span></label>
-                                <select name="contract_type" id="contract_type"
+                                <label for="contract_type" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Contract type <span class="text-violetOH-500">*</span>
+                                </label>
+                                <select name="contract_type" id="contract_type" required
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#AA0061] focus:border-[#AA0061] block w-full p-2.5">
-                                    <option selected="">Selecteer het type contract</option>
+                                    <option value="" selected disabled>Selecteer het type contract</option>
                                     <option value="full-time">full-time</option>
                                     <option value="part-time">part-time</option>
                                 </select>
@@ -115,6 +116,7 @@
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
+
 
                             {{-- Beschrijving --}}
                             <div class="sm:col-span-2">
