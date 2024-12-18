@@ -44,24 +44,24 @@ class CompanyController extends Controller
         // Validatie
         $request->validate([
             'title' => 'required|string|max:28', // Max 100 karakters: Een titel hoeft meestal niet langer te zijn.
-            'description' => 'required|string|max:500', // Max 500 karakters: Een beschrijving kan langer zijn, maar te lange teksten worden vaak onoverzichtelijk.
+            'description' => 'required|string|max:1000', // Max 500 karakters: Een beschrijving kan langer zijn, maar te lange teksten worden vaak onoverzichtelijk.
             'image_url' => 'required|image|max:2048', // Max 5MB (5120 KB): Veel afbeeldingen hebben een hogere resolutie en grotere bestandsgrootte.
             'city' => 'required|string|max:25', // Max 100 karakters: Stedenamen zijn meestal kort, maar een iets ruimere limiet houdt uitzonderingen in gedachten.
         ], [
             // Aangepaste foutmeldingen
             'title.required' => 'De titel is verplicht.',
             'title.string' => 'De titel moet een tekst zijn.',
-            'title.max' => 'De titel mag maximaal 100 karakters bevatten.',
+            'title.max' => 'De titel mag maximaal 28 karakters bevatten.',
 
             'description.string' => 'De beschrijving moet een tekst zijn.',
             'description.max' => 'De beschrijving mag maximaal 500 karakters bevatten.',
 
             'image_url.image' => 'Het geüploade bestand moet een afbeelding zijn.',
-            'image_url.max' => 'De afbeelding mag niet groter zijn dan 5 MB.',
+            'image_url.max' => 'De afbeelding mag niet groter zijn dan 2 MB.',
 
             'city.required' => 'De stad is verplicht.',
             'city.string' => 'De stad moet een tekst zijn.',
-            'city.max' => 'De naam van de stad mag maximaal 100 karakters bevatten.',
+            'city.max' => 'De naam van de stad mag maximaal 25 karakters bevatten.',
         ]);
 
         // Afbeelding uploaden
@@ -105,10 +105,25 @@ class CompanyController extends Controller
 
         // Validatie
         $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'image_url' => 'nullable|image|max:2048',
-            'city' => 'required|string|max:255',
+            'title' => 'required|string|max:28', // Max 100 karakters: Een titel hoeft meestal niet langer te zijn.
+            'description' => 'required|string|max:1000', // Max 500 karakters: Een beschrijving kan langer zijn, maar te lange teksten worden vaak onoverzichtelijk.
+            'image_url' => 'required|image|max:2048', // Max 5MB (5120 KB): Veel afbeeldingen hebben een hogere resolutie en grotere bestandsgrootte.
+            'city' => 'required|string|max:25', // Max 100 karakters: Stedenamen zijn meestal kort, maar een iets ruimere limiet houdt uitzonderingen in gedachten.
+        ], [
+            // Aangepaste foutmeldingen
+            'title.required' => 'De titel is verplicht.',
+            'title.string' => 'De titel moet een tekst zijn.',
+            'title.max' => 'De titel mag maximaal 28 karakters bevatten.',
+
+            'description.string' => 'De beschrijving moet een tekst zijn.',
+            'description.max' => 'De beschrijving mag maximaal 500 karakters bevatten.',
+
+            'image_url.image' => 'Het geüploade bestand moet een afbeelding zijn.',
+            'image_url.max' => 'De afbeelding mag niet groter zijn dan 2 MB.',
+
+            'city.required' => 'De stad is verplicht.',
+            'city.string' => 'De stad moet een tekst zijn.',
+            'city.max' => 'De naam van de stad mag maximaal 25 karakters bevatten.',
         ]);
 
         // Afbeelding uploaden

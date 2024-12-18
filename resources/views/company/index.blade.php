@@ -14,7 +14,7 @@
             <!-- Over Ons links -->
             <div class="space-y-4">
                 <h2 class="text-3xl font-semibold text-violetOH-500">Over Ons</h2>
-                <p class="text-gray-700 text-lg leading-relaxed">
+                <p class="text-gray-700 text-lg leading-relaxed break-words">
                     {!! nl2br(e($profile->description)) !!}
                 </p>
             </div>
