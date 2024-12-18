@@ -11,7 +11,7 @@ class AllVacancyController extends Controller
     // Haal alle vacatures op
     public function index()
     {
-        $vacancies = Vacancy::all();  // Haal alle vacatures zonder werkgever
+        $vacancies = Vacancy::orderBy('created_at', 'desc')->get();
         return view('vacatures', compact('vacancies'));
     }
 
