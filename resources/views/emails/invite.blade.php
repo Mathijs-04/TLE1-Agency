@@ -20,7 +20,7 @@
 <table>
     <thead>
     <tr>
-        <th>#</th>
+        <th>Kandidaat</th>
         <th>Datum</th>
         <th>Tijd</th>
     </tr>
@@ -38,7 +38,7 @@
 
 <p style="margin-top: 20px;">
     Wil je een volledig overzicht van de vacature bekijken? Ga dan naar
-    <a href="http://127.0.0.1:8000/mijn-vacatures" style="color: #AA0160; text-decoration: none; font-weight: bold;">
+    <a href="http://145.24.223.220/mijn-vacatures" style="color: #AA0160; text-decoration: none; font-weight: bold;">
         jouw vacatureoverzicht
     </a>.
 </p>

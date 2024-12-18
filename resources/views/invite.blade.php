@@ -12,8 +12,6 @@
         <div class="text-center mt-8">
             <form action="{{ route('invite.testEmail') }}" method="POST" id="invite-form">
                 @csrf
-                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-
                 <div id="invite-container" class="grid grid-cols-1 gap-8"></div>
                 <button type="submit"
                         class="relative w-72 h-14 rounded-full border-b-4 font-bold text-cream text-base mb-10"

@@ -73,16 +73,15 @@ class InvitationController extends Controller
     public function sendTestEmail(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|integer',
+//            'user_id' => 'required|integer',
             'dates' => 'required|array',
             'times' => 'required|array',
         ]);
 
-        // Haal de gebruiker op uit de database
-        $user = User::findOrFail($request->input('user_id'));
+        // Haal de ingelogde gebruiker op
+        $user = Auth::user();
 
         // Bouw de details voor de uitnodiging
-        $details = [];
         foreach ($request->input('dates') as $index => $date) {
             $details[] = [
                 'number' => $index + 1,
@@ -91,12 +90,11 @@ class InvitationController extends Controller
             ];
         }
 
-        // Verstuur de e-mail naar het e-mailadres van de gebruiker
+        // Verstuur de e-mail naar het e-mailadres van de ingelogde gebruiker
         Mail::to($user->email)->send(new InviteMail($details));
 
-        return view('bevestiging');
 //        return back()->with('success', "Bevestigingsmail is verzonden naar {$user->email}.");
-
+        return view('bevestiging');
     }
 
     // Haalt de vacature en ingelogde gebruiker op en toont het uitnodigingsformulier.
