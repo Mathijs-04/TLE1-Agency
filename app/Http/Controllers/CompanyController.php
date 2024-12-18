@@ -51,17 +51,17 @@ class CompanyController extends Controller
             // Aangepaste foutmeldingen
             'title.required' => 'De titel is verplicht.',
             'title.string' => 'De titel moet een tekst zijn.',
-            'title.max' => 'De titel mag maximaal 100 karakters bevatten.',
+            'title.max' => 'De titel mag maximaal 28 karakters bevatten.',
 
             'description.string' => 'De beschrijving moet een tekst zijn.',
             'description.max' => 'De beschrijving mag maximaal 500 karakters bevatten.',
 
             'image_url.image' => 'Het geüploade bestand moet een afbeelding zijn.',
-            'image_url.max' => 'De afbeelding mag niet groter zijn dan 5 MB.',
+            'image_url.max' => 'De afbeelding mag niet groter zijn dan 2 MB.',
 
             'city.required' => 'De stad is verplicht.',
             'city.string' => 'De stad moet een tekst zijn.',
-            'city.max' => 'De naam van de stad mag maximaal 100 karakters bevatten.',
+            'city.max' => 'De naam van de stad mag maximaal 25 karakters bevatten.',
         ]);
 
         // Afbeelding uploaden
