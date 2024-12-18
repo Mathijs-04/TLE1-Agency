@@ -57,7 +57,7 @@
                 >
                     Vorige pagina
                 </a>
-                @if(auth()->user()->employer_id === $vacancy->employer_id)
+                @if(auth()->check() && auth()->user()->employer_id === $vacancy->employer_id)
                     <a
                         href="{{ route('mijn-vacatures.edit', $vacancy->id) }}"
                         class="inline-block mr-10 bg-violetOH-500 text-white px-6 py-3 rounded-lg shadow hover:bg-violetOH-600"

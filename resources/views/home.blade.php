@@ -19,7 +19,7 @@
                         <a href="/404">
                             <button
                                 class="relative bg-violetOH-500 hover:bg-violetOH-600 w-72 h-14 rounded-lg border-b-4 border-[#7c1a51] font-bold text-cream text-base">
-                                Bekijk vacatures
+                                <a href="{{ route('vacatures.index')}}"> Bekijk vacatures </a>
                             </button>
                         </a>
                     </div>
