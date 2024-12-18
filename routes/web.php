@@ -8,15 +8,21 @@ use App\Http\Controllers\MatchsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AllVacancyController;
 
-Route::get('/vacatures', [AllVacancyController::class, 'index'])->name('vacancies.index');
+//Route::get('/vacatures', [AllVacancyController::class, 'index'])->name('vacancies.index');
 
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/uitnodigen', function () {
-    return view('invite');
-})->name('invite');
+Route::middleware('auth')->group(function () {
+    Route::get('/uitnodigen', function () {
+        return view('invite');
+    })->name('invite');
+});
+
+//Route::middleware('auth')->group(function () {
+//    Route::resource('uitnodigen', VacancyController::class);
+//});
 
 Route::get('/bevestiging', function () {
     return view('bevestiging');
@@ -33,6 +39,8 @@ Route::get('/info-werkgever', function () {
 Route::middleware('auth')->group(function () {
     Route::resource('mijn-vacatures', VacancyController::class);
 });
+
+Route::resource('vacatures', AllVacancyController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

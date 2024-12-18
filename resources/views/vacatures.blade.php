@@ -8,7 +8,7 @@
             <h2 class="text-3xl font-semibold text-violetOH-500 mb-6">Beschikbare Vacatures</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($vacancies as $vacancy)
-                    <a href="{{ route('mijn-vacatures.show', $vacancy->id) }}">
+                    <a href="{{ route('vacatures.show', $vacancy->id) }}">
                         <div class="bg-gray-50 p-4 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 ease-in-out">
                             <div class="flex justify-center mb-4">
                                 <img src="{{ asset('storage/' . $vacancy->image_url) }}" alt="{{ $vacancy->name }} image" class="w-full h-60 object-cover rounded-lg shadow-sm">
