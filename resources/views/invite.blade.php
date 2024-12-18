@@ -2,6 +2,7 @@
     use Illuminate\Support\Facades\Auth;
 @endphp
 <x-layout>
+    @section('title', 'Uitnodigen')
     <div class="bg-white flex flex-col items-center min-h-screen">
         <div class="text-center my-8">
             <h1 class="text-4xl font-bold">Uitnodigen</h1>
